@@ -1,0 +1,76 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return request.auth != null &&
+             firestore.exists(/databases/(default)/documents/admins/$(request.auth.uid));
+    }
+
+    function isValidImageType() {
+      return request.resource.contentType.matches('image/.*');
+    }
+
+    function isValidImageSize() {
+      // Max 5MB
+      return request.resource.size < 5 * 1024 * 1024;
+    }
+
+    // City-specific business images
+    match /{cityId}/businesses/{businessId}/{allPaths=**} {
+      // Anyone can read approved business images
+      allow read: if true;
+
+      // Business owners can upload images (checked via Firestore)
+      allow write: if isAuthenticated() &&
+                    isValidImageType() &&
+                    isValidImageSize();
+    }
+
+    // City-specific event images
+    match /{cityId}/events/{eventId}/{allPaths=**} {
+      // Anyone can read approved event images
+      allow read: if true;
+
+      // Event creators can upload images
+      allow write: if isAuthenticated() &&
+                    isValidImageType() &&
+                    isValidImageSize();
+    }
+
+    // User profile images
+    match /users/{userId}/profile/{allPaths=**} {
+      // Anyone can read profile images
+      allow read: if true;
+
+      // Users can upload their own profile image
+      allow write: if isAuthenticated() &&
+                    request.auth.uid == userId &&
+                    isValidImageType() &&
+                    isValidImageSize();
+    }
+
+    // City cultural assets (patterns, backgrounds, etc.)
+    match /{cityId}/cultural-assets/{allPaths=**} {
+      // Anyone can read
+      allow read: if true;
+
+      // Only admins can write
+      allow write: if isAdmin();
+    }
+
+    // Shared default images
+    match /shared/{allPaths=**} {
+      // Anyone can read
+      allow read: if true;
+
+      // Only admins can write
+      allow write: if isAdmin();
+    }
+  }
+}

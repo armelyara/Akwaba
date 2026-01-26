@@ -1,0 +1,41 @@
+{
+  "name": "akwaba",
+  "version": "1.0.0",
+  "description": "Multi-city local business platform for Côte d'Ivoire",
+  "main": "index.js",
+  "scripts": {
+    "serve": "firebase serve",
+    "serve:korhogo": "firebase serve --only hosting:akwaba-korhogo",
+    "deploy": "firebase deploy",
+    "deploy:korhogo": "firebase deploy --only hosting:akwaba-korhogo",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:firestore": "firebase deploy --only firestore:rules",
+    "deploy:storage": "firebase deploy --only storage:rules",
+    "lint": "eslint .",
+    "test": "echo \"Tests coming soon\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armelyara/Akwaba.git"
+  },
+  "keywords": [
+    "business-directory",
+    "local-commerce",
+    "cote-d-ivoire",
+    "pwa",
+    "firebase",
+    "multi-tenant"
+  ],
+  "author": "Armely Ara",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/armelyara/Akwaba/issues"
+  },
+  "homepage": "https://github.com/armelyara/Akwaba#readme",
+  "devDependencies": {
+    "firebase-tools": "^13.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
