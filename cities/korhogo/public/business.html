@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Détails du commerce">
+    <meta name="keywords" content="Korhogo, commerces, artisanat, Senufo, Côte d'Ivoire">
+    <meta name="author" content="Akwaba Korhogo">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8B4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+
+    <title>Commerce - Akwaba Korhogo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/core/css/base.css">
+    <link rel="stylesheet" href="/core/css/layout.css">
+    <link rel="stylesheet" href="/core/css/components.css">
+
+    <!-- Korhogo Theme -->
+    <link rel="stylesheet" href="/css/korhogo-theme.css">
+
+    <style>
+        /* Page-specific styles */
+        .business-header {
+            background: var(--color-white);
+            border-bottom: 3px solid var(--color-secondary-light);
+            border-left: 8px solid var(--color-primary);
+            padding: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .business-title {
+            font-family: var(--font-heading);
+            font-size: var(--text-3xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .business-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-sm);
+            color: var(--color-gray-700);
+        }
+
+        .status-badge {
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: 600;
+        }
+
+        .status-open {
+            background: var(--color-success);
+            color: var(--color-white);
+        }
+
+        .status-closed {
+            background: var(--color-error);
+            color: var(--color-white);
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+        }
+
+        .photo-item {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-base);
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .action-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--space-3);
+            margin-bottom: var(--space-8);
+        }
+
+        .action-btn-large {
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            color: var(--color-white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-align: center;
+            border: none;
+            font-size: var(--text-sm);
+        }
+
+        .action-btn-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-section {
+            background: var(--color-white);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-6);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .info-section h3 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            margin-bottom: var(--space-4);
+            font-size: var(--text-xl);
+        }
+
+        .info-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: var(--space-3);
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--color-gray-700);
+            font-size: var(--text-sm);
+        }
+
+        .info-value {
+            color: var(--color-gray-900);
+        }
+
+        .hours-grid {
+            display: grid;
+            gap: var(--space-2);
+        }
+
+        .hours-row {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: var(--space-3);
+            padding: var(--space-2);
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-md);
+        }
+
+        .hours-day {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .hours-time {
+            color: var(--color-gray-700);
+        }
+
+        .map-container {
+            height: 300px;
+            background: var(--color-gray-200);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .review-card {
+            background: var(--color-bg-secondary);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-4);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-2);
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .review-rating {
+            color: var(--color-secondary-dark);
+        }
+
+        .review-date {
+            font-size: var(--text-xs);
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-2);
+        }
+
+        .review-text {
+            color: var(--color-gray-800);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 767px) {
+            .business-header {
+                padding: var(--space-4);
+            }
+
+            .business-title {
+                font-size: var(--text-2xl);
+            }
+
+            .info-row {
+                grid-template-columns: 1fr;
+                gap: var(--space-1);
+            }
+
+            .hours-row {
+                grid-template-columns: 80px 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
+                    <h1>Akwaba Korhogo</h1>
+                </div>
+                <nav class="main-nav" id="mainNav">
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/about.html">À propos</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Loading State -->
+    <div id="loadingState" class="section">
+        <div class="container text-center">
+            <div class="spinner"></div>
+            <p class="mt-4">Chargement des informations...</p>
+        </div>
+    </div>
+
+    <!-- Business Content -->
+    <div id="businessContent" style="display: none;">
+        <!-- Business Header -->
+        <section class="section">
+            <div class="container">
+                <div class="business-header">
+                    <h1 class="business-title" id="businessName">-</h1>
+                    <div class="business-meta">
+                        <div class="meta-item">
+                            <span>⭐</span>
+                            <span id="businessRating">-</span>
+                            <span>(<span id="reviewCount">0</span> avis)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>📂</span>
+                            <span id="businessCategory">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>📍</span>
+                            <span id="businessNeighborhood">-</span>
+                        </div>
+                        <div class="meta-item" id="statusBadge">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="photo-gallery" id="photoGallery">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <!-- Action Bar -->
+                <div class="action-bar">
+                    <button class="action-btn-large action-btn-call" id="callBtn">
+                        ☎️ Appeler
+                    </button>
+                    <button class="action-btn-large action-btn-navigate" id="navigateBtn">
+                        📍 Itinéraire
+                    </button>
+                    <button class="action-btn-large action-btn-share" id="shareBtn">
+                        📤 Partager
+                    </button>
+                    <button class="action-btn-large" style="background: var(--color-accent);" id="favoriteBtn">
+                        ❤️ Favoris
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Business Info -->
+        <section class="section">
+            <div class="container">
+                <div class="two-column-layout">
+                    <div class="content">
+                        <!-- About -->
+                        <div class="info-section">
+                            <h3>À propos</h3>
+                            <p id="businessDescription">-</p>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="info-section">
+                            <h3>Informations de contact</h3>
+                            <div class="info-row">
+                                <div class="info-label">Téléphone</div>
+                                <div class="info-value">
+                                    <a href="#" id="businessPhone">-</a>
+                                </div>
+                            </div>
+                            <div class="info-row" id="emailRow" style="display: none;">
+                                <div class="info-label">Email</div>
+                                <div class="info-value">
+                                    <a href="#" id="businessEmail">-</a>
+                                </div>
+                            </div>
+                            <div class="info-row" id="websiteRow" style="display: none;">
+                                <div class="info-label">Site web</div>
+                                <div class="info-value">
+                                    <a href="#" id="businessWebsite" target="_blank">-</a>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Adresse</div>
+                                <div class="info-value" id="businessAddress">-</div>
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="info-section">
+                            <h3>Horaires d'ouverture</h3>
+                            <div class="hours-grid" id="hoursGrid">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Map -->
+                        <div class="map-container" id="mapContainer">
+                            <p>Carte à venir</p>
+                        </div>
+
+                        <!-- Reviews -->
+                        <div class="info-section">
+                            <h3>Avis clients</h3>
+                            <div id="reviewsContainer">
+                                <p class="text-gray-600">Aucun avis pour le moment.</p>
+                            </div>
+                            <button class="btn btn-primary mt-4" id="addReviewBtn">
+                                Laisser un avis
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sidebar desktop-only">
+                        <!-- Quick Info Card -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="text-primary mb-4">Informations rapides</h4>
+                                <div class="mb-3">
+                                    <div class="text-sm text-gray-600 mb-1">Propriétaire</div>
+                                    <div id="ownerName">-</div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="text-sm text-gray-600 mb-1">Année de création</div>
+                                    <div id="businessYear">-</div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="text-sm text-gray-600 mb-1">Services</div>
+                                    <div id="businessServices">-</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Share Card -->
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h4 class="text-primary mb-4">Partager</h4>
+                                <div class="flex gap-3">
+                                    <button class="btn btn-sm btn-outline" id="shareFacebook">📘 Facebook</button>
+                                    <button class="btn btn-sm btn-outline" id="shareWhatsApp">💬 WhatsApp</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Businesses -->
+        <section class="section">
+            <div class="container">
+                <h3 class="text-center text-primary mb-8">Commerces similaires</h3>
+                <div class="card-grid" id="relatedBusinesses">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorState" class="section" style="display: none;">
+        <div class="container">
+            <div class="empty-state">
+                <p>Commerce non trouvé.</p>
+                <a href="/businesses.html" class="btn btn-primary mt-4">Retour aux commerces</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Akwaba Korhogo</h4>
+                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/about.html">À propos</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Catégories</h4>
+                    <a href="/businesses.html?category=artisanat">Artisanat</a>
+                    <a href="/businesses.html?category=restaurants">Restaurants</a>
+                    <a href="/businesses.html?category=textile">Textiles</a>
+                    <a href="/businesses.html?category=sculpture">Sculpture</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📍 Quartier Koko, Korhogo</p>
+                    <p>☎️ +225 25 86 00 00 00</p>
+                    <p>✉️ contact@akwaba-korhogo.ci</p>
+                    <div class="flex gap-4 mt-4">
+                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+    <!-- City Configuration -->
+    <script src="/js/config.js"></script>
+
+    <!-- Core JavaScript -->
+    <script src="/core/js/utils.js"></script>
+    <script src="/core/js/responsive-manager.js"></script>
+    <script src="/core/js/firebase-manager.js"></script>
+    <script src="/core/js/business-directory.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        // Initialize managers
+        const responsive = new ResponsiveManager();
+        const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
+        const businessDirectory = new BusinessDirectory(firebaseManager, responsive);
+
+        let currentBusiness = null;
+        const businessId = new URLSearchParams(window.location.search).get('id');
+
+        // Initialize Firebase
+        firebaseManager.initialize().then(success => {
+            if (success && businessId) {
+                loadBusiness();
+            } else {
+                showError();
+            }
+        });
+
+        // Load business
+        async function loadBusiness() {
+            showLoading();
+
+            const result = await businessDirectory.getBusinessById(businessId);
+
+            if (result.success && result.data) {
+                currentBusiness = result.data;
+                renderBusiness();
+                loadRelatedBusinesses();
+            } else {
+                showError();
+            }
+        }
+
+        // Render business
+        function renderBusiness() {
+            const business = currentBusiness;
+
+            // Update page title
+            document.title = `${business.name} - Akwaba Korhogo`;
+
+            // Basic info
+            document.getElementById('businessName').textContent = business.name;
+            document.getElementById('businessRating').textContent = business.rating?.toFixed(1) || 'N/A';
+            document.getElementById('reviewCount').textContent = business.reviewCount || 0;
+            document.getElementById('businessCategory').textContent = getCategoryName(business.category);
+            document.getElementById('businessNeighborhood').textContent = getNeighborhoodName(business.neighborhood);
+            document.getElementById('businessDescription').textContent = business.description || 'Aucune description disponible.';
+
+            // Status badge
+            if (business.hours) {
+                const isOpen = businessDirectory.isBusinessOpen(business.hours);
+                const badge = document.createElement('span');
+                badge.className = `status-badge ${isOpen ? 'status-open' : 'status-closed'}`;
+                badge.innerHTML = isOpen ? '🟢 Ouvert' : '🔴 Fermé';
+                document.getElementById('statusBadge').appendChild(badge);
+            }
+
+            // Photos
+            renderPhotos(business.photos);
+
+            // Contact info
+            const phoneLink = document.getElementById('businessPhone');
+            phoneLink.textContent = business.phone || 'Non disponible';
+            phoneLink.href = business.phone ? `tel:${business.phone}` : '#';
+
+            if (business.email) {
+                document.getElementById('emailRow').style.display = 'grid';
+                const emailLink = document.getElementById('businessEmail');
+                emailLink.textContent = business.email;
+                emailLink.href = `mailto:${business.email}`;
+            }
+
+            if (business.website) {
+                document.getElementById('websiteRow').style.display = 'grid';
+                const websiteLink = document.getElementById('businessWebsite');
+                websiteLink.textContent = business.website;
+                websiteLink.href = business.website;
+            }
+
+            document.getElementById('businessAddress').textContent = business.address || 'Adresse non disponible';
+
+            // Hours
+            renderHours(business.hours);
+
+            // Sidebar info
+            document.getElementById('ownerName').textContent = business.ownerName || 'Non disponible';
+            document.getElementById('businessYear').textContent = business.yearEstablished || 'Non disponible';
+            document.getElementById('businessServices').textContent = business.services?.join(', ') || 'Non disponible';
+
+            // Reviews
+            if (business.reviews && business.reviews.length > 0) {
+                renderReviews(business.reviews);
+            }
+
+            // Setup action buttons
+            setupActionButtons();
+
+            // Show content
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('businessContent').style.display = 'block';
+        }
+
+        // Render photos
+        function renderPhotos(photos) {
+            const gallery = document.getElementById('photoGallery');
+            gallery.innerHTML = '';
+
+            if (!photos || photos.length === 0) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'photo-item';
+                placeholder.innerHTML = `<img src="/assets/images/placeholder.jpg" alt="Pas de photo">`;
+                gallery.appendChild(placeholder);
+                return;
+            }
+
+            photos.forEach(photo => {
+                const item = document.createElement('div');
+                item.className = 'photo-item';
+                item.innerHTML = `<img src="${photo}" alt="${currentBusiness.name}">`;
+                item.addEventListener('click', () => {
+                    window.open(photo, '_blank');
+                });
+                gallery.appendChild(item);
+            });
+        }
+
+        // Render hours
+        function renderHours(hours) {
+            const grid = document.getElementById('hoursGrid');
+            grid.innerHTML = '';
+
+            if (!hours) {
+                grid.innerHTML = '<p class="text-gray-600">Horaires non disponibles</p>';
+                return;
+            }
+
+            const days = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+            const dayNames = {
+                'lundi': 'Lundi',
+                'mardi': 'Mardi',
+                'mercredi': 'Mercredi',
+                'jeudi': 'Jeudi',
+                'vendredi': 'Vendredi',
+                'samedi': 'Samedi',
+                'dimanche': 'Dimanche'
+            };
+
+            days.forEach(day => {
+                const row = document.createElement('div');
+                row.className = 'hours-row';
+
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'hours-day';
+                dayDiv.textContent = dayNames[day];
+
+                const timeDiv = document.createElement('div');
+                timeDiv.className = 'hours-time';
+
+                if (hours[day]) {
+                    if (hours[day].closed) {
+                        timeDiv.textContent = 'Fermé';
+                    } else {
+                        timeDiv.textContent = `${hours[day].open} - ${hours[day].close}`;
+                    }
+                } else {
+                    timeDiv.textContent = '-';
+                }
+
+                row.appendChild(dayDiv);
+                row.appendChild(timeDiv);
+                grid.appendChild(row);
+            });
+        }
+
+        // Render reviews
+        function renderReviews(reviews) {
+            const container = document.getElementById('reviewsContainer');
+            container.innerHTML = '';
+
+            reviews.forEach(review => {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-author">${review.authorName}</div>
+                        <div class="review-rating">${'⭐'.repeat(review.rating)}</div>
+                    </div>
+                    <div class="review-date">${formatDate(review.createdAt)}</div>
+                    <div class="review-text">${review.text}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Setup action buttons
+        function setupActionButtons() {
+            // Call
+            document.getElementById('callBtn').addEventListener('click', () => {
+                if (currentBusiness.phone) {
+                    window.location.href = `tel:${currentBusiness.phone}`;
+                }
+            });
+
+            // Navigate
+            document.getElementById('navigateBtn').addEventListener('click', () => {
+                if (currentBusiness.location) {
+                    const { lat, lng } = currentBusiness.location;
+                    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
+                }
+            });
+
+            // Share
+            document.getElementById('shareBtn').addEventListener('click', () => {
+                if (navigator.share) {
+                    navigator.share({
+                        title: currentBusiness.name,
+                        text: currentBusiness.description,
+                        url: window.location.href
+                    });
+                } else {
+                    // Fallback: copy to clipboard
+                    navigator.clipboard.writeText(window.location.href);
+                    alert('Lien copié dans le presse-papiers!');
+                }
+            });
+
+            // Favorite
+            document.getElementById('favoriteBtn').addEventListener('click', () => {
+                // TODO: Implement favorites functionality
+                alert('Fonctionnalité à venir!');
+            });
+
+            // Social share
+            document.getElementById('shareFacebook')?.addEventListener('click', () => {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank');
+            });
+
+            document.getElementById('shareWhatsApp')?.addEventListener('click', () => {
+                window.open(`https://wa.me/?text=${encodeURIComponent(currentBusiness.name + ' - ' + window.location.href)}`, '_blank');
+            });
+
+            // Add review
+            document.getElementById('addReviewBtn')?.addEventListener('click', () => {
+                // TODO: Implement review form
+                alert('Fonctionnalité à venir!');
+            });
+        }
+
+        // Load related businesses
+        async function loadRelatedBusinesses() {
+            const result = await businessDirectory.getBusinesses({
+                category: currentBusiness.category,
+                limit: 3
+            });
+
+            if (result.success && result.data.length > 0) {
+                const container = document.getElementById('relatedBusinesses');
+                container.innerHTML = '';
+
+                result.data
+                    .filter(b => b.id !== currentBusiness.id)
+                    .slice(0, 3)
+                    .forEach(business => {
+                        const card = createBusinessCard(business);
+                        container.appendChild(card);
+                    });
+            }
+        }
+
+        // Create business card
+        function createBusinessCard(business) {
+            const card = document.createElement('div');
+            card.className = 'business-card';
+            card.innerHTML = `
+                <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
+                     alt="${business.name}"
+                     class="card-image">
+                <div class="card-body">
+                    <h4 class="business-card-name">${business.name}</h4>
+                    <p class="business-card-category">${getCategoryName(business.category)}</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
+                        <a href="/business.html?id=${business.id}" class="btn btn-sm btn-primary">Voir détails</a>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Helper functions
+        function getCategoryName(categoryId) {
+            const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
+            return category ? category.name : categoryId;
+        }
+
+        function getNeighborhoodName(neighborhoodId) {
+            const neighborhood = CITY_CONFIG.neighborhoods.find(n => n.id === neighborhoodId);
+            return neighborhood ? neighborhood.name : neighborhoodId;
+        }
+
+        function formatDate(timestamp) {
+            if (!timestamp) return '';
+            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+            return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        // UI helpers
+        function showLoading() {
+            document.getElementById('loadingState').style.display = 'block';
+            document.getElementById('businessContent').style.display = 'none';
+            document.getElementById('errorState').style.display = 'none';
+        }
+
+        function showError() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('businessContent').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+        }
+
+        // Mobile menu toggle
+        document.getElementById('menuToggle')?.addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize responsive elements
+        responsive.updateResponsiveElements();
+    </script>
+
+</body>
+</html>

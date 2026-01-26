@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez les événements culturels et commerciaux de Korhogo">
+    <meta name="keywords" content="Korhogo, événements, culture, Senufo, Côte d'Ivoire">
+    <meta name="author" content="Akwaba Korhogo">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8B4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+
+    <title>Événements - Akwaba Korhogo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/core/css/base.css">
+    <link rel="stylesheet" href="/core/css/layout.css">
+    <link rel="stylesheet" href="/core/css/components.css">
+
+    <!-- Korhogo Theme -->
+    <link rel="stylesheet" href="/css/korhogo-theme.css">
+
+    <style>
+        /* Page-specific styles */
+        .events-hero {
+            background: linear-gradient(135deg,
+                rgba(139, 69, 19, 0.85),
+                rgba(210, 105, 30, 0.85)
+            ),
+            url('/assets/images/korhogo-culture.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: var(--space-12) 0;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .events-hero h2 {
+            font-family: var(--font-heading);
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .events-hero p {
+            font-size: var(--text-lg);
+            color: var(--color-secondary-light);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: var(--space-2);
+            margin-bottom: var(--space-6);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-tab {
+            padding: var(--space-3) var(--space-6);
+            border: 2px solid var(--color-secondary);
+            border-radius: var(--radius-full);
+            background: var(--color-white);
+            color: var(--color-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .filter-tab:hover {
+            border-color: var(--color-primary);
+            background: var(--color-bg-secondary);
+        }
+
+        .filter-tab.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .event-card {
+            background: var(--color-white);
+            border: 3px solid var(--color-secondary-light);
+            border-left: 8px solid var(--color-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin-bottom: var(--space-6);
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+
+        .date-box {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: var(--color-white);
+            padding: var(--space-3);
+            border-radius: var(--radius-md);
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .date-day {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .date-month {
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            margin-top: var(--space-1);
+        }
+
+        .event-info {
+            flex: 1;
+        }
+
+        .event-title {
+            font-family: var(--font-heading);
+            font-size: var(--text-2xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .event-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            font-size: var(--text-sm);
+            color: var(--color-gray-700);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .event-description {
+            color: var(--color-gray-800);
+            line-height: 1.6;
+            margin-top: var(--space-4);
+        }
+
+        .event-category-badge {
+            display: inline-block;
+            padding: var(--space-1) var(--space-3);
+            background: var(--color-secondary);
+            color: var(--color-primary-dark);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: 600;
+            margin-top: var(--space-3);
+        }
+
+        .event-actions {
+            display: flex;
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+        }
+
+        .featured-event {
+            background: linear-gradient(135deg, var(--color-white), var(--color-bg-secondary));
+            border-color: var(--color-accent);
+            border-width: 4px;
+        }
+
+        .featured-badge {
+            background: var(--color-accent);
+            color: var(--color-white);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: var(--space-4);
+        }
+
+        @media (max-width: 767px) {
+            .events-hero h2 {
+                font-size: var(--text-3xl);
+            }
+
+            .event-date {
+                flex-direction: row;
+            }
+
+            .date-box {
+                min-width: 60px;
+            }
+
+            .date-day {
+                font-size: var(--text-2xl);
+            }
+
+            .event-title {
+                font-size: var(--text-xl);
+            }
+
+            .event-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
+                    <h1>Akwaba Korhogo</h1>
+                </div>
+                <nav class="main-nav" id="mainNav">
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html" class="active">Événements</a>
+                    <a href="/about.html">À propos</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="events-hero">
+        <div class="container">
+            <h2>Événements à Korhogo</h2>
+            <p>Découvrez la richesse culturelle et les activités de notre communauté</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">Tous les événements</button>
+                <button class="filter-tab" data-filter="upcoming">À venir</button>
+                <button class="filter-tab" data-filter="cultural">Culturel</button>
+                <button class="filter-tab" data-filter="commercial">Commercial</button>
+                <button class="filter-tab" data-filter="community">Communautaire</button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center">
+                <div class="spinner"></div>
+                <p class="mt-4">Chargement des événements...</p>
+            </div>
+
+            <!-- Events List -->
+            <div id="eventsList" style="display: none;">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <p>Aucun événement trouvé.</p>
+                <p class="mt-2 text-sm text-gray-600">Revenez bientôt pour découvrir les prochains événements!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section bg-secondary">
+        <div class="container text-center">
+            <h3 class="text-primary mb-4">Vous organisez un événement?</h3>
+            <p class="mb-6 text-gray-700">Partagez-le avec la communauté de Korhogo!</p>
+            <button class="btn btn-primary btn-lg" id="proposeEventBtn">
+                Proposer un événement
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Akwaba Korhogo</h4>
+                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/about.html">À propos</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Catégories</h4>
+                    <a href="/businesses.html?category=artisanat">Artisanat</a>
+                    <a href="/businesses.html?category=restaurants">Restaurants</a>
+                    <a href="/businesses.html?category=textile">Textiles</a>
+                    <a href="/businesses.html?category=sculpture">Sculpture</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📍 Quartier Koko, Korhogo</p>
+                    <p>☎️ +225 25 86 00 00 00</p>
+                    <p>✉️ contact@akwaba-korhogo.ci</p>
+                    <div class="flex gap-4 mt-4">
+                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+    <!-- City Configuration -->
+    <script src="/js/config.js"></script>
+
+    <!-- Core JavaScript -->
+    <script src="/core/js/utils.js"></script>
+    <script src="/core/js/responsive-manager.js"></script>
+    <script src="/core/js/firebase-manager.js"></script>
+    <script src="/core/js/business-directory.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        // Initialize managers
+        const responsive = new ResponsiveManager();
+        const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
+
+        let allEvents = [];
+        let filteredEvents = [];
+        let currentFilter = 'all';
+
+        // Initialize Firebase
+        firebaseManager.initialize().then(success => {
+            if (success) {
+                loadEvents();
+            } else {
+                console.error('Firebase initialization failed');
+                showError();
+            }
+        });
+
+        // Load events
+        async function loadEvents() {
+            showLoading();
+
+            try {
+                const eventsRef = firebaseManager.getCityCollection('events');
+                const snapshot = await eventsRef
+                    .where('status', '==', 'approved')
+                    .orderBy('startDate', 'asc')
+                    .get();
+
+                allEvents = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+
+                applyFilter(currentFilter);
+            } catch (error) {
+                console.error('Error loading events:', error);
+                // Show sample events for demo
+                loadSampleEvents();
+            }
+        }
+
+        // Load sample events (for demonstration)
+        function loadSampleEvents() {
+            const today = new Date();
+            const nextWeek = new Date(today);
+            nextWeek.setDate(today.getDate() + 7);
+            const nextMonth = new Date(today);
+            nextMonth.setMonth(today.getMonth() + 1);
+
+            allEvents = [
+                {
+                    id: '1',
+                    title: 'Festival du Tissu de Korhogo',
+                    description: 'Célébration annuelle du célèbre tissu de Korhogo avec des défilés de mode, des ateliers de tissage et des expositions d\'artisans locaux.',
+                    startDate: { toDate: () => nextWeek },
+                    endDate: { toDate: () => nextWeek },
+                    location: 'Place du Tissu, Quartier Soba',
+                    category: 'cultural',
+                    organizer: 'Association des Tisserands de Korhogo',
+                    isFeatured: true
+                },
+                {
+                    id: '2',
+                    title: 'Marché Artisanal Mensuel',
+                    description: 'Grand marché artisanal présentant la sculpture sur bois, la poterie, et les créations locales. Rencontrez les artisans et découvrez leur savoir-faire.',
+                    startDate: { toDate: () => today },
+                    endDate: { toDate: () => today },
+                    location: 'Quartier Sinistré',
+                    category: 'commercial',
+                    organizer: 'Chambre des Métiers de Korhogo',
+                    isFeatured: false
+                },
+                {
+                    id: '3',
+                    title: 'Soirée Culturelle Senufo',
+                    description: 'Spectacle de danse traditionnelle, musique balafon et contes Senufo. Une soirée pour découvrir la richesse de notre patrimoine culturel.',
+                    startDate: { toDate: () => nextMonth },
+                    endDate: { toDate: () => nextMonth },
+                    location: 'Centre Culturel, Quartier Koko',
+                    category: 'cultural',
+                    organizer: 'Centre Culturel de Korhogo',
+                    isFeatured: false
+                },
+                {
+                    id: '4',
+                    title: 'Foire aux Commerces Locaux',
+                    description: 'Découvrez les nouveaux commerces de Korhogo, profitez d\'offres spéciales et soutenez l\'économie locale.',
+                    startDate: { toDate: () => new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000) },
+                    endDate: { toDate: () => new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000) },
+                    location: 'Quartier Petit Paris',
+                    category: 'commercial',
+                    organizer: 'Association des Commerçants',
+                    isFeatured: false
+                },
+                {
+                    id: '5',
+                    title: 'Journée de Nettoyage Communautaire',
+                    description: 'Rejoignez-nous pour une journée de nettoyage et d\'embellissement de notre quartier. Ensemble, gardons Korhogo propre!',
+                    startDate: { toDate: () => new Date(today.getTime() + 5 * 24 * 60 * 60 * 1000) },
+                    endDate: { toDate: () => new Date(today.getTime() + 5 * 24 * 60 * 60 * 1000) },
+                    location: 'Quartiers multiples',
+                    category: 'community',
+                    organizer: 'Mairie de Korhogo',
+                    isFeatured: false
+                }
+            ];
+
+            applyFilter(currentFilter);
+        }
+
+        // Apply filter
+        function applyFilter(filter) {
+            currentFilter = filter;
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            filteredEvents = allEvents.filter(event => {
+                // Get event date
+                const eventDate = event.startDate.toDate ? event.startDate.toDate() : new Date(event.startDate);
+
+                switch (filter) {
+                    case 'all':
+                        return true;
+                    case 'upcoming':
+                        return eventDate >= today;
+                    case 'cultural':
+                    case 'commercial':
+                    case 'community':
+                        return event.category === filter;
+                    default:
+                        return true;
+                }
+            });
+
+            renderEvents();
+        }
+
+        // Render events
+        function renderEvents() {
+            const container = document.getElementById('eventsList');
+            container.innerHTML = '';
+
+            document.getElementById('loadingState').style.display = 'none';
+
+            if (filteredEvents.length === 0) {
+                document.getElementById('emptyState').style.display = 'block';
+                document.getElementById('eventsList').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('eventsList').style.display = 'block';
+
+            // Sort by date
+            filteredEvents.sort((a, b) => {
+                const dateA = a.startDate.toDate ? a.startDate.toDate() : new Date(a.startDate);
+                const dateB = b.startDate.toDate ? b.startDate.toDate() : new Date(b.startDate);
+                return dateA - dateB;
+            });
+
+            // Render each event
+            filteredEvents.forEach(event => {
+                const card = createEventCard(event);
+                container.appendChild(card);
+            });
+        }
+
+        // Create event card
+        function createEventCard(event) {
+            const card = document.createElement('div');
+            card.className = `event-card ${event.isFeatured ? 'featured-event' : ''}`;
+
+            const eventDate = event.startDate.toDate ? event.startDate.toDate() : new Date(event.startDate);
+            const day = eventDate.getDate();
+            const month = eventDate.toLocaleDateString('fr-FR', { month: 'short' });
+            const time = eventDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+
+            card.innerHTML = `
+                ${event.isFeatured ? '<div class="featured-badge">⭐ Événement à la une</div>' : ''}
+
+                <div class="event-date">
+                    <div class="date-box">
+                        <div class="date-day">${day}</div>
+                        <div class="date-month">${month}</div>
+                    </div>
+                    <div class="event-info">
+                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <span>🕒</span>
+                                <span>${time}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>📍</span>
+                                <span>${event.location}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span>👥</span>
+                                <span>${event.organizer}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-description">${event.description}</div>
+
+                <span class="event-category-badge">${getCategoryName(event.category)}</span>
+
+                <div class="event-actions">
+                    <button class="btn btn-sm btn-primary" onclick="addToCalendar('${event.id}')">
+                        📅 Ajouter au calendrier
+                    </button>
+                    <button class="btn btn-sm btn-outline" onclick="shareEvent('${event.id}')">
+                        📤 Partager
+                    </button>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Get category name
+        function getCategoryName(categoryId) {
+            const categories = {
+                'cultural': '🎨 Culturel',
+                'commercial': '🛍️ Commercial',
+                'community': '🤝 Communautaire'
+            };
+            return categories[categoryId] || categoryId;
+        }
+
+        // Add to calendar
+        function addToCalendar(eventId) {
+            const event = allEvents.find(e => e.id === eventId);
+            if (!event) return;
+
+            const eventDate = event.startDate.toDate ? event.startDate.toDate() : new Date(event.startDate);
+            const title = encodeURIComponent(event.title);
+            const details = encodeURIComponent(event.description);
+            const location = encodeURIComponent(event.location);
+            const startDate = eventDate.toISOString().replace(/-|:|\.\d\d\d/g, '');
+
+            // Google Calendar URL
+            const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${startDate}`;
+
+            window.open(calendarUrl, '_blank');
+        }
+
+        // Share event
+        function shareEvent(eventId) {
+            const event = allEvents.find(e => e.id === eventId);
+            if (!event) return;
+
+            const shareData = {
+                title: event.title,
+                text: event.description,
+                url: window.location.href + '?event=' + eventId
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData);
+            } else {
+                // Fallback: WhatsApp share
+                const text = encodeURIComponent(`${event.title}\n\n${event.description}\n\nPlus d'infos: ${shareData.url}`);
+                window.open(`https://wa.me/?text=${text}`, '_blank');
+            }
+        }
+
+        // Setup filter tabs
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active state
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Apply filter
+                const filter = tab.dataset.filter;
+                applyFilter(filter);
+            });
+        });
+
+        // Propose event button
+        document.getElementById('proposeEventBtn')?.addEventListener('click', () => {
+            alert('Fonctionnalité à venir! Vous pourrez bientôt proposer vos événements.');
+        });
+
+        // UI helpers
+        function showLoading() {
+            document.getElementById('loadingState').style.display = 'block';
+            document.getElementById('eventsList').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'none';
+        }
+
+        function showError() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'block';
+            document.getElementById('emptyState').innerHTML = '<p>Erreur de chargement des événements.</p>';
+        }
+
+        // Mobile menu toggle
+        document.getElementById('menuToggle')?.addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize responsive elements
+        responsive.updateResponsiveElements();
+    </script>
+
+</body>
+</html>

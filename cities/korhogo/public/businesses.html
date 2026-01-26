@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez tous les commerces et artisans de Korhogo">
+    <meta name="keywords" content="Korhogo, commerces, artisanat, Senufo, Côte d'Ivoire">
+    <meta name="author" content="Akwaba Korhogo">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8B4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+
+    <title>Commerces - Akwaba Korhogo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/core/css/base.css">
+    <link rel="stylesheet" href="/core/css/layout.css">
+    <link rel="stylesheet" href="/core/css/components.css">
+
+    <!-- Korhogo Theme -->
+    <link rel="stylesheet" href="/css/korhogo-theme.css">
+
+    <style>
+        /* Page-specific styles */
+        .filters-section {
+            background: var(--color-white);
+            padding: var(--space-6) 0;
+            border-bottom: 2px solid var(--color-secondary-light);
+            position: sticky;
+            top: 0;
+            z-index: var(--z-sticky);
+        }
+
+        .filters-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        .filter-chip {
+            padding: var(--space-2) var(--space-4);
+            border: 2px solid var(--color-secondary);
+            border-radius: var(--radius-full);
+            background: var(--color-white);
+            color: var(--color-primary);
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-weight: 500;
+        }
+
+        .filter-chip:hover {
+            border-color: var(--color-primary);
+            background: var(--color-bg-secondary);
+        }
+
+        .filter-chip.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .results-count {
+            font-size: var(--text-lg);
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .sort-select {
+            padding: var(--space-2) var(--space-4);
+            border: 2px solid var(--color-secondary);
+            border-radius: var(--radius-md);
+            background: var(--color-white);
+            color: var(--color-primary);
+            font-size: var(--text-sm);
+            cursor: pointer;
+        }
+
+        .load-more-container {
+            text-align: center;
+            margin-top: var(--space-8);
+        }
+
+        @media (max-width: 767px) {
+            .filters-section {
+                padding: var(--space-4) 0;
+            }
+
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-3);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
+                    <h1>Akwaba Korhogo</h1>
+                </div>
+                <nav class="main-nav" id="mainNav">
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html" class="active">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/about.html">À propos</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Rechercher un commerce..."
+                    aria-label="Rechercher">
+                <button id="searchBtn" class="search-btn">🔍 Rechercher</button>
+            </div>
+
+            <div class="filters-container">
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <div class="filter-label">Catégories</div>
+                    <div class="filter-chips" id="categoryFilters">
+                        <button class="filter-chip active" data-category="all">Tous</button>
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Neighborhood Filter -->
+                <div class="filter-group">
+                    <div class="filter-label">Quartiers</div>
+                    <div class="filter-chips" id="neighborhoodFilters">
+                        <button class="filter-chip active" data-neighborhood="all">Tous</button>
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Open Now Filter -->
+                <div class="filter-group">
+                    <div class="filter-chips">
+                        <button class="filter-chip" id="openNowFilter" data-open="false">
+                            🟢 Ouvert maintenant
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="section">
+        <div class="container">
+            <div class="results-header">
+                <div class="results-count" id="resultsCount">
+                    <span id="countNumber">0</span> commerce(s) trouvé(s)
+                </div>
+                <select class="sort-select" id="sortSelect">
+                    <option value="name">Nom (A-Z)</option>
+                    <option value="rating">Note (haute → basse)</option>
+                    <option value="recent">Plus récent</option>
+                </select>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="text-center">
+                <div class="spinner"></div>
+                <p class="mt-4">Chargement des commerces...</p>
+            </div>
+
+            <!-- Businesses Grid -->
+            <div class="card-grid" id="businessesGrid" style="display: none;">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <p>Aucun commerce trouvé avec ces critères.</p>
+                <button class="btn btn-primary mt-4" id="clearFiltersBtn">Réinitialiser les filtres</button>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                <button class="btn btn-outline btn-lg" id="loadMoreBtn">
+                    Charger plus de commerces
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Akwaba Korhogo</h4>
+                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/about.html">À propos</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Catégories</h4>
+                    <a href="/businesses.html?category=artisanat">Artisanat</a>
+                    <a href="/businesses.html?category=restaurants">Restaurants</a>
+                    <a href="/businesses.html?category=textile">Textiles</a>
+                    <a href="/businesses.html?category=sculpture">Sculpture</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📍 Quartier Koko, Korhogo</p>
+                    <p>☎️ +225 25 86 00 00 00</p>
+                    <p>✉️ contact@akwaba-korhogo.ci</p>
+                    <div class="flex gap-4 mt-4">
+                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+    <!-- City Configuration -->
+    <script src="/js/config.js"></script>
+
+    <!-- Core JavaScript -->
+    <script src="/core/js/utils.js"></script>
+    <script src="/core/js/responsive-manager.js"></script>
+    <script src="/core/js/firebase-manager.js"></script>
+    <script src="/core/js/business-directory.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        // Initialize managers
+        const responsive = new ResponsiveManager();
+        const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
+        const businessDirectory = new BusinessDirectory(firebaseManager, responsive);
+
+        // State
+        let allBusinesses = [];
+        let filteredBusinesses = [];
+        let currentFilters = {
+            category: 'all',
+            neighborhood: 'all',
+            openNow: false,
+            search: ''
+        };
+        let currentSort = 'name';
+        let displayedCount = 0;
+        const LOAD_INCREMENT = responsive.isMobile ? 10 : 20;
+
+        // Initialize Firebase
+        firebaseManager.initialize().then(success => {
+            if (success) {
+                initializePage();
+            } else {
+                console.error('Firebase initialization failed');
+                showError('Erreur de connexion. Veuillez réessayer.');
+            }
+        });
+
+        // Initialize page
+        async function initializePage() {
+            loadFiltersFromURL();
+            renderCategoryFilters();
+            renderNeighborhoodFilters();
+            await loadBusinesses();
+            setupEventListeners();
+        }
+
+        // Load filters from URL parameters
+        function loadFiltersFromURL() {
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.has('category')) {
+                currentFilters.category = params.get('category');
+            }
+            if (params.has('neighborhood')) {
+                currentFilters.neighborhood = params.get('neighborhood');
+            }
+            if (params.has('search')) {
+                currentFilters.search = params.get('search');
+                document.getElementById('searchInput').value = currentFilters.search;
+            }
+        }
+
+        // Render category filters
+        function renderCategoryFilters() {
+            const container = document.getElementById('categoryFilters');
+
+            CITY_CONFIG.categories.forEach(category => {
+                const chip = document.createElement('button');
+                chip.className = 'filter-chip';
+                chip.dataset.category = category.id;
+                chip.innerHTML = `${category.icon} ${category.name}`;
+
+                if (currentFilters.category === category.id) {
+                    chip.classList.add('active');
+                }
+
+                chip.addEventListener('click', () => {
+                    setFilter('category', category.id);
+                });
+
+                container.appendChild(chip);
+            });
+        }
+
+        // Render neighborhood filters
+        function renderNeighborhoodFilters() {
+            const container = document.getElementById('neighborhoodFilters');
+
+            CITY_CONFIG.neighborhoods.forEach(neighborhood => {
+                const chip = document.createElement('button');
+                chip.className = 'filter-chip';
+                chip.dataset.neighborhood = neighborhood.id;
+                chip.textContent = neighborhood.name;
+
+                if (currentFilters.neighborhood === neighborhood.id) {
+                    chip.classList.add('active');
+                }
+
+                chip.addEventListener('click', () => {
+                    setFilter('neighborhood', neighborhood.id);
+                });
+
+                container.appendChild(chip);
+            });
+        }
+
+        // Load businesses
+        async function loadBusinesses() {
+            showLoading();
+
+            const result = await businessDirectory.getBusinesses({ status: 'approved' });
+
+            if (result.success) {
+                allBusinesses = result.data;
+                applyFilters();
+            } else {
+                showError('Erreur de chargement des commerces.');
+            }
+        }
+
+        // Set filter
+        function setFilter(filterType, value) {
+            currentFilters[filterType] = value;
+
+            // Update UI
+            if (filterType === 'category') {
+                document.querySelectorAll('#categoryFilters .filter-chip').forEach(chip => {
+                    chip.classList.toggle('active', chip.dataset.category === value);
+                });
+            } else if (filterType === 'neighborhood') {
+                document.querySelectorAll('#neighborhoodFilters .filter-chip').forEach(chip => {
+                    chip.classList.toggle('active', chip.dataset.neighborhood === value);
+                });
+            } else if (filterType === 'openNow') {
+                document.getElementById('openNowFilter').classList.toggle('active', value);
+            }
+
+            applyFilters();
+        }
+
+        // Apply filters
+        function applyFilters() {
+            filteredBusinesses = allBusinesses.filter(business => {
+                // Category filter
+                if (currentFilters.category !== 'all' && business.category !== currentFilters.category) {
+                    return false;
+                }
+
+                // Neighborhood filter
+                if (currentFilters.neighborhood !== 'all' && business.neighborhood !== currentFilters.neighborhood) {
+                    return false;
+                }
+
+                // Open now filter
+                if (currentFilters.openNow) {
+                    const isOpen = businessDirectory.isBusinessOpen(business.hours);
+                    if (!isOpen) return false;
+                }
+
+                // Search filter
+                if (currentFilters.search) {
+                    const searchTerm = currentFilters.search.toLowerCase();
+                    const searchableText = `${business.name} ${business.description} ${business.category} ${business.neighborhood}`.toLowerCase();
+                    if (!searchableText.includes(searchTerm)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+
+            sortBusinesses();
+            displayedCount = 0;
+            renderBusinesses(true);
+        }
+
+        // Sort businesses
+        function sortBusinesses() {
+            filteredBusinesses.sort((a, b) => {
+                switch (currentSort) {
+                    case 'name':
+                        return a.name.localeCompare(b.name, 'fr');
+                    case 'rating':
+                        return (b.rating || 0) - (a.rating || 0);
+                    case 'recent':
+                        return (b.createdAt?.toMillis() || 0) - (a.createdAt?.toMillis() || 0);
+                    default:
+                        return 0;
+                }
+            });
+        }
+
+        // Render businesses
+        function renderBusinesses(reset = false) {
+            const grid = document.getElementById('businessesGrid');
+
+            if (reset) {
+                grid.innerHTML = '';
+                displayedCount = 0;
+            }
+
+            // Update count
+            document.getElementById('countNumber').textContent = filteredBusinesses.length;
+
+            // Show/hide states
+            if (filteredBusinesses.length === 0) {
+                grid.style.display = 'none';
+                document.getElementById('emptyState').style.display = 'block';
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('loadMoreContainer').style.display = 'none';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('loadingState').style.display = 'none';
+
+            // Render next batch
+            const endIndex = Math.min(displayedCount + LOAD_INCREMENT, filteredBusinesses.length);
+            for (let i = displayedCount; i < endIndex; i++) {
+                const card = createBusinessCard(filteredBusinesses[i]);
+                grid.appendChild(card);
+            }
+            displayedCount = endIndex;
+
+            // Show/hide load more button
+            if (displayedCount < filteredBusinesses.length) {
+                document.getElementById('loadMoreContainer').style.display = 'block';
+            } else {
+                document.getElementById('loadMoreContainer').style.display = 'none';
+            }
+        }
+
+        // Create business card
+        function createBusinessCard(business) {
+            const card = document.createElement('div');
+            card.className = responsive.isMobile ? 'business-card business-card-mobile' : 'business-card';
+
+            if (responsive.isMobile) {
+                card.innerHTML = `
+                    <div class="business-card-header">
+                        <img src="${business.thumbnail || business.photos?.[0] || '/assets/images/placeholder.jpg'}"
+                             alt="${business.name}"
+                             class="business-card-thumb">
+                        <div class="business-card-info">
+                            <h4 class="business-card-name">${business.name}</h4>
+                            <p class="business-card-category">${getCategoryName(business.category)}</p>
+                            <p class="business-card-location">${getNeighborhoodName(business.neighborhood)}</p>
+                            <div class="business-card-meta">
+                                <span class="business-card-rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
+                                ${business.hours ?
+                                    `<span class="business-card-status ${businessDirectory.isBusinessOpen(business.hours) ? 'open' : 'closed'}">
+                                        ${businessDirectory.isBusinessOpen(business.hours) ? '🟢 Ouvert' : '🔴 Fermé'}
+                                    </span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button onclick="callBusiness('${business.phone}')" class="action-btn action-btn-call">
+                            ☎️ Appeler
+                        </button>
+                        <button onclick="navigateTo('${business.id}')" class="action-btn action-btn-navigate">
+                            📍 Y aller
+                        </button>
+                        <button onclick="viewBusiness('${business.id}')" class="action-btn action-btn-share">
+                            👁️ Voir
+                        </button>
+                    </div>
+                `;
+            } else {
+                card.innerHTML = `
+                    <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
+                         alt="${business.name}"
+                         class="card-image">
+                    <div class="card-body">
+                        <h4 class="business-card-name">${business.name}</h4>
+                        <p class="business-card-category">${getCategoryName(business.category)}</p>
+                        <p class="text-sm text-gray-600 mt-2">${business.description?.substring(0, 100) || ''}...</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
+                            <a href="/business.html?id=${business.id}" class="btn btn-sm btn-primary">Voir détails</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            return card;
+        }
+
+        // Helper functions
+        function getCategoryName(categoryId) {
+            const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
+            return category ? category.name : categoryId;
+        }
+
+        function getNeighborhoodName(neighborhoodId) {
+            const neighborhood = CITY_CONFIG.neighborhoods.find(n => n.id === neighborhoodId);
+            return neighborhood ? neighborhood.name : neighborhoodId;
+        }
+
+        function callBusiness(phone) {
+            if (phone) {
+                window.location.href = `tel:${phone}`;
+            }
+        }
+
+        function navigateTo(businessId) {
+            const business = allBusinesses.find(b => b.id === businessId);
+            if (business && business.location) {
+                const { lat, lng } = business.location;
+                window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
+            }
+        }
+
+        function viewBusiness(businessId) {
+            window.location.href = `/business.html?id=${businessId}`;
+        }
+
+        // UI helpers
+        function showLoading() {
+            document.getElementById('loadingState').style.display = 'block';
+            document.getElementById('businessesGrid').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'none';
+        }
+
+        function showError(message) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'block';
+            document.getElementById('emptyState').innerHTML = `<p>${message}</p>`;
+        }
+
+        // Event listeners
+        function setupEventListeners() {
+            // Search
+            document.getElementById('searchBtn')?.addEventListener('click', () => {
+                currentFilters.search = document.getElementById('searchInput').value;
+                applyFilters();
+            });
+
+            document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    currentFilters.search = e.target.value;
+                    applyFilters();
+                }
+            });
+
+            // Sort
+            document.getElementById('sortSelect')?.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                sortBusinesses();
+                displayedCount = 0;
+                renderBusinesses(true);
+            });
+
+            // Open now filter
+            document.getElementById('openNowFilter')?.addEventListener('click', () => {
+                currentFilters.openNow = !currentFilters.openNow;
+                setFilter('openNow', currentFilters.openNow);
+            });
+
+            // Clear filters
+            document.getElementById('clearFiltersBtn')?.addEventListener('click', () => {
+                currentFilters = {
+                    category: 'all',
+                    neighborhood: 'all',
+                    openNow: false,
+                    search: ''
+                };
+                document.getElementById('searchInput').value = '';
+                document.querySelectorAll('.filter-chip').forEach(chip => {
+                    chip.classList.remove('active');
+                });
+                document.querySelectorAll('[data-category="all"], [data-neighborhood="all"]').forEach(chip => {
+                    chip.classList.add('active');
+                });
+                applyFilters();
+            });
+
+            // Load more
+            document.getElementById('loadMoreBtn')?.addEventListener('click', () => {
+                renderBusinesses(false);
+            });
+
+            // Mobile menu toggle
+            document.getElementById('menuToggle')?.addEventListener('click', () => {
+                document.getElementById('mainNav').classList.toggle('open');
+            });
+        }
+
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize responsive elements
+        responsive.updateResponsiveElements();
+    </script>
+
+</body>
+</html>
