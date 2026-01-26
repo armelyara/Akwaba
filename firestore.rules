@@ -1,111 +1,18 @@
-rules_version = '2';
+rules_version='2'
+
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // Helper functions
-    function isAuthenticated() {
-      return request.auth != null;
-    }
-
-    function isOwner(userId) {
-      return isAuthenticated() && request.auth.uid == userId;
-    }
-
-    function isAdmin() {
-      return isAuthenticated() &&
-             exists(/databases/$(database)/documents/admins/$(request.auth.uid)) &&
-             get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.active == true;
-    }
-
-    function belongsToCity(cityId) {
-      return resource.data.cityId == cityId;
-    }
-
-    // Cities collection - public read, admin write
-    match /cities/{cityId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    // Businesses collection - city-filtered
-    match /businesses/{businessId} {
-      // Anyone can read approved businesses
-      allow read: if resource.data.status == 'approved';
-
-      // Authenticated users can create businesses for their city
-      allow create: if isAuthenticated() &&
-                     request.resource.data.ownerId == request.auth.uid &&
-                     request.resource.data.status == 'pending';
-
-      // Owners can update their own businesses
-      allow update: if isOwner(resource.data.ownerId) ||
-                      isAdmin();
-
-      // Only admins can delete
-      allow delete: if isAdmin();
-    }
-
-    // Events collection - city-filtered
-    match /events/{eventId} {
-      // Anyone can read approved events
-      allow read: if resource.data.status == 'approved';
-
-      // Authenticated users can create events
-      allow create: if isAuthenticated() &&
-                     request.resource.data.creatorId == request.auth.uid;
-
-      // Creators and admins can update
-      allow update: if isOwner(resource.data.creatorId) ||
-                      isAdmin();
-
-      // Only admins can delete
-      allow delete: if isAdmin();
-    }
-
-    // Categories collection - public read, admin write
-    match /categories/{categoryId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    // Users collection
-    match /users/{userId} {
-      // Users can read their own profile
-      allow read: if isOwner(userId) || isAdmin();
-
-      // Users can create and update their own profile
-      allow create: if isAuthenticated() && request.auth.uid == userId;
-      allow update: if isOwner(userId);
-
-      // Only admins can delete
-      allow delete: if isAdmin();
-    }
-
-    // Reviews collection
-    match /reviews/{reviewId} {
-      // Anyone can read approved reviews
-      allow read: if resource.data.status == 'approved';
-
-      // Authenticated users can create reviews
-      allow create: if isAuthenticated() &&
-                     request.resource.data.userId == request.auth.uid;
-
-      // Users can update their own reviews
-      allow update: if isOwner(resource.data.userId) || isAdmin();
-
-      // Users and admins can delete
-      allow delete: if isOwner(resource.data.userId) || isAdmin();
-    }
-
-    // Admins collection - only admins can read/write
-    match /admins/{adminId} {
-      allow read: if isAdmin();
-      allow write: if isAdmin();
-    }
-
-    // Favorites collection (user-specific)
-    match /users/{userId}/favorites/{favoriteId} {
-      allow read, write: if isOwner(userId);
+    match /{document=**} {
+      // This rule allows anyone with your database reference to view, edit,
+      // and delete all data in your database. It is useful for getting
+      // started, but it is configured to expire after 30 days because it
+      // leaves your app open to attackers. At that time, all client
+      // requests to your database will be denied.
+      //
+      // Make sure to write security rules for your app before that time, or
+      // else all client requests to your database will be denied until you
+      // update your rules.
+      allow read, write: if request.time < timestamp.date(2026, 2, 25);
     }
   }
 }
