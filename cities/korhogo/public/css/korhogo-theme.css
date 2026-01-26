@@ -1,0 +1,573 @@
+/**
+ * Korhogo Theme
+ * Senufo Cultural Design - Traditional crafts, textiles, and earth tones
+ */
+
+/* ========================================================================
+   KORHOGO COLOR PALETTE - Senufo Culture
+   ======================================================================== */
+
+:root {
+  /* Primary Colors - Earth and Clay */
+  --color-primary: #8B4513;         /* Saddle Brown - Clay/Soil */
+  --color-primary-light: #A0522D;   /* Sienna */
+  --color-primary-dark: #5D2E0D;    /* Dark Brown */
+  --color-primary-rgb: 139, 69, 19;
+
+  /* Secondary Colors - Savanna and Cotton */
+  --color-secondary: #F4A460;       /* Sandy Brown - Savanna */
+  --color-secondary-light: #F5DEB3; /* Wheat */
+  --color-secondary-dark: #CD853F;  /* Peru */
+
+  /* Accent Colors - Traditional Textiles */
+  --color-accent: #D2691E;          /* Chocolate - Pottery */
+  --color-accent-light: #DEB887;    /* Burlywood */
+  --color-accent-dark: #8B4726;     /* Saddle Brown */
+
+  /* Natural Earth Tones */
+  --color-earth-clay: #8B4513;
+  --color-earth-sand: #F4A460;
+  --color-earth-stone: #696969;
+  --color-earth-wood: #654321;
+
+  /* Background Colors */
+  --color-bg-primary: #F5F5DC;      /* Beige - Natural fabric */
+  --color-bg-secondary: #FAF0E6;    /* Linen */
+  --color-bg-tertiary: #FFF8DC;     /* Cornsilk */
+
+  /* Typography */
+  --font-heading: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Lato', 'Open Sans', sans-serif;
+  --font-traditional: 'Merriweather', 'Georgia', serif;
+}
+
+/* ========================================================================
+   BODY & BACKGROUNDS
+   ======================================================================== */
+
+body {
+  background-color: var(--color-bg-primary);
+  background-image: url('/assets/patterns/senufo-cloth-subtle.svg');
+  background-size: 400px;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+}
+
+/* ========================================================================
+   HEADER - Senufo Traditional Style
+   ======================================================================== */
+
+.site-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-bottom: 8px solid var(--color-accent);
+  box-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
+  position: relative;
+}
+
+/* Traditional pattern overlay */
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-accent) 30px,
+    var(--color-secondary) 30px,
+    var(--color-secondary) 60px
+  );
+}
+
+.site-header .container {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid var(--color-secondary);
+}
+
+.logo h1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--color-white);
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.05em;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.main-nav a {
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: var(--text-base);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.main-nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background-color: var(--color-secondary);
+  border-radius: 2px;
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 2px solid var(--color-white);
+  color: var(--color-white);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-primary-dark));
+    flex-direction: column;
+    padding: var(--space-8) var(--space-6);
+    transition: right var(--transition-base);
+    z-index: var(--z-fixed);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .main-nav.open {
+    right: 0;
+  }
+
+  .main-nav a {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* ========================================================================
+   HERO SECTION - Traditional Senufo Aesthetic
+   ======================================================================== */
+
+.hero-section {
+  background: linear-gradient(135deg,
+    rgba(139, 69, 19, 0.9),
+    rgba(210, 105, 30, 0.9)
+  ),
+  url('/assets/images/korhogo-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: var(--space-16) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Traditional pattern overlay */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/patterns/geometric-traditional.svg');
+  background-size: 300px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-section h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  color: var(--color-white);
+  margin-bottom: var(--space-4);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+.hero-tagline {
+  font-size: var(--text-xl);
+  color: var(--color-secondary-light);
+  margin-bottom: var(--space-8);
+  font-weight: 500;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Search Bar in Hero */
+.hero-section .search-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-section .search-input {
+  background: rgba(255, 255, 255, 0.95);
+  border: 3px solid var(--color-secondary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section .search-input:focus {
+  background: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.hero-section .search-btn {
+  background: var(--color-accent);
+}
+
+.hero-section .search-btn:hover {
+  background: var(--color-accent-dark);
+}
+
+@media (max-width: 767px) {
+  .hero-section {
+    padding: var(--space-12) 0;
+  }
+
+  .hero-section h2 {
+    font-size: var(--text-3xl);
+  }
+
+  .hero-tagline {
+    font-size: var(--text-lg);
+  }
+}
+
+/* ========================================================================
+   CATEGORIES - Traditional Craft Style
+   ======================================================================== */
+
+.categories-section {
+  padding: var(--space-12) 0;
+  background: var(--color-white);
+}
+
+.categories-section h3 {
+  text-align: center;
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-bottom: var(--space-8);
+  font-size: var(--text-3xl);
+  position: relative;
+  padding-bottom: var(--space-4);
+}
+
+.categories-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  border-radius: 2px;
+}
+
+.category-card {
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-white));
+  border: 2px solid var(--color-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.category-card:hover::before {
+  transform: scaleX(1);
+}
+
+.category-card:hover {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-white), var(--color-bg-secondary));
+}
+
+.category-icon {
+  font-size: 3rem;
+  filter: drop-shadow(2px 2px 4px rgba(139, 69, 19, 0.2));
+}
+
+.category-name {
+  color: var(--color-primary);
+  font-family: var(--font-traditional);
+}
+
+/* ========================================================================
+   BUSINESS CARDS - Artisan Style
+   ======================================================================== */
+
+.businesses-section {
+  padding: var(--space-12) 0;
+  background: var(--color-bg-primary);
+}
+
+.businesses-section h3 {
+  text-align: center;
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-bottom: var(--space-8);
+  font-size: var(--text-3xl);
+}
+
+.business-card {
+  background: var(--color-white);
+  border: 3px solid var(--color-secondary-light);
+  border-left: 8px solid var(--color-primary);
+  position: relative;
+}
+
+.business-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 40px 40px 0;
+  border-color: transparent var(--color-secondary) transparent transparent;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.business-card:hover::after {
+  opacity: 1;
+}
+
+.business-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px rgba(139, 69, 19, 0.2);
+}
+
+/* Business Card Mobile */
+.business-card-mobile {
+  border-radius: var(--radius-lg);
+  background: linear-gradient(to bottom, var(--color-white) 95%, var(--color-secondary-light) 95%);
+}
+
+.business-card-name {
+  color: var(--color-primary);
+  font-family: var(--font-traditional);
+}
+
+.business-card-category {
+  color: var(--color-accent);
+}
+
+/* Quick Actions - Korhogo Colors */
+.action-btn-call {
+  background: var(--color-primary);
+}
+
+.action-btn-navigate {
+  background: var(--color-accent);
+}
+
+.action-btn-share {
+  background: var(--color-secondary-dark);
+}
+
+/* ========================================================================
+   FOOTER - Traditional Pattern
+   ======================================================================== */
+
+.site-footer {
+  background: linear-gradient(180deg, var(--color-primary-dark), var(--color-primary));
+  color: var(--color-white);
+  padding: var(--space-12) 0 var(--space-6);
+  position: relative;
+  border-top: 6px solid var(--color-accent);
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-accent) 20px,
+    var(--color-secondary) 20px,
+    var(--color-secondary) 40px
+  );
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.footer-section h4 {
+  color: var(--color-secondary);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+}
+
+.footer-section a {
+  display: block;
+  color: var(--color-white);
+  padding: var(--space-2) 0;
+  transition: color var(--transition-fast);
+}
+
+.footer-section a:hover {
+  color: var(--color-secondary);
+  padding-left: var(--space-2);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--space-6);
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-secondary-light);
+}
+
+/* ========================================================================
+   BUTTONS - Korhogo Theme
+   ======================================================================== */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  box-shadow: 0 6px 16px rgba(139, 69, 19, 0.4);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+  color: var(--color-primary-dark);
+}
+
+.btn-outline {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ========================================================================
+   BADGES - Traditional Colors
+   ======================================================================== */
+
+.badge-primary {
+  background: var(--color-primary);
+}
+
+.badge-open {
+  background: var(--color-success);
+}
+
+.badge-closed {
+  background: var(--color-error);
+}
+
+/* ========================================================================
+   UTILITIES - Korhogo Specific
+   ======================================================================== */
+
+.text-primary {
+  color: var(--color-primary) !important;
+}
+
+.text-secondary {
+  color: var(--color-secondary) !important;
+}
+
+.bg-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--color-bg-secondary) !important;
+}
+
+.border-traditional {
+  border: 3px solid var(--color-secondary);
+  border-left: 8px solid var(--color-primary);
+}
+
+/* Traditional divider */
+.divider-traditional {
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-primary) 30px,
+    var(--color-secondary) 30px,
+    var(--color-secondary) 60px
+  );
+  margin: var(--space-8) 0;
+  border-radius: var(--radius-sm);
+}

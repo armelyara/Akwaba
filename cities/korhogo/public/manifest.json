@@ -1,0 +1,130 @@
+{
+  "name": "Akwaba Korhogo",
+  "short_name": "Akwaba KGO",
+  "description": "Découvrez et soutenez les commerces et artisans locaux de Korhogo",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F5F5DC",
+  "theme_color": "#8B4513",
+  "categories": ["business", "shopping", "lifestyle", "local"],
+  "lang": "fr-CI",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/home.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Accueil Akwaba Korhogo"
+    },
+    {
+      "src": "/assets/screenshots/businesses.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Liste des commerces"
+    },
+    {
+      "src": "/assets/screenshots/home-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Accueil Akwaba Korhogo"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Commerces",
+      "short_name": "Commerces",
+      "description": "Voir tous les commerces",
+      "url": "/businesses.html",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-businesses.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Événements",
+      "short_name": "Événements",
+      "description": "Événements à venir",
+      "url": "/events.html",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-events.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Rechercher",
+      "short_name": "Rechercher",
+      "description": "Rechercher un commerce",
+      "url": "/?search=true",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-search.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

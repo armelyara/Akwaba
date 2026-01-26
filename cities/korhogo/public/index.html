@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez et soutenez les commerces et artisans locaux de Korhogo">
+    <meta name="keywords" content="Korhogo, commerces, artisanat, Senufo, Côte d'Ivoire">
+    <meta name="author" content="Akwaba Korhogo">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8B4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://korhogo.akwaba.ci/">
+    <meta property="og:title" content="Akwaba Korhogo - Votre guide local">
+    <meta property="og:description" content="Découvrez les commerces et artisans de Korhogo">
+    <meta property="og:image" content="/assets/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://korhogo.akwaba.ci/">
+    <meta property="twitter:title" content="Akwaba Korhogo">
+    <meta property="twitter:description" content="Découvrez les commerces et artisans de Korhogo">
+    <meta property="twitter:image" content="/assets/images/og-image.jpg">
+
+    <title>Akwaba Korhogo - Votre guide local des commerces et artisans</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/core/css/base.css">
+    <link rel="stylesheet" href="/core/css/layout.css">
+    <link rel="stylesheet" href="/core/css/components.css">
+
+    <!-- Korhogo Theme -->
+    <link rel="stylesheet" href="/css/korhogo-theme.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
+                    <h1>Akwaba Korhogo</h1>
+                </div>
+                <nav class="main-nav" id="mainNav">
+                    <a href="/" class="active">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/about.html">À propos</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h2>Découvrez les trésors de Korhogo</h2>
+            <p class="hero-tagline">Artisanat traditionnel, commerces locaux et saveurs authentiques</p>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Rechercher un commerce, un artisan, un service..."
+                    aria-label="Rechercher">
+                <button id="searchBtn" class="search-btn">🔍 Rechercher</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h3>Parcourir par catégorie</h3>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Businesses -->
+    <section class="businesses-section">
+        <div class="container">
+            <h3>Commerces recommandés</h3>
+            <div class="card-grid" id="featuredBusinesses">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="/businesses.html" class="btn btn-primary btn-lg">
+                    Voir tous les commerces →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="container">
+        <div class="divider-traditional"></div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <div class="two-column-layout">
+                <div class="content">
+                    <h3 class="text-primary">Pourquoi Akwaba Korhogo ?</h3>
+                    <p>
+                        <strong>Akwaba Korhogo</strong> est votre guide local pour découvrir et soutenir
+                        les commerces et artisans de Korhogo. Notre plateforme met en lumière le
+                        riche patrimoine artisanal Senufo et les commerces locaux qui font
+                        la richesse de notre ville.
+                    </p>
+                    <ul>
+                        <li>🎨 <strong>Artisanat traditionnel</strong> - Tissage, sculpture, poterie</li>
+                        <li>🍽️ <strong>Restaurants et maquis</strong> - Saveurs locales authentiques</li>
+                        <li>🛍️ <strong>Commerces locaux</strong> - Soutenir l'économie de Korhogo</li>
+                        <li>📱 <strong>Mobile-first</strong> - Trouvez rapidement ce dont vous avez besoin</li>
+                    </ul>
+                    <a href="/about.html" class="btn btn-outline">En savoir plus</a>
+                </div>
+                <div class="sidebar desktop-only">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-primary">Statistiques</h4>
+                            <div class="mt-4">
+                                <div class="mb-4">
+                                    <div class="text-3xl text-primary">150+</div>
+                                    <div class="text-sm text-gray-600">Commerces référencés</div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="text-3xl text-primary">8</div>
+                                    <div class="text-sm text-gray-600">Quartiers couverts</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl text-primary">12</div>
+                                    <div class="text-sm text-gray-600">Catégories</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Akwaba Korhogo</h4>
+                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/about.html">À propos</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Catégories</h4>
+                    <a href="/businesses.html?category=artisanat">Artisanat</a>
+                    <a href="/businesses.html?category=restaurants">Restaurants</a>
+                    <a href="/businesses.html?category=textile">Textiles</a>
+                    <a href="/businesses.html?category=sculpture">Sculpture</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📍 Quartier Koko, Korhogo</p>
+                    <p>☎️ +225 25 86 00 00 00</p>
+                    <p>✉️ contact@akwaba-korhogo.ci</p>
+                    <div class="flex gap-4 mt-4">
+                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+    <!-- City Configuration -->
+    <script src="/js/config.js"></script>
+
+    <!-- Core JavaScript -->
+    <script src="/core/js/utils.js"></script>
+    <script src="/core/js/responsive-manager.js"></script>
+    <script src="/core/js/firebase-manager.js"></script>
+    <script src="/core/js/business-directory.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        // Initialize managers
+        const responsive = new ResponsiveManager();
+        const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
+        const businessDirectory = new BusinessDirectory(firebaseManager, responsive);
+
+        // Initialize Firebase
+        firebaseManager.initialize().then(success => {
+            if (success) {
+                loadPageContent();
+            } else {
+                console.error('Firebase initialization failed');
+            }
+        });
+
+        // Load categories
+        function loadCategories() {
+            const grid = document.getElementById('categoriesGrid');
+            CITY_CONFIG.categories.forEach(category => {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.innerHTML = `
+                    <div class="category-icon">${category.icon}</div>
+                    <div class="category-name">${category.name}</div>
+                `;
+                card.onclick = () => {
+                    window.location.href = `/businesses.html?category=${category.id}`;
+                };
+                grid.appendChild(card);
+            });
+        }
+
+        // Load featured businesses
+        async function loadFeaturedBusinesses() {
+            const grid = document.getElementById('featuredBusinesses');
+            grid.innerHTML = '<div class="spinner"></div>';
+
+            const result = await businessDirectory.getFeaturedBusinesses(6);
+
+            if (result.success && result.data.length > 0) {
+                grid.innerHTML = '';
+                result.data.forEach(business => {
+                    const card = createBusinessCard(business);
+                    grid.appendChild(card);
+                });
+            } else {
+                grid.innerHTML = '<div class="empty-state"><p>Aucun commerce disponible pour le moment.</p></div>';
+            }
+        }
+
+        // Create business card
+        function createBusinessCard(business) {
+            const card = document.createElement('div');
+            card.className = responsive.isMobile ? 'business-card business-card-mobile' : 'business-card';
+
+            if (responsive.isMobile) {
+                card.innerHTML = `
+                    <div class="business-card-header">
+                        <img src="${business.thumbnail || '/assets/images/placeholder.jpg'}"
+                             alt="${business.name}"
+                             class="business-card-thumb">
+                        <div class="business-card-info">
+                            <h4 class="business-card-name">${business.name}</h4>
+                            <p class="business-card-category">${getCategoryName(business.category)}</p>
+                            <div class="business-card-meta">
+                                <span class="business-card-rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
+                                ${business.isOpen !== null ?
+                                    `<span class="business-card-status ${business.isOpen ? 'open' : 'closed'}">
+                                        ${business.isOpen ? '🟢 Ouvert' : '🔴 Fermé'}
+                                    </span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button onclick="callBusiness('${business.phone}')" class="action-btn action-btn-call">
+                            ☎️ Appeler
+                        </button>
+                        <button onclick="navigateTo('${business.id}')" class="action-btn action-btn-navigate">
+                            📍 Y aller
+                        </button>
+                        <button onclick="viewBusiness('${business.id}')" class="action-btn action-btn-share">
+                            👁️ Voir
+                        </button>
+                    </div>
+                `;
+            } else {
+                card.innerHTML = `
+                    <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
+                         alt="${business.name}"
+                         class="card-image">
+                    <div class="card-body">
+                        <h4 class="business-card-name">${business.name}</h4>
+                        <p class="business-card-category">${getCategoryName(business.category)}</p>
+                        <p class="text-sm text-gray-600 mt-2">${business.description?.substring(0, 100) || ''}...</p>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
+                            <a href="/business.html?id=${business.id}" class="btn btn-sm btn-primary">Voir détails</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            return card;
+        }
+
+        // Helper functions
+        function getCategoryName(categoryId) {
+            const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
+            return category ? category.name : categoryId;
+        }
+
+        function callBusiness(phone) {
+            if (phone) {
+                window.location.href = `tel:${phone}`;
+            }
+        }
+
+        function navigateTo(businessId) {
+            // Get business location and open in maps
+            businessDirectory.getBusinessById(businessId).then(result => {
+                if (result.success && result.data.location) {
+                    const { lat, lng } = result.data.location;
+                    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
+                }
+            });
+        }
+
+        function viewBusiness(businessId) {
+            window.location.href = `/business.html?id=${businessId}`;
+        }
+
+        // Search functionality
+        document.getElementById('searchBtn')?.addEventListener('click', () => {
+            const searchTerm = document.getElementById('searchInput').value;
+            if (searchTerm) {
+                window.location.href = `/businesses.html?search=${encodeURIComponent(searchTerm)}`;
+            }
+        });
+
+        document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('searchBtn').click();
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menuToggle')?.addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+
+        // Load page content
+        function loadPageContent() {
+            loadCategories();
+            loadFeaturedBusinesses();
+        }
+
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize responsive elements
+        responsive.updateResponsiveElements();
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+
+</body>
+</html>
