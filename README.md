@@ -204,4 +204,4 @@ For questions or collaboration: [Add contact info]
 
 ---
 
-**Built with ❤️ for Côte d'Ivoire**
+**By The Day Info X GDG Cloud Abidjan**
