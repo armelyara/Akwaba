@@ -88,17 +88,37 @@
         </div>
         <div class="container hero-content-wrapper">
             <div class="hero-text-content">
-                <h2 class="hero-title">
-                    <span class="hero-word-1">AKWABA</span>
-                    <span class="hero-word-2">KORHOGO</span>
-                </h2>
-                <p class="hero-tagline">Artisanat traditionnel, commerces locaux et saveurs authentiques</p>
+                <div class="container hero-content" data-aos="zoom-in" data-aos-duration="1000">
+                    <h2 class="animate-text">AKWABA<br><span class="text-primary-light">KORHOGO</span></h2>
+                    <p class="hero-tagline" data-aos="fade-up" data-aos-delay="400">Artisanat traditionnel, commerces
+                        locaux et saveurs authentiques</p>
 
-                <!-- Search Bar -->
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-input"
-                        placeholder="Rechercher un commerce, un artisan, un service..." aria-label="Rechercher">
-                    <button id="searchBtn" class="search-btn">🔍</button>
+                    <div class="search-container floating-search" data-aos="fade-up" data-aos-delay="600">
+                        <input type="text" id="searchInput" placeholder="Que recherchez-vous ? (ex: Tissus, Masques...)"
+                            aria-label="Recherche">
+                        <button id="searchBtn" aria-label="Rechercher">
+                            🔍
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section (New) -->
+    <section class="section bg-secondary">
+        <div class="container">
+            <h3 class="section-title text-center" data-aos="fade-up">Événements à venir</h3>
+            <div class="event-grid">
+                <!-- Event 1 -->
+                <div class="event-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="/assets/images/korhogo-culture.jpg" alt="Festival Poro" class="event-image">
+                    <div class="event-content">
+                        <span class="event-date">12 Fév 2024</span>
+                        <h4 class="event-title">Festival du Poro</h4>
+                        <p class="event-location">📍 Bois Sacré de Koko</p>
+                        <a href="/events.html" class="event-link">Voir détails</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,17 +135,14 @@
     </section>
 
     <!-- Featured Businesses -->
-    <section class="businesses-section">
+    <section class="section">
         <div class="container">
-            <h3>Commerces recommandés</h3>
-            <div class="card-grid" id="featuredBusinesses">
-                <!-- Populated by JavaScript -->
+            <h3 class="section-title text-center" data-aos="fade-up">Découvrez nos commerces</h3>
+            <div id="featuredBusinesses" class="card-grid">
+                <!-- Populated by JS -->
             </div>
-
-            <div class="text-center mt-8">
-                <a href="/businesses.html" class="btn btn-primary btn-lg">
-                    Voir tous les commerces →
-                </a>
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="/businesses.html" class="btn btn-outline btn-lg">Voir tous les commerces</a>
             </div>
         </div>
     </section>

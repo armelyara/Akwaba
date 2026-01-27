@@ -36,9 +36,11 @@ class BusinessDirectory {
 
       if (result.success) {
         // Transform data based on device (mobile vs desktop)
-        const businesses = result.data.map(business =>
-          this.responsive.transformBusinessData(business)
-        );
+        const businesses = result.data.map(business => {
+          const transformedBusiness = this.responsive.transformBusinessData(business);
+          // Add data-aos for animations
+          return { ...transformedBusiness, dataAos: 'fade-up' };
+        });
         return { success: true, data: businesses };
       }
 

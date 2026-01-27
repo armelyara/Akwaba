@@ -31,6 +31,9 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
         rel="stylesheet">
 
+    <!-- Animation Library (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <!-- Core CSS -->
     <link rel="stylesheet" href="/core/css/base.css">
     <link rel="stylesheet" href="/core/css/layout.css">
@@ -305,6 +308,8 @@
                     <a href="/">Accueil</a>
                     <a href="/businesses.html">Commerces</a>
                     <a href="/events.html" class="active">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
                     <a href="/about.html">À propos</a>
                 </nav>
                 <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
@@ -379,6 +384,8 @@
                     <a href="/">Accueil</a>
                     <a href="/businesses.html">Commerces</a>
                     <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
                     <a href="/about.html">À propos</a>
                 </div>
                 <div class="footer-section">
@@ -420,6 +427,16 @@
     <script src="/core/js/responsive-manager.js"></script>
     <script src="/core/js/firebase-manager.js"></script>
     <script src="/core/js/business-directory.js"></script>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    </script>
 
     <!-- Page Script -->
     <script>

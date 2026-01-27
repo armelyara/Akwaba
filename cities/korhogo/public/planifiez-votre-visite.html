@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Planifiez votre visite à Korhogo : transport, hébergement et circuits touristiques">
+    <meta name="keywords" content="Visiter Korhogo, tourisme Côte d'Ivoire, transport Korhogo, hôtels Korhogo">
+    <meta name="author" content="Akwaba Korhogo">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8B4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+
+    <title>Planifiez votre visite - Akwaba Korhogo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Animation Library (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/core/css/base.css">
+    <link rel="stylesheet" href="/core/css/layout.css">
+    <link rel="stylesheet" href="/core/css/components.css">
+
+    <!-- Korhogo Theme -->
+    <link rel="stylesheet" href="/css/korhogo-theme.css">
+
+    <style>
+        /* Page-specific styles */
+        .visit-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--color-bg-secondary);
+            padding-top: var(--space-16);
+        }
+
+        .visit-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.2;
+        }
+
+        .hero-waves-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .visit-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 var(--space-4);
+        }
+
+        .visit-hero h2 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: var(--space-4);
+            text-transform: uppercase;
+            line-height: 0.9;
+            color: var(--color-black);
+        }
+
+        .visit-hero p {
+            font-size: var(--text-xl);
+            color: var(--color-gray-700);
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(4px);
+        }
+
+        .info-card {
+            background: var(--color-white);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            text-align: center;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+            display: inline-block;
+        }
+
+        .info-title {
+            font-family: var(--font-heading);
+            font-size: var(--text-xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-3);
+        }
+
+        .itinerary-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .itinerary-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .itinerary-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .itinerary-content {
+            padding: var(--space-6);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .itinerary-badge {
+            display: inline-block;
+            background: var(--color-secondary);
+            color: var(--color-primary-dark);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: 700;
+            text-transform: uppercase;
+            align-self: flex-start;
+            margin-bottom: var(--space-3);
+        }
+
+        .itinerary-title {
+            font-family: var(--font-heading);
+            font-size: var(--text-xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .transport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-12);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
+                    <h1>Akwaba Korhogo</h1>
+                </div>
+                <!-- Navigation updated dynamically -->
+                <nav class="main-nav" id="mainNav">
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html" class="active">Planifier</a>
+                    <a href="/about.html">À propos</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="visit-hero">
+        <img src="/assets/images/korhogo-culture.jpg" alt="" class="visit-hero-bg">
+        <div class="hero-waves-container">
+            <img src="/assets/images/hero-waves.svg" alt="" class="hero-waves-bg">
+        </div>
+        <div class="container visit-hero-content" data-aos="fade-up">
+            <h2>PLANIFIEZ<br><span class="text-primary">VOTRE VISITE</span></h2>
+            <p>Tout ce qu'il faut savoir pour un séjour inoubliable au cœur du pays Senufo</p>
+        </div>
+    </section>
+
+    <!-- Getting There Section -->
+    <section class="section">
+        <div class="container">
+            <h3 class="text-center text-primary text-3xl mb-12" data-aos="fade-up">Comment se rendre à Korhogo ?</h3>
+
+            <div class="transport-grid">
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="info-icon">✈️</div>
+                    <h4 class="info-title">Par Avion</h4>
+                    <p class="text-gray-700">
+                        Vols quotidiens avec <strong>Air Côte d'Ivoire</strong> depuis Abidjan.
+                        Durée : 1h15.
+                    </p>
+                    <a href="https://www.aircotedivoire.com" target="_blank" class="btn btn-sm btn-outline mt-4">Voir
+                        les vols</a>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-icon">🚌</div>
+                    <h4 class="info-title">Par Car</h4>
+                    <p class="text-gray-700">
+                        Liaisons régulières avec <strong>UTB, AVS, et autres compagnies</strong>.
+                        Départ d'Adjamé ou Yopougon. Durée : ~8h.
+                    </p>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="info-icon">🚗</div>
+                    <h4 class="info-title">En Voiture</h4>
+                    <p class="text-gray-700">
+                        Via l'autoroute du Nord jusqu'à Bouaké, puis la nationale A3.
+                        Route bitumée et en bon état.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-center text-primary text-3xl mb-12 mt-16" data-aos="fade-up">Se déplacer sur place</h3>
+
+            <div class="transport-grid">
+                <div class="info-card" data-aos="fade-up">
+                    <div class="info-icon">🚕</div>
+                    <h4 class="info-title">Taxis Ville</h4>
+                    <p class="text-gray-700">
+                        Les taxis oranges desservent toute la ville. Course à partir de 200 FCFA.
+                    </p>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="info-icon">🏍️</div>
+                    <h4 class="info-title">Moto-Taxis</h4>
+                    <p class="text-gray-700">
+                        Rapide et économique pour les courtes distances. Port du casque recommandé.
+                    </p>
+                </div>
+
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-icon">🚙</div>
+                    <h4 class="info-title">Location</h4>
+                    <p class="text-gray-700">
+                        Possibilité de louer des véhicules avec chauffeur pour vos excursions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itineraries Section -->
+    <section class="section bg-secondary">
+        <div class="container">
+            <h3 class="text-center text-primary text-3xl mb-4" data-aos="fade-up">Idées de Séjours</h3>
+            <p class="text-center text-gray-700 mb-12 max-w-2xl mx-auto" data-aos="fade-up">Profitez au maximum de votre
+                temps avec nos suggestions d'itinéraires thématiques.</p>
+
+            <div class="transport-grid">
+
+                <!-- Itinerary 1 -->
+                <div class="itinerary-card" data-aos="fade-up">
+                    <img src="/assets/images/korhogo-artisan.jpg" alt="Artisanat" class="itinerary-image">
+                    <div class="itinerary-content">
+                        <span class="itinerary-badge">Culture & Art</span>
+                        <h4 class="itinerary-title">La Route des Artisans</h4>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Une journée pour découvrir les tisserands de Waraniéné, les peintres sur toile de Fakaha et
+                            les perliers de Kapélé.
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-sm font-bold text-primary">⏳ 1 Jour</span>
+                            <a href="/businesses.html?category=artisanat" class="btn btn-sm btn-primary">Voir les
+                                lieux</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary 2 -->
+                <div class="itinerary-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="/assets/images/korhogo-culture.jpg" alt="Mystique" class="itinerary-image">
+                    <div class="itinerary-content">
+                        <span class="itinerary-badge">Tradition</span>
+                        <h4 class="itinerary-title">Au Cœur du Poro</h4>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Visite du musée Péléforo Gbon Coulibaly, du quartier sacré de Koko et découverte des danses
+                            traditionnelles.
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-sm font-bold text-primary">⏳ 1/2 Journée</span>
+                            <a href="/events.html?filter=cultural" class="btn btn-sm btn-primary">Voir les
+                                événements</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary 3 -->
+                <div class="itinerary-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="/assets/images/placeholder.jpg" alt="Nature" class="itinerary-image">
+                    <div class="itinerary-content">
+                        <span class="itinerary-badge">Nature</span>
+                        <h4 class="itinerary-title">Escapade Nature</h4>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Ascension du Mont Korhogo pour une vue panoramique et détente autour du barrage.
+                        </p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-sm font-bold text-primary">⏳ 3 Heures</span>
+                            <button class="btn btn-sm btn-outline">En savoir plus</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Akwaba Korhogo</h4>
+                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
+                    <a href="/about.html">À propos</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Catégories</h4>
+                    <a href="/businesses.html?category=artisanat">Artisanat</a>
+                    <a href="/businesses.html?category=restaurants">Restaurants</a>
+                    <a href="/businesses.html?category=textile">Textiles</a>
+                    <a href="/businesses.html?category=sculpture">Sculpture</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📍 Quartier Koko, Korhogo</p>
+                    <p>☎️ +225 25 86 00 00 00</p>
+                    <p>✉️ contact@akwaba-korhogo.ci</p>
+                    <div class="flex gap-4 mt-4">
+                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+    <!-- City Configuration -->
+    <script src="/js/config.js"></script>
+
+    <!-- Core JavaScript -->
+    <script src="/core/js/utils.js"></script>
+    <script src="/core/js/responsive-manager.js"></script>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Initialize responsive manager
+        const responsive = new ResponsiveManager();
+
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize responsive elements
+        responsive.updateResponsiveElements();
+    </script>
+
+</body>
+
+</html>

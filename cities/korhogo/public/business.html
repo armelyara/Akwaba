@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Animation Library (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="/core/css/base.css">
@@ -258,6 +264,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -272,6 +279,8 @@
                     <a href="/">Accueil</a>
                     <a href="/businesses.html">Commerces</a>
                     <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
                     <a href="/about.html">À propos</a>
                 </nav>
                 <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
@@ -469,6 +478,8 @@
                     <a href="/">Accueil</a>
                     <a href="/businesses.html">Commerces</a>
                     <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
                     <a href="/about.html">À propos</a>
                 </div>
                 <div class="footer-section">
@@ -512,6 +523,18 @@
     <script src="/core/js/business-directory.js"></script>
 
     <!-- Page Script -->
+    <script>
+        // Initialize AOS
+        // Note: business.html often has dynamic content, we might need to refresh AOS after load.
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    </script>
     <script>
         // Initialize managers
         const responsive = new ResponsiveManager();
@@ -844,4 +867,5 @@
     </script>
 
 </body>
+
 </html>
