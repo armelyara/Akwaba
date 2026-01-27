@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Actualités et nouvelles de la communauté Akwaba Korhogo">
+    <meta name="keywords" content="Korhogo, actualités, nouvelles, blog, Senufo, Côte d'Ivoire">
+    <meta name="author" content="Akwaba Korhogo">
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8B4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+
+    <title>Nouvelles - Akwaba Korhogo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Animation Library (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/core/css/base.css">
+    <link rel="stylesheet" href="/core/css/layout.css">
+    <link rel="stylesheet" href="/core/css/components.css">
+
+    <!-- Korhogo Theme -->
+    <link rel="stylesheet" href="/css/korhogo-theme.css">
+
+    <style>
+        /* Page-specific styles */
+        .news-hero {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--color-bg-secondary);
+            padding-top: var(--space-24);
+            padding-bottom: var(--space-12);
+        }
+
+        .news-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.15;
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        .hero-waves-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .news-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 var(--space-4);
+        }
+
+        .news-hero h2 {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(3rem, 7vw, 6rem);
+            margin-bottom: var(--space-4);
+            text-transform: uppercase;
+            line-height: 0.9;
+            color: var(--color-black);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-12);
+        }
+
+        .news-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .news-image-wrapper {
+            position: relative;
+            padding-top: 60%;
+            /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .news-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+
+        .news-date {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            background: var(--color-white);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: var(--text-sm);
+            color: var(--color-primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-content {
+            padding: var(--space-6);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-tag {
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-gray-500);
+            margin-bottom: var(--space-2);
+            font-weight: 700;
+        }
+
+        .news-title {
+            font-family: var(--font-heading);
+            font-size: var(--text-xl);
+            color: var(--color-black);
+            margin-bottom: var(--space-3);
+            line-height: 1.2;
+        }
+
+        .news-excerpt {
+            color: var(--color-gray-700);
+            font-size: var(--text-base);
+            margin-bottom: var(--space-4);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .news-link {
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            font-size: var(--text-sm);
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .news-link::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+
+        .news-card:hover .news-link::after {
+            transform: translateX(4px);
+        }
+
+        .featured-news {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .featured-news .news-image-wrapper {
+            height: 100%;
+            padding-top: 0;
+        }
+
+        .featured-news .news-content {
+            padding: var(--space-12);
+            justify-content: center;
+            background: var(--color-black);
+            color: var(--color-white);
+        }
+
+        .featured-news .news-title {
+            color: var(--color-white);
+            font-size: var(--text-3xl);
+        }
+
+        .featured-news .news-excerpt {
+            color: var(--color-gray-400);
+        }
+
+        @media (max-width: 768px) {
+            .featured-news {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-news .news-image-wrapper {
+                padding-top: 60%;
+            }
+
+            .featured-news .news-content {
+                padding: var(--space-6);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
+                    <h1>Akwaba Korhogo</h1>
+                </div>
+                <!-- Navigation updated dynamically -->
+                <nav class="main-nav" id="mainNav">
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html" class="active">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
+                    <a href="/about.html">À propos</a>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="news-hero">
+        <img src="/assets/images/korhogo-culture.jpg" alt="" class="news-hero-bg">
+        <div class="hero-waves-container">
+            <img src="/assets/images/hero-waves.svg" alt="" class="hero-waves-bg">
+        </div>
+        <div class="container news-hero-content" data-aos="fade-up">
+            <h2>NOUVELLES<br><span class="text-primary">DE LA COMMUNAUTÉ</span></h2>
+            <p>L'actualité des commerçants, les projets locaux et la vie de quartier.</p>
+        </div>
+    </section>
+
+    <!-- News Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="news-grid">
+
+                <!-- Featured News -->
+                <div class="news-card featured-news" data-aos="fade-up">
+                    <div class="news-image-wrapper">
+                        <img src="/assets/images/korhogo-artisan.jpg" alt="Festival" class="news-image">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-tag" style="color: var(--color-primary);">À la une</span>
+                        <h3 class="news-title">Le Festival du Tissu de Korhogo revient pour sa 5ème édition</h3>
+                        <p class="news-excerpt">
+                            Célébrez l'art du tissage traditionnel avec nous. Au programme : défilés, ateliers et
+                            rencontres avec les maîtres tisserands de la région.
+                        </p>
+                        <span class="news-link">Lire la suite</span>
+                    </div>
+                </div>
+
+                <!-- News Item 1 -->
+                <div class="news-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-image-wrapper">
+                        <img src="/assets/images/placeholder.jpg" alt="Marché" class="news-image">
+                        <div class="news-date">24 Jan</div>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-tag">Commerce</span>
+                        <h3 class="news-title">Nouveau marché artisanal : Inauguration réussie</h3>
+                        <p class="news-excerpt">
+                            Plus de 50 artisans installés dans le nouveau complexe du quartier Koko.
+                        </p>
+                        <span class="news-link">Lire la suite</span>
+                    </div>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="news-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-image-wrapper">
+                        <img src="/assets/images/placeholder.jpg" alt="Formation" class="news-image">
+                        <div class="news-date">18 Jan</div>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-tag">Communauté</span>
+                        <h3 class="news-title">Ateliers gratuits pour les entrepreneurs</h3>
+                        <p class="news-excerpt">
+                            Akwaba Korhogo lance une série de formations pour aider les commerçants à se digitaliser.
+                        </p>
+                        <span class="news-link">Lire la suite</span>
+                    </div>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="news-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-image-wrapper">
+                        <img src="/assets/images/placeholder.jpg" alt="Culture" class="news-image">
+                        <div class="news-date">10 Jan</div>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-tag">Culture</span>
+                        <h3 class="news-title">Découverte : Les sculpteurs de bois mystiques</h3>
+                        <p class="news-excerpt">
+                            Portrait de Soro, sculpteur de père en fils, qui perpétue la tradition du masque Poro.
+                        </p>
+                        <span class="news-link">Lire la suite</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12" data-aos="fade-in">
+                <button class="btn btn-outline btn-lg">Voir toutes les actualités</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Akwaba Korhogo</h4>
+                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <a href="/">Accueil</a>
+                    <a href="/businesses.html">Commerces</a>
+                    <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
+                    <a href="/about.html">À propos</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Catégories</h4>
+                    <a href="/businesses.html?category=artisanat">Artisanat</a>
+                    <a href="/businesses.html?category=restaurants">Restaurants</a>
+                    <a href="/businesses.html?category=textile">Textiles</a>
+                    <a href="/businesses.html?category=sculpture">Sculpture</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📍 Quartier Koko, Korhogo</p>
+                    <p>☎️ +225 25 86 00 00 00</p>
+                    <p>✉️ contact@akwaba-korhogo.ci</p>
+                    <div class="flex gap-4 mt-4">
+                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+    <!-- City Configuration -->
+    <script src="/js/config.js"></script>
+
+    <!-- Core JavaScript -->
+    <script src="/core/js/utils.js"></script>
+    <script src="/core/js/responsive-manager.js"></script>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Page Script -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Initialize responsive manager
+        const responsive = new ResponsiveManager();
+
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+
+        // Update current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize responsive elements
+        responsive.updateResponsiveElements();
+    </script>
+
+</body>
+
+</html>

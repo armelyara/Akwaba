@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Animation Library (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="/core/css/base.css">
@@ -137,6 +143,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -151,6 +158,8 @@
                     <a href="/">Accueil</a>
                     <a href="/businesses.html" class="active">Commerces</a>
                     <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
                     <a href="/about.html">À propos</a>
                 </nav>
                 <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
@@ -163,11 +172,7 @@
         <div class="container">
             <!-- Search Bar -->
             <div class="search-container">
-                <input
-                    type="text"
-                    id="searchInput"
-                    class="search-input"
-                    placeholder="Rechercher un commerce..."
+                <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un commerce..."
                     aria-label="Rechercher">
                 <button id="searchBtn" class="search-btn">🔍 Rechercher</button>
             </div>
@@ -256,6 +261,8 @@
                     <a href="/">Accueil</a>
                     <a href="/businesses.html">Commerces</a>
                     <a href="/events.html">Événements</a>
+                    <a href="/nouvelles.html">Nouvelles</a>
+                    <a href="/planifiez-votre-visite.html">Planifier</a>
                     <a href="/about.html">À propos</a>
                 </div>
                 <div class="footer-section">
@@ -297,6 +304,16 @@
     <script src="/core/js/responsive-manager.js"></script>
     <script src="/core/js/firebase-manager.js"></script>
     <script src="/core/js/business-directory.js"></script>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+    </script>
 
     <!-- Page Script -->
     <script>
@@ -542,7 +559,7 @@
                             <div class="business-card-meta">
                                 <span class="business-card-rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
                                 ${business.hours ?
-                                    `<span class="business-card-status ${businessDirectory.isBusinessOpen(business.hours) ? 'open' : 'closed'}">
+                        `<span class="business-card-status ${businessDirectory.isBusinessOpen(business.hours) ? 'open' : 'closed'}">
                                         ${businessDirectory.isBusinessOpen(business.hours) ? '🟢 Ouvert' : '🔴 Fermé'}
                                     </span>` : ''}
                             </div>
@@ -562,16 +579,21 @@
                 `;
             } else {
                 card.innerHTML = `
-                    <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
-                         alt="${business.name}"
-                         class="card-image">
+                    <div class="card-image-wrapper">
+                        <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
+                             alt="${business.name}"
+                             class="card-image">
+                        <button onclick="viewBusiness('${business.id}')" class="card-voir-btn">
+                            VOIR
+                        </button>
+                    </div>
                     <div class="card-body">
                         <h4 class="business-card-name">${business.name}</h4>
                         <p class="business-card-category">${getCategoryName(business.category)}</p>
-                        <p class="text-sm text-gray-600 mt-2">${business.description?.substring(0, 100) || ''}...</p>
+                        <p class="business-card-location">📍 ${getNeighborhoodName(business.neighborhood)}</p>
+                        <p class="text-sm text-gray-600 mt-2">${business.description?.substring(0, 80) || ''}...</p>
                         <div class="flex items-center justify-between mt-4">
-                            <span class="rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
-                            <a href="/business.html?id=${business.id}" class="btn btn-sm btn-primary">Voir détails</a>
+                            <span class="business-card-rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
                         </div>
                     </div>
                 `;
@@ -688,4 +710,5 @@
     </script>
 
 </body>
+
 </html>

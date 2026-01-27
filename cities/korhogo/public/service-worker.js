@@ -3,7 +3,7 @@
  * Provides offline functionality and caching
  */
 
-const CACHE_NAME = 'akwaba-korhogo-v1';
+const CACHE_NAME = 'akwaba-korhogo-v3';
 const RUNTIME_CACHE = 'akwaba-korhogo-runtime';
 
 // Resources to cache on install
@@ -52,8 +52,8 @@ self.addEventListener('activate', event => {
           cacheNames
             .filter(cacheName => {
               return cacheName.startsWith('akwaba-korhogo-') &&
-                     cacheName !== CACHE_NAME &&
-                     cacheName !== RUNTIME_CACHE;
+                cacheName !== CACHE_NAME &&
+                cacheName !== RUNTIME_CACHE;
             })
             .map(cacheName => {
               console.log('[Service Worker] Deleting old cache:', cacheName);
@@ -74,8 +74,8 @@ self.addEventListener('fetch', event => {
 
   // Skip Firebase and external API requests
   if (event.request.url.includes('firebasestorage.googleapis.com') ||
-      event.request.url.includes('firestore.googleapis.com') ||
-      event.request.url.includes('googleapis.com')) {
+    event.request.url.includes('firestore.googleapis.com') ||
+    event.request.url.includes('googleapis.com')) {
     return;
   }
 

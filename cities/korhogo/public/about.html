@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="/core/css/base.css">
@@ -39,30 +42,65 @@
     <style>
         /* Page-specific styles */
         .about-hero {
-            background: linear-gradient(135deg,
-                rgba(139, 69, 19, 0.9),
-                rgba(210, 105, 30, 0.9)
-            ),
-            url('/assets/images/korhogo-artisan.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: var(--space-16) 0;
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--color-bg-secondary);
+            padding-top: var(--space-16);
+        }
+
+        .about-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.2;
+            /* Subtle background image */
+        }
+
+        .hero-waves-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
-            color: var(--color-white);
+            max-width: 900px;
+            padding: 0 var(--space-4);
         }
 
         .about-hero h2 {
             font-family: var(--font-heading);
-            font-size: var(--text-4xl);
+            font-weight: 900;
+            font-size: clamp(3rem, 8vw, 6rem);
             margin-bottom: var(--space-4);
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            line-height: 0.9;
+            color: var(--color-black);
         }
 
         .about-hero p {
             font-size: var(--text-xl);
-            color: var(--color-secondary-light);
+            color: var(--color-gray-700);
             max-width: 700px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(4px);
         }
 
         .mission-section {
@@ -85,9 +123,30 @@
             transition: all var(--transition-base);
         }
 
+        .mission-card {
+            background: var(--color-white);
+            padding: var(--space-6);
+            border-radius: var(--radius-lg);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--color-primary);
+        }
+
         .mission-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .mission-icon {
@@ -196,9 +255,19 @@
             transition: all var(--transition-base);
         }
 
+        .team-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            text-align: center;
+            padding: var(--space-6);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
         .team-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .team-avatar {
@@ -272,6 +341,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -295,8 +365,12 @@
 
     <!-- Hero Section -->
     <section class="about-hero">
-        <div class="container">
-            <h2>À propos d'Akwaba Korhogo</h2>
+        <img src="/assets/images/korhogo-artisan.jpg" alt="" class="about-hero-bg">
+        <div class="hero-waves-container">
+            <img src="/assets/images/hero-waves.svg" alt="" class="hero-waves-bg">
+        </div>
+        <div class="container about-hero-content">
+            <h2>À PROPOS<br><span class="text-primary">D'AKWABA KORHOGO</span></h2>
             <p>Connecter les résidents avec les commerçants locaux et valoriser le patrimoine culturel Senufo</p>
         </div>
     </section>
@@ -624,4 +698,5 @@
     </script>
 
 </body>
+
 </html>
