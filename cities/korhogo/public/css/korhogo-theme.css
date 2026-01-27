@@ -8,31 +8,38 @@
    ======================================================================== */
 
 :root {
-  /* Primary Colors - Vibrant and Modern */
-  --color-primary: #E74C3C;         /* Vibrant Red */
-  --color-primary-light: #F39C12;   /* Orange */
-  --color-primary-dark: #C0392B;    /* Dark Red */
+  /* SDC Cote des Neiges Inspired Palette */
+  --color-primary: #E6302E;
+  /* Vibrant Red */
+  --color-primary-light: #FF6B6B;
+  /* Light Red */
+  --color-primary-dark: #C0392B;
+  /* Dark Red */
 
-  /* Secondary Colors - Fresh and Lively */
-  --color-secondary: #27AE60;       /* Green */
-  --color-secondary-light: #2ECC71; /* Light Green */
-  --color-secondary-dark: #229954;  /* Dark Green */
+  --color-secondary: #289D8F;
+  /* Teal/Green */
+  --color-secondary-light: #48C9B0;
+  /* Light Teal */
+  --color-secondary-dark: #1F7A6F;
+  /* Dark Teal */
 
-  /* Accent Colors - Bold */
-  --color-accent: #3498DB;          /* Blue */
-  --color-accent-light: #5DADE2;    /* Light Blue */
-  --color-accent-dark: #2874A6;     /* Dark Blue */
+  --color-accent: #0056B3;
+  /* Deep Blue */
+  --color-accent-light: #3498DB;
+  /* Light Blue */
+  --color-accent-dark: #003D80;
+  /* Dark Blue */
 
-  /* Additional Vibrant Colors */
-  --color-orange: #F39C12;
-  --color-yellow: #F1C40F;
-  --color-teal: #16A085;
-  --color-purple: #9B59B6;
+  --color-yellow: #F4A261;
+  /* Warm Yellow */
+  --color-orange: #E76F51;
+  /* Burnt Orange */
 
   /* Neutral Colors */
   --color-white: #FFFFFF;
-  --color-black: #000000;
-  --color-gray-100: #F8F9FA;
+  --color-black: #1D1D1D;
+  /* Soft Black */
+  --color-gray-100: #F7F9FC;
   --color-gray-200: #E9ECEF;
   --color-gray-300: #DEE2E6;
   --color-gray-700: #495057;
@@ -40,11 +47,17 @@
 
   /* Background Colors */
   --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F8F9FA;
+  --color-bg-secondary: #F4F8FB;
+  /* Very light blue-gray */
 
   /* Typography */
-  --font-heading: 'Lato', 'Helvetica Neue', sans-serif;
-  --font-body: 'Lato', 'Helvetica Neue', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  /* Shapes */
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 50px;
 }
 
 /* ========================================================================
@@ -98,7 +111,8 @@ body {
   font-size: var(--text-xl);
   color: var(--color-black);
   margin: 0;
-  font-weight: 700;
+  font-weight: 800;
+  /* Extra bold */
   letter-spacing: -0.02em;
 }
 
@@ -187,6 +201,7 @@ body {
 }
 
 /* Flowing waves background */
+/* Flowing waves background - SDC Style */
 .hero-section::before {
   content: '';
   position: absolute;
@@ -194,13 +209,30 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background:
-    radial-gradient(ellipse 800px 600px at 20% 50%, var(--color-secondary) 0%, transparent 50%),
-    radial-gradient(ellipse 600px 800px at 80% 30%, var(--color-accent) 0%, transparent 50%),
-    radial-gradient(ellipse 700px 500px at 50% 70%, var(--color-primary) 0%, transparent 50%),
-    radial-gradient(ellipse 500px 600px at 90% 80%, var(--color-orange) 0%, transparent 50%);
-  opacity: 0.9;
+  background-color: var(--color-white);
+  background-image:
+    radial-gradient(circle at 0% 0%, var(--color-primary-light) 0, transparent 40%),
+    radial-gradient(circle at 100% 0%, var(--color-yellow) 0, transparent 40%),
+    radial-gradient(circle at 100% 100%, var(--color-secondary) 0, transparent 45%),
+    radial-gradient(circle at 0% 100%, var(--color-accent-light) 0, transparent 35%);
+  opacity: 0.15;
+  /* Subtle texture background */
   z-index: 1;
+}
+
+/* Organic blobs using pseudo-elements on container */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  right: -10%;
+  top: -20%;
+  width: 60vh;
+  height: 60vh;
+  background: var(--color-secondary);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  opacity: 0.1;
+  z-index: 0;
+  animation: blob-float 10s infinite alternate;
 }
 
 .hero-section .container {
@@ -211,16 +243,16 @@ body {
 .hero-section h2 {
   font-family: var(--font-heading);
   font-size: var(--text-5xl);
-  color: var(--color-white);
+  color: var(--color-black);
   margin-bottom: var(--space-4);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.1;
   max-width: 600px;
 }
 
 .hero-tagline {
   font-size: var(--text-xl);
-  color: var(--color-white);
+  color: var(--color-gray-700);
   margin-bottom: var(--space-8);
   font-weight: 400;
   max-width: 500px;
@@ -235,12 +267,13 @@ body {
 
 .search-input {
   flex: 1;
-  padding: var(--space-4);
-  border: none;
-  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-6);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-pill);
   font-size: var(--text-base);
   background: var(--color-white);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
 }
 
 .search-input:focus {
@@ -248,18 +281,18 @@ body {
 }
 
 .search-btn {
-  padding: var(--space-4) var(--space-6);
-  background: var(--color-black);
+  padding: var(--space-4) var(--space-8);
+  background: var(--color-primary);
   color: var(--color-white);
   border: none;
-  border-radius: var(--radius-lg);
-  font-weight: 600;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .search-btn:hover {
-  background: var(--color-gray-900);
+  background: var(--color-primary-dark);
   transform: translateY(-2px);
 }
 
@@ -313,12 +346,17 @@ body {
   text-align: center;
   cursor: pointer;
   transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .category-card:hover {
   border-color: var(--color-primary);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  background-color: var(--color-white);
 }
 
 .category-icon {
@@ -475,10 +513,21 @@ body {
   margin-top: var(--space-3);
 }
 
+/* Blob Animation */
+@keyframes blob-float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-30px, 40px) rotate(10deg);
+  }
+}
+
 .action-btn {
-  padding: var(--space-2);
+  padding: var(--space-2) var(--space-4);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   color: var(--color-white);
   font-weight: 600;
   font-size: var(--text-xs);
@@ -559,8 +608,8 @@ body {
   background: var(--color-primary);
   color: var(--color-white);
   border: none;
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-pill);
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -569,7 +618,7 @@ body {
 .btn-primary:hover:not(:disabled) {
   background: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+  box-shadow: 0 4px 15px rgba(230, 48, 46, 0.4);
 }
 
 .btn-secondary {
@@ -603,15 +652,13 @@ body {
 /* Accent bar (like SDC photo accent) */
 .accent-bar {
   height: 8px;
-  background: linear-gradient(
-    to right,
-    var(--color-accent) 0%,
-    var(--color-accent) 25%,
-    var(--color-secondary) 25%,
-    var(--color-secondary) 50%,
-    var(--color-primary) 50%,
-    var(--color-primary) 75%,
-    var(--color-orange) 75%,
-    var(--color-orange) 100%
-  );
+  background: linear-gradient(to right,
+      var(--color-accent) 0%,
+      var(--color-accent) 25%,
+      var(--color-secondary) 25%,
+      var(--color-secondary) 50%,
+      var(--color-primary) 50%,
+      var(--color-primary) 75%,
+      var(--color-orange) 75%,
+      var(--color-orange) 100%);
 }

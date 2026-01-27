@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +41,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Core CSS -->
     <link rel="stylesheet" href="/core/css/base.css">
@@ -50,6 +52,7 @@
     <!-- Korhogo Theme -->
     <link rel="stylesheet" href="/css/korhogo-theme.css">
 </head>
+
 <body>
 
     <!-- Header -->
@@ -79,12 +82,8 @@
 
             <!-- Search Bar -->
             <div class="search-container">
-                <input
-                    type="text"
-                    id="searchInput"
-                    class="search-input"
-                    placeholder="Rechercher un commerce, un artisan, un service..."
-                    aria-label="Rechercher">
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Rechercher un commerce, un artisan, un service..." aria-label="Rechercher">
                 <button id="searchBtn" class="search-btn">🔍 Rechercher</button>
             </div>
         </div>
@@ -289,7 +288,7 @@
                             <div class="business-card-meta">
                                 <span class="business-card-rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
                                 ${business.isOpen !== null ?
-                                    `<span class="business-card-status ${business.isOpen ? 'open' : 'closed'}">
+                        `<span class="business-card-status ${business.isOpen ? 'open' : 'closed'}">
                                         ${business.isOpen ? '🟢 Ouvert' : '🔴 Fermé'}
                                     </span>` : ''}
                             </div>
@@ -407,4 +406,5 @@
     </script>
 
 </body>
+
 </html>
