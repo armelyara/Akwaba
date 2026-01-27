@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0056B3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3498DB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Blue Top Right -->
+  <path fill="#0056B3" d="M1440,0 L1440,400 C1200,500 1100,200 800,300 C600,366 400,100 0,0 Z"></path>
+  
+  <!-- Yellow Middle -->
+  <path fill="#F4A261" d="M0,500 C300,600 500,300 900,450 C1200,560 1300,300 1440,400 L1440,800 L0,800 Z"></path>
+
+  <!-- Green Middle-Low -->
+  <path fill="#289D8F" d="M0,600 C200,650 400,450 800,600 C1100,710 1300,500 1440,600 L1440,800 L0,800 Z"></path>
+
+  <!-- Red Bottom -->
+  <path fill="#E6302E" d="M0,700 C300,750 600,550 1000,700 C1200,775 1300,650 1440,750 L1440,800 L0,800 Z"></path>
+</svg>

@@ -76,15 +76,24 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container">
-            <h2>Découvrez les trésors de Korhogo</h2>
-            <p class="hero-tagline">Artisanat traditionnel, commerces locaux et saveurs authentiques</p>
+        <div class="hero-waves-container">
+            <!-- Background configured in CSS or we can use an img here for better control -->
+            <img src="/assets/images/hero-waves.svg" alt="" class="hero-waves-bg">
+        </div>
+        <div class="container hero-content-wrapper">
+            <div class="hero-text-content">
+                <h2 class="hero-title">
+                    <span class="hero-word-1">AKWABA</span>
+                    <span class="hero-word-2">KORHOGO</span>
+                </h2>
+                <p class="hero-tagline">Artisanat traditionnel, commerces locaux et saveurs authentiques</p>
 
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" id="searchInput" class="search-input"
-                    placeholder="Rechercher un commerce, un artisan, un service..." aria-label="Rechercher">
-                <button id="searchBtn" class="search-btn">🔍 Rechercher</button>
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input"
+                        placeholder="Rechercher un commerce, un artisan, un service..." aria-label="Rechercher">
+                    <button id="searchBtn" class="search-btn">🔍</button>
+                </div>
             </div>
         </div>
     </section>
