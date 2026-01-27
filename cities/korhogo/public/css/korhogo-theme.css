@@ -1,44 +1,50 @@
 /**
- * Korhogo Theme
- * Senufo Cultural Design - Traditional crafts, textiles, and earth tones
+ * Korhogo Theme - Modern & Clean Design
+ * Inspired by SDC Côte-des-Neiges aesthetic with Korhogo colors
  */
 
 /* ========================================================================
-   KORHOGO COLOR PALETTE - Senufo Culture
+   KORHOGO COLOR PALETTE - Modern Vibrant
    ======================================================================== */
 
 :root {
-  /* Primary Colors - Earth and Clay */
-  --color-primary: #8B4513;         /* Saddle Brown - Clay/Soil */
-  --color-primary-light: #A0522D;   /* Sienna */
-  --color-primary-dark: #5D2E0D;    /* Dark Brown */
-  --color-primary-rgb: 139, 69, 19;
+  /* Primary Colors - Vibrant and Modern */
+  --color-primary: #E74C3C;         /* Vibrant Red */
+  --color-primary-light: #F39C12;   /* Orange */
+  --color-primary-dark: #C0392B;    /* Dark Red */
 
-  /* Secondary Colors - Savanna and Cotton */
-  --color-secondary: #F4A460;       /* Sandy Brown - Savanna */
-  --color-secondary-light: #F5DEB3; /* Wheat */
-  --color-secondary-dark: #CD853F;  /* Peru */
+  /* Secondary Colors - Fresh and Lively */
+  --color-secondary: #27AE60;       /* Green */
+  --color-secondary-light: #2ECC71; /* Light Green */
+  --color-secondary-dark: #229954;  /* Dark Green */
 
-  /* Accent Colors - Traditional Textiles */
-  --color-accent: #D2691E;          /* Chocolate - Pottery */
-  --color-accent-light: #DEB887;    /* Burlywood */
-  --color-accent-dark: #8B4726;     /* Saddle Brown */
+  /* Accent Colors - Bold */
+  --color-accent: #3498DB;          /* Blue */
+  --color-accent-light: #5DADE2;    /* Light Blue */
+  --color-accent-dark: #2874A6;     /* Dark Blue */
 
-  /* Natural Earth Tones */
-  --color-earth-clay: #8B4513;
-  --color-earth-sand: #F4A460;
-  --color-earth-stone: #696969;
-  --color-earth-wood: #654321;
+  /* Additional Vibrant Colors */
+  --color-orange: #F39C12;
+  --color-yellow: #F1C40F;
+  --color-teal: #16A085;
+  --color-purple: #9B59B6;
+
+  /* Neutral Colors */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-gray-100: #F8F9FA;
+  --color-gray-200: #E9ECEF;
+  --color-gray-300: #DEE2E6;
+  --color-gray-700: #495057;
+  --color-gray-900: #212529;
 
   /* Background Colors */
-  --color-bg-primary: #F5F5DC;      /* Beige - Natural fabric */
-  --color-bg-secondary: #FAF0E6;    /* Linen */
-  --color-bg-tertiary: #FFF8DC;     /* Cornsilk */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F8F9FA;
 
   /* Typography */
-  --font-heading: 'Playfair Display', 'Georgia', serif;
-  --font-body: 'Lato', 'Open Sans', sans-serif;
-  --font-traditional: 'Merriweather', 'Georgia', serif;
+  --font-heading: 'Lato', 'Helvetica Neue', sans-serif;
+  --font-body: 'Lato', 'Helvetica Neue', sans-serif;
 }
 
 /* ========================================================================
@@ -46,39 +52,22 @@
    ======================================================================== */
 
 body {
-  background-color: var(--color-bg-primary);
-  background-image: url('/assets/patterns/senufo-cloth-subtle.svg');
-  background-size: 400px;
-  background-attachment: fixed;
-  background-blend-mode: overlay;
+  background-color: var(--color-white);
+  font-family: var(--font-body);
+  color: var(--color-gray-900);
 }
 
 /* ========================================================================
-   HEADER - Senufo Traditional Style
+   HEADER - Clean & Minimal
    ======================================================================== */
 
 .site-header {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  border-bottom: 8px solid var(--color-accent);
-  box-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
-  position: relative;
-}
-
-/* Traditional pattern overlay */
-.site-header::before {
-  content: '';
-  position: absolute;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--color-accent),
-    var(--color-accent) 30px,
-    var(--color-secondary) 30px,
-    var(--color-secondary) 60px
-  );
+  z-index: var(--z-sticky);
 }
 
 .site-header .container {
@@ -99,64 +88,59 @@ body {
 }
 
 .logo img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 3px solid var(--color-secondary);
 }
 
 .logo h1 {
   font-family: var(--font-heading);
-  font-size: var(--text-2xl);
-  color: var(--color-white);
+  font-size: var(--text-xl);
+  color: var(--color-black);
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* Navigation */
+/* Navigation - Clean */
 .main-nav {
   display: flex;
-  gap: var(--space-6);
+  gap: var(--space-8);
+  align-items: center;
 }
 
 .main-nav a {
-  color: var(--color-white);
-  font-weight: 600;
+  color: var(--color-gray-900);
+  font-weight: 500;
   font-size: var(--text-base);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast);
   position: relative;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  color: var(--color-primary);
 }
 
 .main-nav a.active::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 3px;
-  background-color: var(--color-secondary);
-  border-radius: 2px;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary);
 }
 
 /* Mobile menu toggle */
 .menu-toggle {
   display: none;
   background: none;
-  border: 2px solid var(--color-white);
-  color: var(--color-white);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-md);
-  font-size: var(--text-lg);
+  border: none;
+  color: var(--color-black);
+  padding: var(--space-2);
+  font-size: var(--text-2xl);
+  cursor: pointer;
 }
 
 @media (max-width: 767px) {
@@ -170,12 +154,13 @@ body {
     right: -100%;
     width: 280px;
     height: 100vh;
-    background: linear-gradient(180deg, var(--color-primary), var(--color-primary-dark));
+    background: var(--color-white);
     flex-direction: column;
     padding: var(--space-8) var(--space-6);
     transition: right var(--transition-base);
     z-index: var(--z-fixed);
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
   }
 
   .main-nav.open {
@@ -184,29 +169,24 @@ body {
 
   .main-nav a {
     width: 100%;
-    text-align: left;
+    padding: var(--space-3) 0;
   }
 }
 
 /* ========================================================================
-   HERO SECTION - Traditional Senufo Aesthetic
+   HERO SECTION - Flowing Organic Shapes
    ======================================================================== */
 
 .hero-section {
-  background: linear-gradient(135deg,
-    rgba(139, 69, 19, 0.9),
-    rgba(210, 105, 30, 0.9)
-  ),
-  url('/assets/images/korhogo-hero.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding: var(--space-16) 0;
   position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
   overflow: hidden;
+  background: var(--color-white);
 }
 
-/* Traditional pattern overlay */
+/* Flowing waves background */
 .hero-section::before {
   content: '';
   position: absolute;
@@ -214,63 +194,78 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/assets/patterns/geometric-traditional.svg');
-  background-size: 300px;
-  opacity: 0.1;
-  pointer-events: none;
+  background:
+    radial-gradient(ellipse 800px 600px at 20% 50%, var(--color-secondary) 0%, transparent 50%),
+    radial-gradient(ellipse 600px 800px at 80% 30%, var(--color-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 700px 500px at 50% 70%, var(--color-primary) 0%, transparent 50%),
+    radial-gradient(ellipse 500px 600px at 90% 80%, var(--color-orange) 0%, transparent 50%);
+  opacity: 0.9;
+  z-index: 1;
 }
 
 .hero-section .container {
   position: relative;
   z-index: 2;
-  text-align: center;
 }
 
 .hero-section h2 {
   font-family: var(--font-heading);
-  font-size: var(--text-4xl);
+  font-size: var(--text-5xl);
   color: var(--color-white);
   margin-bottom: var(--space-4);
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-  line-height: 1.2;
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 600px;
 }
 
 .hero-tagline {
   font-size: var(--text-xl);
-  color: var(--color-secondary-light);
+  color: var(--color-white);
   margin-bottom: var(--space-8);
-  font-weight: 500;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  font-weight: 400;
+  max-width: 500px;
 }
 
-/* Search Bar in Hero */
-.hero-section .search-container {
-  max-width: 700px;
-  margin: 0 auto;
+/* Search Bar - Clean */
+.search-container {
+  max-width: 600px;
+  display: flex;
+  gap: var(--space-2);
 }
 
-.hero-section .search-input {
-  background: rgba(255, 255, 255, 0.95);
-  border: 3px solid var(--color-secondary);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.hero-section .search-input:focus {
+.search-input {
+  flex: 1;
+  padding: var(--space-4);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
   background: var(--color-white);
-  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.hero-section .search-btn {
-  background: var(--color-accent);
+.search-input:focus {
+  outline: 2px solid var(--color-primary);
 }
 
-.hero-section .search-btn:hover {
-  background: var(--color-accent-dark);
+.search-btn {
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.search-btn:hover {
+  background: var(--color-gray-900);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 767px) {
   .hero-section {
-    padding: var(--space-12) 0;
+    min-height: 400px;
   }
 
   .hero-section h2 {
@@ -280,141 +275,221 @@ body {
   .hero-tagline {
     font-size: var(--text-lg);
   }
+
+  .search-container {
+    flex-direction: column;
+  }
 }
 
 /* ========================================================================
-   CATEGORIES - Traditional Craft Style
+   CATEGORIES - Minimal & Clean
    ======================================================================== */
 
 .categories-section {
-  padding: var(--space-12) 0;
+  padding: var(--space-16) 0;
   background: var(--color-white);
 }
 
 .categories-section h3 {
   text-align: center;
   font-family: var(--font-heading);
-  color: var(--color-primary);
+  color: var(--color-black);
   margin-bottom: var(--space-8);
   font-size: var(--text-3xl);
-  position: relative;
-  padding-bottom: var(--space-4);
+  font-weight: 700;
 }
 
-.categories-section h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-  border-radius: 2px;
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-4);
 }
 
 .category-card {
-  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-white));
-  border: 2px solid var(--color-secondary);
-  position: relative;
-  overflow: hidden;
-}
-
-.category-card::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--transition-base);
-}
-
-.category-card:hover::before {
-  transform: scaleX(1);
+  background: var(--color-white);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .category-card:hover {
   border-color: var(--color-primary);
-  background: linear-gradient(135deg, var(--color-white), var(--color-bg-secondary));
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .category-icon {
-  font-size: 3rem;
-  filter: drop-shadow(2px 2px 4px rgba(139, 69, 19, 0.2));
+  font-size: 2.5rem;
+  margin-bottom: var(--space-3);
 }
 
 .category-name {
-  color: var(--color-primary);
-  font-family: var(--font-traditional);
+  color: var(--color-black);
+  font-weight: 600;
+  font-size: var(--text-sm);
 }
 
 /* ========================================================================
-   BUSINESS CARDS - Artisan Style
+   BUSINESS CARDS - Photo-First with Circular Button
    ======================================================================== */
 
 .businesses-section {
-  padding: var(--space-12) 0;
-  background: var(--color-bg-primary);
+  padding: var(--space-16) 0;
+  background: var(--color-bg-secondary);
 }
 
 .businesses-section h3 {
   text-align: center;
   font-family: var(--font-heading);
-  color: var(--color-primary);
+  color: var(--color-black);
   margin-bottom: var(--space-8);
   font-size: var(--text-3xl);
+  font-weight: 700;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
 }
 
 .business-card {
   background: var(--color-white);
-  border: 3px solid var(--color-secondary-light);
-  border-left: 8px solid var(--color-primary);
-  position: relative;
-}
-
-.business-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 40px 40px 0;
-  border-color: transparent var(--color-secondary) transparent transparent;
-  opacity: 0;
-  transition: opacity var(--transition-base);
-}
-
-.business-card:hover::after {
-  opacity: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .business-card:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 8px 24px rgba(139, 69, 19, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-/* Business Card Mobile */
-.business-card-mobile {
-  border-radius: var(--radius-lg);
-  background: linear-gradient(to bottom, var(--color-white) 95%, var(--color-secondary-light) 95%);
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Circular VOIR button overlay */
+.card-voir-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-white);
+  color: var(--color-black);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  opacity: 0;
+}
+
+.business-card:hover .card-voir-btn {
+  opacity: 1;
+}
+
+.card-voir-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.card-body {
+  padding: var(--space-4);
 }
 
 .business-card-name {
-  color: var(--color-primary);
-  font-family: var(--font-traditional);
+  color: var(--color-black);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
 }
 
 .business-card-category {
-  color: var(--color-accent);
+  color: var(--color-gray-700);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
 }
 
-/* Quick Actions - Korhogo Colors */
+.business-card-location {
+  color: var(--color-gray-700);
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Mobile Business Card */
+.business-card-mobile {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.business-card-thumb {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.business-card-info {
+  flex: 1;
+}
+
+.business-card-meta {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+/* Quick Actions - Clean Buttons */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.action-btn {
+  padding: var(--space-2);
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--color-white);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+}
+
 .action-btn-call {
   background: var(--color-primary);
 }
@@ -424,35 +499,17 @@ body {
 }
 
 .action-btn-share {
-  background: var(--color-secondary-dark);
+  background: var(--color-secondary);
 }
 
 /* ========================================================================
-   FOOTER - Traditional Pattern
+   FOOTER - Clean & Minimal
    ======================================================================== */
 
 .site-footer {
-  background: linear-gradient(180deg, var(--color-primary-dark), var(--color-primary));
+  background: var(--color-gray-900);
   color: var(--color-white);
   padding: var(--space-12) 0 var(--space-6);
-  position: relative;
-  border-top: 6px solid var(--color-accent);
-}
-
-.site-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--color-accent),
-    var(--color-accent) 20px,
-    var(--color-secondary) 20px,
-    var(--color-secondary) 40px
-  );
 }
 
 .footer-content {
@@ -463,111 +520,98 @@ body {
 }
 
 .footer-section h4 {
-  color: var(--color-secondary);
+  color: var(--color-white);
   margin-bottom: var(--space-4);
   font-family: var(--font-heading);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
+  font-weight: 700;
 }
 
 .footer-section a {
   display: block;
-  color: var(--color-white);
+  color: var(--color-gray-300);
   padding: var(--space-2) 0;
   transition: color var(--transition-fast);
 }
 
 .footer-section a:hover {
-  color: var(--color-secondary);
-  padding-left: var(--space-2);
+  color: var(--color-primary);
+}
+
+.footer-section p {
+  color: var(--color-gray-300);
+  line-height: 1.6;
 }
 
 .footer-bottom {
   text-align: center;
   padding-top: var(--space-6);
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-secondary-light);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-gray-300);
+  font-size: var(--text-sm);
 }
 
 /* ========================================================================
-   BUTTONS - Korhogo Theme
+   BUTTONS - Modern & Clean
    ======================================================================== */
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
-  box-shadow: 0 6px 16px rgba(139, 69, 19, 0.4);
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
-  color: var(--color-primary-dark);
+  background: var(--color-secondary);
+  color: var(--color-white);
 }
 
 .btn-outline {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  border: 2px solid var(--color-black);
+  background: transparent;
+  color: var(--color-black);
 }
 
 .btn-outline:hover:not(:disabled) {
-  background: var(--color-primary);
+  background: var(--color-black);
   color: var(--color-white);
 }
 
 /* ========================================================================
-   BADGES - Traditional Colors
-   ======================================================================== */
-
-.badge-primary {
-  background: var(--color-primary);
-}
-
-.badge-open {
-  background: var(--color-success);
-}
-
-.badge-closed {
-  background: var(--color-error);
-}
-
-/* ========================================================================
-   UTILITIES - Korhogo Specific
+   UTILITIES
    ======================================================================== */
 
 .text-primary {
   color: var(--color-primary) !important;
 }
 
-.text-secondary {
-  color: var(--color-secondary) !important;
-}
-
-.bg-primary {
-  background-color: var(--color-primary) !important;
-}
-
 .bg-secondary {
   background-color: var(--color-bg-secondary) !important;
 }
 
-.border-traditional {
-  border: 3px solid var(--color-secondary);
-  border-left: 8px solid var(--color-primary);
-}
-
-/* Traditional divider */
-.divider-traditional {
-  height: 6px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--color-primary),
-    var(--color-primary) 30px,
-    var(--color-secondary) 30px,
-    var(--color-secondary) 60px
+/* Accent bar (like SDC photo accent) */
+.accent-bar {
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) 0%,
+    var(--color-accent) 25%,
+    var(--color-secondary) 25%,
+    var(--color-secondary) 50%,
+    var(--color-primary) 50%,
+    var(--color-primary) 75%,
+    var(--color-orange) 75%,
+    var(--color-orange) 100%
   );
-  margin: var(--space-8) 0;
-  border-radius: var(--radius-sm);
 }

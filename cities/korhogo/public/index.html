@@ -309,17 +309,18 @@
                 `;
             } else {
                 card.innerHTML = `
-                    <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
-                         alt="${business.name}"
-                         class="card-image">
+                    <div class="card-image-wrapper">
+                        <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
+                             alt="${business.name}"
+                             class="card-image">
+                        <button onclick="viewBusiness('${business.id}')" class="card-voir-btn">
+                            VOIR
+                        </button>
+                    </div>
                     <div class="card-body">
                         <h4 class="business-card-name">${business.name}</h4>
                         <p class="business-card-category">${getCategoryName(business.category)}</p>
-                        <p class="text-sm text-gray-600 mt-2">${business.description?.substring(0, 100) || ''}...</p>
-                        <div class="flex items-center justify-between mt-4">
-                            <span class="rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
-                            <a href="/business.html?id=${business.id}" class="btn btn-sm btn-primary">Voir détails</a>
-                        </div>
+                        <p class="business-card-location">📍 ${getNeighborhoodName(business.neighborhood)}</p>
                     </div>
                 `;
             }
@@ -331,6 +332,11 @@
         function getCategoryName(categoryId) {
             const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
             return category ? category.name : categoryId;
+        }
+
+        function getNeighborhoodName(neighborhoodId) {
+            const neighborhood = CITY_CONFIG.neighborhoods.find(n => n.id === neighborhoodId);
+            return neighborhood ? neighborhood.name : neighborhoodId;
         }
 
         function callBusiness(phone) {
