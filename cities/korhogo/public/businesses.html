@@ -1,714 +1,1219 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez tous les commerces et artisans de Korhogo">
-    <meta name="keywords" content="Korhogo, commerces, artisanat, Senufo, Côte d'Ivoire">
-    <meta name="author" content="Akwaba Korhogo">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Répertoire | Akwaba Korhogo</title>
 
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#8B4513">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#E6302E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
 
-    <title>Commerces - Akwaba Korhogo</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Découvrez tous les commerces et artisans de Korhogo">
+  <meta name="keywords" content="Korhogo, commerces, artisanat, répertoire, Senufo">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 
-    <!-- Manifest -->
-    <link rel="manifest" href="/manifest.json">
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Animation Library (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* =============================================
+       RESET & BASE
+       ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="/core/css/base.css">
-    <link rel="stylesheet" href="/core/css/layout.css">
-    <link rel="stylesheet" href="/core/css/components.css">
+    :root {
+      --korhogo-red: #E6302E;
+      --korhogo-green: #289D8F;
+      --korhogo-yellow: #F4A261;
+      --korhogo-blue: #0056B3;
+      --korhogo-coral: #E76F51;
+      --black: #1A1A1A;
+      --white: #FFFFFF;
+      --gray: #757575;
+      --light-gray: #F5F5F5;
+    }
 
-    <!-- Korhogo Theme -->
-    <link rel="stylesheet" href="/css/korhogo-theme.css">
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <style>
-        /* Page-specific styles */
-        .filters-section {
-            background: var(--color-white);
-            padding: var(--space-6) 0;
-            border-bottom: 2px solid var(--color-secondary-light);
-            position: sticky;
-            top: 0;
-            z-index: var(--z-sticky);
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--black);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-        .filters-container {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-4);
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-        }
+    ul { list-style: none; }
 
-        .filter-label {
-            font-weight: 600;
-            color: var(--color-primary);
-            font-size: var(--text-sm);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
 
-        .filter-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-2);
-        }
+    /* =============================================
+       HEADER
+       ============================================= */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      transition: all 0.4s ease;
+    }
 
-        .filter-chip {
-            padding: var(--space-2) var(--space-4);
-            border: 2px solid var(--color-secondary);
-            border-radius: var(--radius-full);
-            background: var(--color-white);
-            color: var(--color-primary);
-            font-size: var(--text-sm);
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            font-weight: 500;
-        }
+    .header.scrolled {
+      background: var(--white);
+      padding: 20px 40px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
 
-        .filter-chip:hover {
-            border-color: var(--color-primary);
-            background: var(--color-bg-secondary);
-        }
+    .header.scrolled .logo,
+    .header.scrolled .nav a,
+    .header.scrolled .nav-lang {
+      color: var(--black);
+    }
 
-        .filter-chip.active {
-            background: var(--color-primary);
-            color: var(--color-white);
-            border-color: var(--color-primary);
-        }
+    .header.scrolled .hamburger span {
+      background: var(--black);
+    }
 
-        .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--space-6);
-        }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      line-height: 0.9;
+      transition: color 0.4s ease;
+    }
 
-        .results-count {
-            font-size: var(--text-lg);
-            color: var(--color-primary);
-            font-weight: 600;
-        }
+    .logo-sdc {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
 
-        .sort-select {
-            padding: var(--space-2) var(--space-4);
-            border: 2px solid var(--color-secondary);
-            border-radius: var(--radius-md);
-            background: var(--color-white);
-            color: var(--color-primary);
-            font-size: var(--text-sm);
-            cursor: pointer;
-        }
+    .logo-name {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
 
-        .load-more-container {
-            text-align: center;
-            margin-top: var(--space-8);
-        }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
 
-        @media (max-width: 767px) {
-            .filters-section {
-                padding: var(--space-4) 0;
-            }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
 
-            .results-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: var(--space-3);
-            }
-        }
-    </style>
+    .nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+      transition: opacity 0.3s ease;
+    }
+
+    .nav a:hover {
+      opacity: 0.7;
+    }
+
+    .nav-lang {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 2px;
+      background: var(--white);
+      transition: background 0.4s ease;
+    }
+
+    /* =============================================
+       SOCIAL SIDEBOX - Fixe à droite
+       ============================================= */
+    .social-sidebox {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      box-shadow: -2px 0 15px rgba(0,0,0,0.1);
+      border-radius: 8px 0 0 8px;
+      overflow: hidden;
+    }
+
+    .social-sidebox a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      color: var(--black);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .social-sidebox a:last-child {
+      border-bottom: none;
+    }
+
+    .social-sidebox a:hover {
+      background: var(--korhogo-blue);
+      color: var(--white);
+    }
+
+    .social-sidebox a.facebook:hover {
+      background: #1877F2;
+    }
+
+    .social-sidebox a.instagram:hover {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .social-sidebox a.whatsapp:hover {
+      background: #25D366;
+    }
+
+    /* =============================================
+       PAGE HEADER - Vagues colorées
+       ============================================= */
+    .page-header {
+      position: relative;
+      padding: 160px 40px 80px;
+      background: var(--korhogo-blue);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .page-header-waves {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .page-header-waves svg {
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      top: -25%;
+      left: -25%;
+    }
+
+    .page-header-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+      background-size: 40px 20px;
+      pointer-events: none;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 15px;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: var(--white);
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* =============================================
+       SECTION TROUVER UN COMMERCE
+       ============================================= */
+    .find-section {
+      padding: 60px 40px;
+      background: var(--white);
+    }
+
+    .find-section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .find-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    /* Catégories en tags */
+    .categories-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--white);
+      border: 2px solid var(--korhogo-blue);
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--korhogo-blue);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category-tag:hover,
+    .category-tag.active {
+      background: var(--korhogo-blue);
+      color: var(--white);
+    }
+
+    .category-tag i {
+      font-size: 1rem;
+    }
+
+    /* Barre de recherche */
+    .search-bar {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-bar-inner {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 10px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--gray);
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 10px 0;
+    }
+
+    .search-bar input::placeholder {
+      color: var(--gray);
+    }
+
+    .search-bar button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--black);
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .search-bar button:hover {
+      transform: scale(1.1);
+    }
+
+    /* =============================================
+       LISTE DES COMMERCES
+       ============================================= */
+    .businesses-list {
+      padding: 40px 40px 80px;
+      background: var(--white);
+    }
+
+    .businesses-list-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .business-item {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 25px;
+      padding: 25px 0;
+      border-bottom: 1px solid #E0E0E0;
+      transition: transform 0.3s ease;
+    }
+
+    .business-item:hover {
+      transform: translateX(5px);
+    }
+
+    .business-item:last-child {
+      border-bottom: none;
+    }
+
+    .business-item-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .business-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .business-item:hover .business-item-image img {
+      transform: scale(1.05);
+    }
+
+    .business-item-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .business-item-category {
+      font-size: 0.85rem;
+      color: var(--korhogo-blue);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+
+    .business-item-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .business-item-address {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .business-item-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .business-item-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .business-item-meta i {
+      color: var(--korhogo-blue);
+    }
+
+    .business-item-meta a {
+      color: var(--black);
+      text-decoration: underline;
+    }
+
+    .business-item-meta a:hover {
+      color: var(--korhogo-red);
+    }
+
+    /* Loading & Empty States */
+    .loading-state,
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gray);
+    }
+
+    .loading-state i,
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--korhogo-blue);
+    }
+
+    /* =============================================
+       PARTENAIRES
+       ============================================= */
+    .partners-section {
+      padding: 60px 40px;
+      background: var(--white);
+      border-top: 1px solid #E0E0E0;
+    }
+
+    .partners-title {
+      text-align: center;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+
+    .partners-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .partner-logo {
+      max-width: 140px;
+      max-height: 50px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .partner-logo:hover {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 80px 40px 40px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      line-height: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo-sdc {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .footer-logo-name {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .footer-description {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-contact p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+
+    .footer-contact a:hover {
+      color: var(--korhogo-yellow);
+    }
+
+    .footer-column-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--korhogo-yellow);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--korhogo-yellow);
+      color: var(--black);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 30px;
+    }
+
+    .footer-legal a:hover {
+      color: var(--white);
+    }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (max-width: 1024px) {
+      .business-item {
+        grid-template-columns: 280px 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .page-header {
+        padding: 140px 20px 60px;
+      }
+
+      .find-section,
+      .businesses-list {
+        padding: 40px 20px;
+      }
+
+      .business-item {
+        grid-template-columns: 1fr;
+      }
+
+      .business-item-image {
+        height: 180px;
+      }
+
+      .social-sidebox {
+        display: none;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
-                    <h1>Akwaba Korhogo</h1>
-                </div>
-                <nav class="main-nav" id="mainNav">
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html" class="active">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-            </div>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <a href="/index.html" class="logo">
+      <span class="logo-sdc">AKWABA</span>
+      <span class="logo-name">Korhogo</span>
+    </a>
+
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="/businesses.html" style="opacity: 0.7;">Répertoire</a>
+        <a href="/events.html">Événements</a>
+        <a href="/nouvelles.html">Nouvelles</a>
+        <a href="/planifiez-votre-visite.html">Planifiez votre visite</a>
+        <a href="/about.html">À propos</a>
+      </div>
+      <span class="nav-lang">Fr</span>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- SOCIAL SIDEBOX -->
+  <aside class="social-sidebox">
+    <a href="https://facebook.com/akwaba.korhogo" target="_blank" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com/akwaba_korhogo" target="_blank" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/2252586000000" target="_blank" class="whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </aside>
+
+  <!-- PAGE HEADER avec vagues -->
+  <section class="page-header">
+    <div class="page-header-waves">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="zigzag" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
+            <path d="M0 10 L10 0 L20 10 L30 0 L40 10" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none"/>
+            <path d="M0 20 L10 10 L20 20 L30 10 L40 20" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none"/>
+          </pattern>
+        </defs>
+
+        <!-- Vague verte -->
+        <path d="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z" fill="#289D8F">
+          <animate attributeName="d" dur="12s" repeatCount="indefinite"
+            values="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z;
+                    M-100,80 C100,120 300,50 500,130 C700,170 900,80 1100,120 C1300,220 1500,130 1600,150 L1600,400 L-100,400 Z;
+                    M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z"/>
+        </path>
+        <path d="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z" fill="url(#zigzag)">
+          <animate attributeName="d" dur="12s" repeatCount="indefinite"
+            values="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z;
+                    M-100,80 C100,120 300,50 500,130 C700,170 900,80 1100,120 C1300,220 1500,130 1600,150 L1600,400 L-100,400 Z;
+                    M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z"/>
+        </path>
+
+        <!-- Vague jaune -->
+        <path d="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z" fill="#F4A261">
+          <animate attributeName="d" dur="15s" repeatCount="indefinite"
+            values="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z;
+                    M-100,100 C150,80 350,150 550,120 C750,50 950,120 1150,100 C1350,40 1500,100 1600,120 L1600,400 L-100,400 Z;
+                    M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z"/>
+        </path>
+        <path d="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z" fill="url(#zigzag)">
+          <animate attributeName="d" dur="15s" repeatCount="indefinite"
+            values="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z;
+                    M-100,100 C150,80 350,150 550,120 C750,50 950,120 1150,100 C1350,40 1500,100 1600,120 L1600,400 L-100,400 Z;
+                    M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z"/>
+        </path>
+
+        <!-- Vague corail (droite) -->
+        <path d="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z" fill="#E76F51">
+          <animate attributeName="d" dur="10s" repeatCount="indefinite"
+            values="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z;
+                    M900,0 C1000,30 1100,20 1200,80 C1300,100 1400,60 1500,100 C1600,100 1600,100 1600,100 L1600,230 C1500,220 1400,230 1300,220 C1200,170 1100,200 1000,200 L900,0 Z;
+                    M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z"/>
+        </path>
+      </svg>
+    </div>
+    <div class="page-header-pattern"></div>
+
+    <div class="page-header-content">
+      <h1 class="page-title">Répertoire</h1>
+      <p class="page-subtitle">Korhogo abrite des centaines de commerces et artisans, des plus traditionnels aux plus modernes, de l'essentiel à l'inattendu !</p>
+    </div>
+  </section>
+
+  <!-- SECTION TROUVER UN COMMERCE -->
+  <section class="find-section">
+    <div class="find-section-inner">
+      <h2 class="find-title">Trouver un commerce</h2>
+
+      <div class="categories-tags" id="categoriesTags">
+        <button class="category-tag active" data-category="all"><i class="fas fa-th-large"></i> Tous</button>
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <div class="search-bar">
+        <div class="search-bar-inner">
+          <input type="text" placeholder="Rechercher un commerce" id="searchInput">
+          <button id="searchBtn"><i class="fas fa-search"></i></button>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <!-- Filters Section -->
-    <section class="filters-section">
-        <div class="container">
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un commerce..."
-                    aria-label="Rechercher">
-                <button id="searchBtn" class="search-btn">🔍 Rechercher</button>
-            </div>
+  <!-- LISTE DES COMMERCES -->
+  <section class="businesses-list">
+    <div class="businesses-list-inner" id="businessesList">
+      <div class="loading-state">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <p>Chargement des commerces...</p>
+      </div>
+    </div>
+  </section>
 
-            <div class="filters-container">
-                <!-- Category Filter -->
-                <div class="filter-group">
-                    <div class="filter-label">Catégories</div>
-                    <div class="filter-chips" id="categoryFilters">
-                        <button class="filter-chip active" data-category="all">Tous</button>
-                        <!-- Populated by JavaScript -->
-                    </div>
-                </div>
+  <!-- PARTENAIRES -->
+  <section class="partners-section">
+    <h3 class="partners-title">Merci à nos partenaires</h3>
+    <div class="partners-grid">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=Ville+de+Korhogo" alt="Ville de Korhogo" class="partner-logo">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=Région+du+Poro" alt="Région du Poro" class="partner-logo">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=Chambre+de+Commerce" alt="Chambre de Commerce" class="partner-logo">
+    </div>
+  </section>
 
-                <!-- Neighborhood Filter -->
-                <div class="filter-group">
-                    <div class="filter-label">Quartiers</div>
-                    <div class="filter-chips" id="neighborhoodFilters">
-                        <button class="filter-chip active" data-neighborhood="all">Tous</button>
-                        <!-- Populated by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Open Now Filter -->
-                <div class="filter-group">
-                    <div class="filter-chips">
-                        <button class="filter-chip" id="openNowFilter" data-open="false">
-                            🟢 Ouvert maintenant
-                        </button>
-                    </div>
-                </div>
-            </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-sdc">AKWABA</span>
+          <span class="footer-logo-name">Korhogo</span>
         </div>
-    </section>
-
-    <!-- Results Section -->
-    <section class="section">
-        <div class="container">
-            <div class="results-header">
-                <div class="results-count" id="resultsCount">
-                    <span id="countNumber">0</span> commerce(s) trouvé(s)
-                </div>
-                <select class="sort-select" id="sortSelect">
-                    <option value="name">Nom (A-Z)</option>
-                    <option value="rating">Note (haute → basse)</option>
-                    <option value="recent">Plus récent</option>
-                </select>
-            </div>
-
-            <!-- Loading State -->
-            <div id="loadingState" class="text-center">
-                <div class="spinner"></div>
-                <p class="mt-4">Chargement des commerces...</p>
-            </div>
-
-            <!-- Businesses Grid -->
-            <div class="card-grid" id="businessesGrid" style="display: none;">
-                <!-- Populated by JavaScript -->
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="empty-state" style="display: none;">
-                <p>Aucun commerce trouvé avec ces critères.</p>
-                <button class="btn btn-primary mt-4" id="clearFiltersBtn">Réinitialiser les filtres</button>
-            </div>
-
-            <!-- Load More -->
-            <div class="load-more-container" id="loadMoreContainer" style="display: none;">
-                <button class="btn btn-outline btn-lg" id="loadMoreBtn">
-                    Charger plus de commerces
-                </button>
-            </div>
+        <p class="footer-description">Contactez-nous pour toutes demandes ou questions relatives à Akwaba Korhogo</p>
+        <div class="footer-contact">
+          <p>Quartier Koko, Korhogo, Côte d'Ivoire</p>
+          <p><a href="tel:+2252586000000">+225 25 86 00 00 00</a></p>
+          <p><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Akwaba Korhogo</h4>
-                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Catégories</h4>
-                    <a href="/businesses.html?category=artisanat">Artisanat</a>
-                    <a href="/businesses.html?category=restaurants">Restaurants</a>
-                    <a href="/businesses.html?category=textile">Textiles</a>
-                    <a href="/businesses.html?category=sculpture">Sculpture</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>📍 Quartier Koko, Korhogo</p>
-                    <p>☎️ +225 25 86 00 00 00</p>
-                    <p>✉️ contact@akwaba-korhogo.ci</p>
-                    <div class="flex gap-4 mt-4">
-                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
-                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
-                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
-            </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/" class="footer-link">Accueil</a></li>
+          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
+          <li><a href="/events.html" class="footer-link">Événements</a></li>
+          <li><a href="/about.html" class="footer-link">À propos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-column-title">Akwaba Korhogo</h4>
+        <ul class="footer-links">
+          <li><a href="/about.html" class="footer-link">À propos</a></li>
+          <li><a href="/nouvelles.html" class="footer-link">Nouvelles</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-column-title">Visiter Korhogo</h4>
+        <ul class="footer-links">
+          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
+          <li><a href="/events.html" class="footer-link">Événements</a></li>
+          <li><a href="/planifiez-votre-visite.html" class="footer-link">Planifiez votre visite</a></li>
+        </ul>
+
+        <div class="footer-social">
+          <a href="https://facebook.com/akwaba.korhogo" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/akwaba_korhogo" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/2252586000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
-    </footer>
+      </div>
+    </div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+    <div class="footer-bottom">
+      <p>Copyright © <span id="currentYear"></span> | Akwaba Korhogo.</p>
+      <div class="footer-legal">
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Conditions d'utilisations</a>
+      </div>
+    </div>
+  </footer>
 
-    <!-- City Configuration -->
-    <script src="/js/config.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
 
-    <!-- Core JavaScript -->
-    <script src="/core/js/utils.js"></script>
-    <script src="/core/js/responsive-manager.js"></script>
-    <script src="/core/js/firebase-manager.js"></script>
-    <script src="/core/js/business-directory.js"></script>
+  <!-- City Configuration -->
+  <script src="/js/config.js"></script>
 
-    <!-- AOS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50
+  <!-- Core JavaScript -->
+  <script src="/core/js/utils.js"></script>
+  <script src="/core/js/responsive-manager.js"></script>
+  <script src="/core/js/firebase-manager.js"></script>
+  <script src="/core/js/business-directory.js"></script>
+
+  <script>
+    // Initialize
+    const responsive = new ResponsiveManager();
+    const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
+    const businessDirectory = new BusinessDirectory(firebaseManager, responsive);
+
+    // State
+    let allBusinesses = [];
+    let currentFilter = 'all';
+    let currentSearchQuery = '';
+
+    // Initialize Firebase and load data
+    firebaseManager.initialize().then(success => {
+      if (success) {
+        loadCategories();
+        loadBusinesses();
+        parseUrlParams();
+      } else {
+        showError('Impossible de se connecter à Firebase');
+      }
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Parse URL parameters
+    function parseUrlParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const category = urlParams.get('category');
+      const search = urlParams.get('search');
+
+      if (category) {
+        currentFilter = category;
+        document.querySelectorAll('.category-tag').forEach(tag => {
+          tag.classList.toggle('active', tag.dataset.category === category);
         });
-    </script>
+      }
 
-    <!-- Page Script -->
-    <script>
-        // Initialize managers
-        const responsive = new ResponsiveManager();
-        const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
-        const businessDirectory = new BusinessDirectory(firebaseManager, responsive);
+      if (search) {
+        currentSearchQuery = search;
+        document.getElementById('searchInput').value = search;
+      }
+    }
 
-        // State
-        let allBusinesses = [];
-        let filteredBusinesses = [];
-        let currentFilters = {
-            category: 'all',
-            neighborhood: 'all',
-            openNow: false,
-            search: ''
-        };
-        let currentSort = 'name';
-        let displayedCount = 0;
-        const LOAD_INCREMENT = responsive.isMobile ? 10 : 20;
+    // Load categories
+    function loadCategories() {
+      const tagsContainer = document.getElementById('categoriesTags');
 
-        // Initialize Firebase
-        firebaseManager.initialize().then(success => {
-            if (success) {
-                initializePage();
-            } else {
-                console.error('Firebase initialization failed');
-                showError('Erreur de connexion. Veuillez réessayer.');
-            }
+      CITY_CONFIG.categories.forEach(category => {
+        const tag = document.createElement('button');
+        tag.className = 'category-tag';
+        tag.dataset.category = category.id;
+        tag.innerHTML = `<i class="${category.icon || 'fas fa-tag'}"></i> ${category.name}`;
+        tag.addEventListener('click', () => filterByCategory(category.id));
+        tagsContainer.appendChild(tag);
+      });
+    }
+
+    // Load businesses
+    async function loadBusinesses() {
+      const listContainer = document.getElementById('businessesList');
+      listContainer.innerHTML = '<div class="loading-state"><i class="fas fa-circle-notch fa-spin"></i><p>Chargement des commerces...</p></div>';
+
+      try {
+        const result = await businessDirectory.getBusinesses({
+          status: 'approved',
+          limit: 100
         });
 
-        // Initialize page
-        async function initializePage() {
-            loadFiltersFromURL();
-            renderCategoryFilters();
-            renderNeighborhoodFilters();
-            await loadBusinesses();
-            setupEventListeners();
+        if (result.success && result.data.length > 0) {
+          allBusinesses = result.data;
+          displayBusinesses(allBusinesses);
+        } else {
+          // Load sample data if no businesses found
+          loadSampleBusinesses();
         }
+      } catch (error) {
+        console.error('Error loading businesses:', error);
+        loadSampleBusinesses();
+      }
+    }
 
-        // Load filters from URL parameters
-        function loadFiltersFromURL() {
-            const params = new URLSearchParams(window.location.search);
+    // Display businesses
+    function displayBusinesses(businesses) {
+      const listContainer = document.getElementById('businessesList');
+      listContainer.innerHTML = '';
 
-            if (params.has('category')) {
-                currentFilters.category = params.get('category');
-            }
-            if (params.has('neighborhood')) {
-                currentFilters.neighborhood = params.get('neighborhood');
-            }
-            if (params.has('search')) {
-                currentFilters.search = params.get('search');
-                document.getElementById('searchInput').value = currentFilters.search;
-            }
+      // Filter businesses
+      let filteredBusinesses = businesses;
+
+      // Filter by category
+      if (currentFilter !== 'all') {
+        filteredBusinesses = filteredBusinesses.filter(b => b.category === currentFilter);
+      }
+
+      // Filter by search query
+      if (currentSearchQuery) {
+        const query = currentSearchQuery.toLowerCase();
+        filteredBusinesses = filteredBusinesses.filter(b =>
+          b.name.toLowerCase().includes(query) ||
+          (b.description && b.description.toLowerCase().includes(query)) ||
+          (b.neighborhood && b.neighborhood.toLowerCase().includes(query))
+        );
+      }
+
+      if (filteredBusinesses.length === 0) {
+        listContainer.innerHTML = '<div class="empty-state"><i class="fas fa-store-slash"></i><p>Aucun commerce trouvé</p></div>';
+        return;
+      }
+
+      filteredBusinesses.forEach(business => {
+        const item = createBusinessItem(business);
+        listContainer.appendChild(item);
+      });
+    }
+
+    // Create business item
+    function createBusinessItem(business) {
+      const article = document.createElement('article');
+      article.className = 'business-item';
+
+      const categoryName = getCategoryName(business.category);
+      const imageUrl = business.photos?.[0] || 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=600&q=80';
+      const address = formatAddress(business);
+      const phone = business.phone || business.whatsapp || '';
+
+      article.innerHTML = `
+        <div class="business-item-image">
+          <img src="${imageUrl}" alt="${business.name}">
+        </div>
+        <div class="business-item-content">
+          <span class="business-item-category">${categoryName}</span>
+          <h3 class="business-item-title">${business.name}</h3>
+          <p class="business-item-address">${address}</p>
+          <div class="business-item-meta">
+            ${phone ? `<span><i class="fas fa-phone"></i> ${phone}</span>` : ''}
+            ${business.website ? `<a href="${business.website}" target="_blank">Site Web</a>` : ''}
+            ${business.whatsapp && !phone ? `<a href="https://wa.me/${business.whatsapp}" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>` : ''}
+          </div>
+        </div>
+      `;
+
+      return article;
+    }
+
+    // Load sample businesses
+    function loadSampleBusinesses() {
+      const sampleBusinesses = [
+        {
+          id: '1',
+          name: 'Atelier de Tissage Senufo',
+          category: 'artisanat',
+          neighborhood: 'Quartier Koko',
+          phone: '+225 25 86 00 01',
+          photos: ['https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80']
+        },
+        {
+          id: '2',
+          name: 'Restaurant Le Poro',
+          category: 'alimentation',
+          neighborhood: 'Centre-ville',
+          phone: '+225 25 86 00 02',
+          photos: ['https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80']
+        },
+        {
+          id: '3',
+          name: 'Boutique d\'Artisanat Local',
+          category: 'magasins',
+          neighborhood: 'Marché Central',
+          phone: '+225 25 86 00 03',
+          photos: ['https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?w=600&q=80']
+        },
+        {
+          id: '4',
+          name: 'Café des Arts',
+          category: 'restauration',
+          neighborhood: 'Quartier Sinistré',
+          phone: '+225 25 86 00 04',
+          photos: ['https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80']
+        },
+        {
+          id: '5',
+          name: 'Salon de Coiffure Moderne',
+          category: 'beaute-bien-etre',
+          neighborhood: 'Petit Paris',
+          phone: '+225 25 86 00 05',
+          photos: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80']
+        },
+        {
+          id: '6',
+          name: 'Pharmacie du Nord',
+          category: 'professionnels-sante',
+          neighborhood: 'Air France',
+          phone: '+225 25 86 00 06',
+          photos: ['https://images.unsplash.com/photo-1576602976047-174e57a47881?w=600&q=80']
+        },
+        {
+          id: '7',
+          name: 'Supermarché Étoile',
+          category: 'magasins',
+          neighborhood: 'Résidentiel',
+          phone: '+225 25 86 00 07',
+          photos: ['https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80']
+        },
+        {
+          id: '8',
+          name: 'École de Danse Traditionnelle',
+          category: 'ecoles-specialisees',
+          neighborhood: 'Quartier Koko',
+          phone: '+225 25 86 00 08',
+          photos: ['https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&q=80']
         }
+      ];
 
-        // Render category filters
-        function renderCategoryFilters() {
-            const container = document.getElementById('categoryFilters');
+      allBusinesses = sampleBusinesses;
+      displayBusinesses(sampleBusinesses);
+    }
 
-            CITY_CONFIG.categories.forEach(category => {
-                const chip = document.createElement('button');
-                chip.className = 'filter-chip';
-                chip.dataset.category = category.id;
-                chip.innerHTML = `${category.icon} ${category.name}`;
+    // Filter by category
+    function filterByCategory(categoryId) {
+      currentFilter = categoryId;
 
-                if (currentFilters.category === category.id) {
-                    chip.classList.add('active');
-                }
+      // Update active state
+      document.querySelectorAll('.category-tag').forEach(tag => {
+        tag.classList.toggle('active', tag.dataset.category === categoryId);
+      });
 
-                chip.addEventListener('click', () => {
-                    setFilter('category', category.id);
-                });
+      // Display filtered businesses
+      displayBusinesses(allBusinesses);
 
-                container.appendChild(chip);
-            });
-        }
+      // Update URL
+      const url = new URL(window.location);
+      if (categoryId === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', categoryId);
+      }
+      window.history.pushState({}, '', url);
+    }
 
-        // Render neighborhood filters
-        function renderNeighborhoodFilters() {
-            const container = document.getElementById('neighborhoodFilters');
+    // Search
+    function performSearch(query) {
+      currentSearchQuery = query;
+      displayBusinesses(allBusinesses);
 
-            CITY_CONFIG.neighborhoods.forEach(neighborhood => {
-                const chip = document.createElement('button');
-                chip.className = 'filter-chip';
-                chip.dataset.neighborhood = neighborhood.id;
-                chip.textContent = neighborhood.name;
+      // Update URL
+      const url = new URL(window.location);
+      if (query) {
+        url.searchParams.set('search', query);
+      } else {
+        url.searchParams.delete('search');
+      }
+      window.history.pushState({}, '', url);
+    }
 
-                if (currentFilters.neighborhood === neighborhood.id) {
-                    chip.classList.add('active');
-                }
+    // Search event listeners
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const query = document.getElementById('searchInput').value.trim();
+      performSearch(query);
+    });
 
-                chip.addEventListener('click', () => {
-                    setFilter('neighborhood', neighborhood.id);
-                });
+    document.getElementById('searchInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const query = e.target.value.trim();
+        performSearch(query);
+      }
+    });
 
-                container.appendChild(chip);
-            });
-        }
+    // Helper functions
+    function getCategoryName(categoryId) {
+      const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
+      return category ? category.name : categoryId;
+    }
 
-        // Load businesses
-        async function loadBusinesses() {
-            showLoading();
+    function formatAddress(business) {
+      const parts = [];
+      if (business.address) parts.push(business.address);
+      if (business.neighborhood) parts.push(business.neighborhood);
+      if (parts.length === 0) parts.push('Korhogo, Côte d\'Ivoire');
+      return parts.join('<br>');
+    }
 
-            const result = await businessDirectory.getBusinesses({ status: 'approved' });
+    function showError(message) {
+      const listContainer = document.getElementById('businessesList');
+      listContainer.innerHTML = `<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>${message}</p></div>`;
+    }
 
-            if (result.success) {
-                allBusinesses = result.data;
-                applyFilters();
-            } else {
-                showError('Erreur de chargement des commerces.');
-            }
-        }
+    // Update year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Set filter
-        function setFilter(filterType, value) {
-            currentFilters[filterType] = value;
-
-            // Update UI
-            if (filterType === 'category') {
-                document.querySelectorAll('#categoryFilters .filter-chip').forEach(chip => {
-                    chip.classList.toggle('active', chip.dataset.category === value);
-                });
-            } else if (filterType === 'neighborhood') {
-                document.querySelectorAll('#neighborhoodFilters .filter-chip').forEach(chip => {
-                    chip.classList.toggle('active', chip.dataset.neighborhood === value);
-                });
-            } else if (filterType === 'openNow') {
-                document.getElementById('openNowFilter').classList.toggle('active', value);
-            }
-
-            applyFilters();
-        }
-
-        // Apply filters
-        function applyFilters() {
-            filteredBusinesses = allBusinesses.filter(business => {
-                // Category filter
-                if (currentFilters.category !== 'all' && business.category !== currentFilters.category) {
-                    return false;
-                }
-
-                // Neighborhood filter
-                if (currentFilters.neighborhood !== 'all' && business.neighborhood !== currentFilters.neighborhood) {
-                    return false;
-                }
-
-                // Open now filter
-                if (currentFilters.openNow) {
-                    const isOpen = businessDirectory.isBusinessOpen(business.hours);
-                    if (!isOpen) return false;
-                }
-
-                // Search filter
-                if (currentFilters.search) {
-                    const searchTerm = currentFilters.search.toLowerCase();
-                    const searchableText = `${business.name} ${business.description} ${business.category} ${business.neighborhood}`.toLowerCase();
-                    if (!searchableText.includes(searchTerm)) {
-                        return false;
-                    }
-                }
-
-                return true;
-            });
-
-            sortBusinesses();
-            displayedCount = 0;
-            renderBusinesses(true);
-        }
-
-        // Sort businesses
-        function sortBusinesses() {
-            filteredBusinesses.sort((a, b) => {
-                switch (currentSort) {
-                    case 'name':
-                        return a.name.localeCompare(b.name, 'fr');
-                    case 'rating':
-                        return (b.rating || 0) - (a.rating || 0);
-                    case 'recent':
-                        return (b.createdAt?.toMillis() || 0) - (a.createdAt?.toMillis() || 0);
-                    default:
-                        return 0;
-                }
-            });
-        }
-
-        // Render businesses
-        function renderBusinesses(reset = false) {
-            const grid = document.getElementById('businessesGrid');
-
-            if (reset) {
-                grid.innerHTML = '';
-                displayedCount = 0;
-            }
-
-            // Update count
-            document.getElementById('countNumber').textContent = filteredBusinesses.length;
-
-            // Show/hide states
-            if (filteredBusinesses.length === 0) {
-                grid.style.display = 'none';
-                document.getElementById('emptyState').style.display = 'block';
-                document.getElementById('loadingState').style.display = 'none';
-                document.getElementById('loadMoreContainer').style.display = 'none';
-                return;
-            }
-
-            grid.style.display = 'grid';
-            document.getElementById('emptyState').style.display = 'none';
-            document.getElementById('loadingState').style.display = 'none';
-
-            // Render next batch
-            const endIndex = Math.min(displayedCount + LOAD_INCREMENT, filteredBusinesses.length);
-            for (let i = displayedCount; i < endIndex; i++) {
-                const card = createBusinessCard(filteredBusinesses[i]);
-                grid.appendChild(card);
-            }
-            displayedCount = endIndex;
-
-            // Show/hide load more button
-            if (displayedCount < filteredBusinesses.length) {
-                document.getElementById('loadMoreContainer').style.display = 'block';
-            } else {
-                document.getElementById('loadMoreContainer').style.display = 'none';
-            }
-        }
-
-        // Create business card
-        function createBusinessCard(business) {
-            const card = document.createElement('div');
-            card.className = responsive.isMobile ? 'business-card business-card-mobile' : 'business-card';
-
-            if (responsive.isMobile) {
-                card.innerHTML = `
-                    <div class="business-card-header">
-                        <img src="${business.thumbnail || business.photos?.[0] || '/assets/images/placeholder.jpg'}"
-                             alt="${business.name}"
-                             class="business-card-thumb">
-                        <div class="business-card-info">
-                            <h4 class="business-card-name">${business.name}</h4>
-                            <p class="business-card-category">${getCategoryName(business.category)}</p>
-                            <p class="business-card-location">${getNeighborhoodName(business.neighborhood)}</p>
-                            <div class="business-card-meta">
-                                <span class="business-card-rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
-                                ${business.hours ?
-                        `<span class="business-card-status ${businessDirectory.isBusinessOpen(business.hours) ? 'open' : 'closed'}">
-                                        ${businessDirectory.isBusinessOpen(business.hours) ? '🟢 Ouvert' : '🔴 Fermé'}
-                                    </span>` : ''}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quick-actions">
-                        <button onclick="callBusiness('${business.phone}')" class="action-btn action-btn-call">
-                            ☎️ Appeler
-                        </button>
-                        <button onclick="navigateTo('${business.id}')" class="action-btn action-btn-navigate">
-                            📍 Y aller
-                        </button>
-                        <button onclick="viewBusiness('${business.id}')" class="action-btn action-btn-share">
-                            👁️ Voir
-                        </button>
-                    </div>
-                `;
-            } else {
-                card.innerHTML = `
-                    <div class="card-image-wrapper">
-                        <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
-                             alt="${business.name}"
-                             class="card-image">
-                        <button onclick="viewBusiness('${business.id}')" class="card-voir-btn">
-                            VOIR
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="business-card-name">${business.name}</h4>
-                        <p class="business-card-category">${getCategoryName(business.category)}</p>
-                        <p class="business-card-location">📍 ${getNeighborhoodName(business.neighborhood)}</p>
-                        <p class="text-sm text-gray-600 mt-2">${business.description?.substring(0, 80) || ''}...</p>
-                        <div class="flex items-center justify-between mt-4">
-                            <span class="business-card-rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
-                        </div>
-                    </div>
-                `;
-            }
-
-            return card;
-        }
-
-        // Helper functions
-        function getCategoryName(categoryId) {
-            const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
-            return category ? category.name : categoryId;
-        }
-
-        function getNeighborhoodName(neighborhoodId) {
-            const neighborhood = CITY_CONFIG.neighborhoods.find(n => n.id === neighborhoodId);
-            return neighborhood ? neighborhood.name : neighborhoodId;
-        }
-
-        function callBusiness(phone) {
-            if (phone) {
-                window.location.href = `tel:${phone}`;
-            }
-        }
-
-        function navigateTo(businessId) {
-            const business = allBusinesses.find(b => b.id === businessId);
-            if (business && business.location) {
-                const { lat, lng } = business.location;
-                window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
-            }
-        }
-
-        function viewBusiness(businessId) {
-            window.location.href = `/business.html?id=${businessId}`;
-        }
-
-        // UI helpers
-        function showLoading() {
-            document.getElementById('loadingState').style.display = 'block';
-            document.getElementById('businessesGrid').style.display = 'none';
-            document.getElementById('emptyState').style.display = 'none';
-        }
-
-        function showError(message) {
-            document.getElementById('loadingState').style.display = 'none';
-            document.getElementById('emptyState').style.display = 'block';
-            document.getElementById('emptyState').innerHTML = `<p>${message}</p>`;
-        }
-
-        // Event listeners
-        function setupEventListeners() {
-            // Search
-            document.getElementById('searchBtn')?.addEventListener('click', () => {
-                currentFilters.search = document.getElementById('searchInput').value;
-                applyFilters();
-            });
-
-            document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    currentFilters.search = e.target.value;
-                    applyFilters();
-                }
-            });
-
-            // Sort
-            document.getElementById('sortSelect')?.addEventListener('change', (e) => {
-                currentSort = e.target.value;
-                sortBusinesses();
-                displayedCount = 0;
-                renderBusinesses(true);
-            });
-
-            // Open now filter
-            document.getElementById('openNowFilter')?.addEventListener('click', () => {
-                currentFilters.openNow = !currentFilters.openNow;
-                setFilter('openNow', currentFilters.openNow);
-            });
-
-            // Clear filters
-            document.getElementById('clearFiltersBtn')?.addEventListener('click', () => {
-                currentFilters = {
-                    category: 'all',
-                    neighborhood: 'all',
-                    openNow: false,
-                    search: ''
-                };
-                document.getElementById('searchInput').value = '';
-                document.querySelectorAll('.filter-chip').forEach(chip => {
-                    chip.classList.remove('active');
-                });
-                document.querySelectorAll('[data-category="all"], [data-neighborhood="all"]').forEach(chip => {
-                    chip.classList.add('active');
-                });
-                applyFilters();
-            });
-
-            // Load more
-            document.getElementById('loadMoreBtn')?.addEventListener('click', () => {
-                renderBusinesses(false);
-            });
-
-            // Mobile menu toggle
-            document.getElementById('menuToggle')?.addEventListener('click', () => {
-                document.getElementById('mainNav').classList.toggle('open');
-            });
-        }
-
-        // Update current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Initialize responsive elements
-        responsive.updateResponsiveElements();
-    </script>
-
+    // Service Worker (PWA)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
-
 </html>

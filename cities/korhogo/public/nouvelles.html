@@ -1,450 +1,438 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Actualités et nouvelles de la communauté Akwaba Korhogo">
-    <meta name="keywords" content="Korhogo, actualités, nouvelles, blog, Senufo, Côte d'Ivoire">
-    <meta name="author" content="Akwaba Korhogo">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nouvelles | Akwaba Korhogo</title>
 
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#8B4513">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#E6302E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
 
-    <title>Nouvelles - Akwaba Korhogo</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Actualités et nouvelles de Korhogo - culture, économie, artisanat">
+  <meta name="keywords" content="Korhogo, nouvelles, actualités, culture Senufo, artisanat">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://korhogo.akwaba.ci/nouvelles.html">
+  <meta property="og:title" content="Nouvelles - Akwaba Korhogo">
+  <meta property="og:description" content="Les dernières actualités de Korhogo">
+  <meta property="og:image" content="/assets/images/og-image.jpg">
 
-    <!-- Manifest -->
-    <link rel="manifest" href="/manifest.json">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
-        rel="stylesheet">
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
 
-    <!-- Animation Library (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --korhogo-red: #E6302E; --korhogo-green: #289D8F; --korhogo-yellow: #F4A261; --korhogo-blue: #0056B3; --korhogo-coral: #E76F51; --black: #1A1A1A; --white: #FFFFFF; --gray: #757575; --light-gray: #F5F5F5; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--black); overflow-x: hidden; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; }
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="/core/css/base.css">
-    <link rel="stylesheet" href="/core/css/layout.css">
-    <link rel="stylesheet" href="/core/css/components.css">
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 30px 40px; display: flex; justify-content: space-between; align-items: flex-start; transition: all 0.4s ease; }
+    .header.scrolled { background: var(--white); padding: 20px 40px; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+    .header.scrolled .logo, .header.scrolled .nav a, .header.scrolled .nav-lang { color: var(--black); }
+    .header.scrolled .hamburger span { background: var(--black); }
+    .logo { font-family: 'Playfair Display', serif; color: var(--white); line-height: 0.9; transition: color 0.4s ease; }
+    .logo-sdc { display: block; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; }
+    .logo-name { display: block; font-size: 2.2rem; font-weight: 700; }
+    .nav { display: flex; align-items: center; gap: 30px; }
+    .nav-links { display: flex; gap: 25px; }
+    .nav a { font-size: 0.95rem; font-weight: 500; color: var(--white); transition: opacity 0.3s ease; }
+    .nav a:hover { opacity: 0.7; }
+    .nav-lang { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+    .hamburger { display: flex; flex-direction: column; gap: 6px; cursor: pointer; padding: 5px; }
+    .hamburger span { width: 28px; height: 2px; background: var(--white); transition: background 0.4s ease; }
 
-    <!-- Korhogo Theme -->
-    <link rel="stylesheet" href="/css/korhogo-theme.css">
+    .social-sidebox { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 999; display: flex; flex-direction: column; background: var(--white); box-shadow: -2px 0 15px rgba(0,0,0,0.1); border-radius: 8px 0 0 8px; overflow: hidden; }
+    .social-sidebox a { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; color: var(--black); font-size: 1.1rem; transition: all 0.3s ease; border-bottom: 1px solid var(--light-gray); }
+    .social-sidebox a:last-child { border-bottom: none; }
+    .social-sidebox a:hover { background: var(--korhogo-blue); color: var(--white); }
+    .social-sidebox a.facebook:hover { background: #1877F2; }
+    .social-sidebox a.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-sidebox a.whatsapp:hover { background: #25D366; }
 
-    <style>
-        /* Page-specific styles */
-        .news-hero {
-            position: relative;
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: var(--color-bg-secondary);
-            padding-top: var(--space-24);
-            padding-bottom: var(--space-12);
-        }
+    .page-header { position: relative; padding: 160px 40px 80px; background: var(--korhogo-red); overflow: hidden; text-align: center; }
+    .page-header-waves { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .page-header-waves svg { position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; }
+    .page-header-content { position: relative; z-index: 10; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; font-style: italic; color: var(--white); margin-bottom: 15px; }
+    .page-subtitle { font-size: 1.1rem; color: var(--white); opacity: 0.9; max-width: 600px; margin: 0 auto; }
 
-        .news-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            opacity: 0.15;
-            filter: grayscale(100%) contrast(1.2);
-        }
+    .filters-section { padding: 40px; background: var(--white); }
+    .filters-inner { max-width: 1000px; margin: 0 auto; }
+    .filters-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+    .filter-btn { padding: 10px 20px; background: var(--white); border: 2px solid var(--korhogo-red); border-radius: 30px; font-size: 0.9rem; font-weight: 500; color: var(--korhogo-red); cursor: pointer; transition: all 0.3s ease; }
+    .filter-btn:hover, .filter-btn.active { background: var(--korhogo-red); color: var(--white); }
 
-        .hero-waves-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
+    .news-section { padding: 40px 40px 80px; background: var(--white); }
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+    .news-card { transition: transform 0.3s ease; }
+    .news-card:hover { transform: translateY(-5px); }
+    .news-card-image { position: relative; height: 200px; overflow: hidden; border-radius: 8px; margin-bottom: 15px; }
+    .news-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .news-card:hover .news-card-image img { transform: scale(1.05); }
+    .news-card-category { position: absolute; top: 15px; left: 15px; background: var(--korhogo-red); color: var(--white); padding: 5px 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 3px; }
+    .news-card-category.actualites { background: var(--korhogo-red); }
+    .news-card-category.culture { background: var(--korhogo-green); }
+    .news-card-category.economie { background: var(--korhogo-blue); }
+    .news-card-category.communaute { background: var(--korhogo-yellow); color: var(--black); }
+    .news-card-date { font-size: 0.85rem; color: var(--gray); margin-bottom: 8px; }
+    .news-card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+    .news-card-excerpt { font-size: 0.9rem; color: var(--gray); line-height: 1.6; margin-bottom: 12px; }
+    .news-card-link { font-size: 0.9rem; font-weight: 600; color: var(--black); text-decoration: underline; }
+    .news-card-link:hover { color: var(--korhogo-red); }
 
-        .news-hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            padding: 0 var(--space-4);
-        }
+    .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 50px; }
+    .pagination-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--white); border: 1px solid #E0E0E0; border-radius: 4px; font-size: 0.95rem; font-weight: 500; color: var(--black); cursor: pointer; transition: all 0.3s ease; }
+    .pagination-btn:hover, .pagination-btn.active { background: var(--korhogo-red); color: var(--white); border-color: var(--korhogo-red); }
 
-        .news-hero h2 {
-            font-family: var(--font-heading);
-            font-weight: 900;
-            font-size: clamp(3rem, 7vw, 6rem);
-            margin-bottom: var(--space-4);
-            text-transform: uppercase;
-            line-height: 0.9;
-            color: var(--color-black);
-        }
+    .newsletter-section { padding: 80px 40px; background: var(--korhogo-yellow); }
+    .newsletter-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .newsletter-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 15px; }
+    .newsletter-text { margin-bottom: 25px; }
+    .newsletter-form { display: flex; gap: 10px; }
+    .newsletter-input { flex: 1; padding: 15px 20px; font-size: 1rem; border: none; outline: none; }
+    .newsletter-btn { padding: 15px 30px; background: var(--black); color: var(--white); font-weight: 600; border: none; cursor: pointer; transition: background 0.3s ease; }
+    .newsletter-btn:hover { background: var(--korhogo-red); }
 
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: var(--space-8);
-            margin-top: var(--space-12);
-        }
+    .footer { background: var(--black); color: var(--white); padding: 80px 40px 40px; }
+    .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { font-family: 'Playfair Display', serif; line-height: 0.9; margin-bottom: 20px; }
+    .footer-logo-sdc { display: block; font-size: 0.9rem; font-weight: 700; }
+    .footer-logo-name { display: block; font-size: 1.4rem; font-weight: 700; }
+    .footer-description { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px; line-height: 1.6; }
+    .footer-contact p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+    .footer-contact a:hover { color: var(--korhogo-yellow); }
+    .footer-column-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link { font-size: 0.9rem; color: rgba(255,255,255,0.7); transition: color 0.3s ease; }
+    .footer-link:hover { color: var(--korhogo-yellow); }
+    .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+    .footer-social a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 50%; transition: background 0.3s ease; }
+    .footer-social a:hover { background: var(--korhogo-yellow); color: var(--black); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; max-width: 1200px; margin: 0 auto; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .footer-legal { display: flex; gap: 30px; }
+    .footer-legal a:hover { color: var(--white); }
 
-        .news-card {
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            height: 100%;
-        }
-
-        .news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .news-image-wrapper {
-            position: relative;
-            padding-top: 60%;
-            /* 16:9 Aspect Ratio */
-            overflow: hidden;
-        }
-
-        .news-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .news-card:hover .news-image {
-            transform: scale(1.05);
-        }
-
-        .news-date {
-            position: absolute;
-            top: var(--space-4);
-            right: var(--space-4);
-            background: var(--color-white);
-            padding: var(--space-2) var(--space-4);
-            border-radius: var(--radius-full);
-            font-weight: 700;
-            font-size: var(--text-sm);
-            color: var(--color-primary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .news-content {
-            padding: var(--space-6);
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .news-tag {
-            font-size: var(--text-xs);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--color-gray-500);
-            margin-bottom: var(--space-2);
-            font-weight: 700;
-        }
-
-        .news-title {
-            font-family: var(--font-heading);
-            font-size: var(--text-xl);
-            color: var(--color-black);
-            margin-bottom: var(--space-3);
-            line-height: 1.2;
-        }
-
-        .news-excerpt {
-            color: var(--color-gray-700);
-            font-size: var(--text-base);
-            margin-bottom: var(--space-4);
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .news-link {
-            font-weight: 700;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            font-size: var(--text-sm);
-            letter-spacing: 0.05em;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-2);
-        }
-
-        .news-link::after {
-            content: '→';
-            transition: transform 0.2s;
-        }
-
-        .news-card:hover .news-link::after {
-            transform: translateX(4px);
-        }
-
-        .featured-news {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-        }
-
-        .featured-news .news-image-wrapper {
-            height: 100%;
-            padding-top: 0;
-        }
-
-        .featured-news .news-content {
-            padding: var(--space-12);
-            justify-content: center;
-            background: var(--color-black);
-            color: var(--color-white);
-        }
-
-        .featured-news .news-title {
-            color: var(--color-white);
-            font-size: var(--text-3xl);
-        }
-
-        .featured-news .news-excerpt {
-            color: var(--color-gray-400);
-        }
-
-        @media (max-width: 768px) {
-            .featured-news {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-news .news-image-wrapper {
-                padding-top: 60%;
-            }
-
-            .featured-news .news-content {
-                padding: var(--space-6);
-            }
-        }
-    </style>
+    @media (max-width: 1024px) { .news-grid { grid-template-columns: repeat(2, 1fr); } .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .header { padding: 20px; } .nav-links { display: none; } .page-header { padding: 140px 20px 60px; } .filters-section, .news-section { padding: 30px 20px; } .news-grid { grid-template-columns: 1fr; } .social-sidebox { display: none; } .footer-inner { grid-template-columns: 1fr; text-align: center; } .footer-social { justify-content: center; } .footer-bottom { flex-direction: column; gap: 15px; } .newsletter-form { flex-direction: column; } }
+  </style>
 </head>
-
 <body>
+  <header class="header" id="header">
+    <a href="/index.html" class="logo"><span class="logo-sdc">AKWABA</span><span class="logo-name">Korhogo</span></a>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="/businesses.html">Répertoire</a>
+        <a href="/events.html">Événements</a>
+        <a href="/nouvelles.html" style="opacity: 0.7;">Nouvelles</a>
+        <a href="/planifiez-votre-visite.html">Planifiez votre visite</a>
+        <a href="/about.html">À propos</a>
+      </div>
+      <span class="nav-lang">Fr</span>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+  </header>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
-                    <h1>Akwaba Korhogo</h1>
-                </div>
-                <!-- Navigation updated dynamically -->
-                <nav class="main-nav" id="mainNav">
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html" class="active">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-            </div>
+  <aside class="social-sidebox">
+    <a href="https://facebook.com/akwaba.korhogo" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com/akwaba_korhogo" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/2252586000000" class="whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </aside>
+
+  <section class="page-header">
+    <div class="page-header-waves">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
+        <defs><pattern id="zigzag" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse"><path d="M0 10 L10 0 L20 10 L30 0 L40 10" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none"/><path d="M0 20 L10 10 L20 20 L30 10 L40 20" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none"/></pattern></defs>
+        <path d="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z" fill="#289D8F"><animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z;M-100,80 C100,120 300,50 500,130 C700,170 900,80 1100,120 C1300,220 1500,130 1600,150 L1600,400 L-100,400 Z;M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z"/></path>
+        <path d="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z" fill="#F4A261"><animate attributeName="d" dur="15s" repeatCount="indefinite" values="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z;M-100,100 C150,80 350,150 550,120 C750,50 950,120 1150,100 C1350,40 1500,100 1600,120 L1600,400 L-100,400 Z;M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z"/></path>
+        <path d="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z" fill="#E76F51"><animate attributeName="d" dur="10s" repeatCount="indefinite" values="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z;M900,0 C1000,30 1100,20 1200,80 C1300,100 1400,60 1500,100 C1600,100 1600,100 1600,100 L1600,230 C1500,220 1400,230 1300,220 C1200,170 1100,200 1000,200 L900,0 Z;M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z"/></path>
+      </svg>
+    </div>
+    <div class="page-header-content">
+      <h1 class="page-title">Nouvelles</h1>
+      <p class="page-subtitle">Les dernières nouvelles et actualités de Korhogo</p>
+    </div>
+  </section>
+
+  <section class="filters-section">
+    <div class="filters-inner">
+      <div class="filters-row">
+        <button class="filter-btn active" data-category="tous">Tous</button>
+        <button class="filter-btn" data-category="actualites">Actualités</button>
+        <button class="filter-btn" data-category="culture">Culture</button>
+        <button class="filter-btn" data-category="economie">Économie</button>
+        <button class="filter-btn" data-category="communaute">Communauté</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="news-section">
+    <div class="news-grid">
+      <article class="news-card" data-category="culture">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600&q=80" alt="Tissu de Korhogo">
+          <span class="news-card-category culture">Culture</span>
         </div>
-    </header>
+        <span class="news-card-date">15 janvier 2026</span>
+        <h3 class="news-card-title">Le tissu de Korhogo conquiert Paris</h3>
+        <p class="news-card-excerpt">Une exposition exceptionnelle au Musée Quai Branly met en lumière l'art textile Senufo de Korhogo et son rayonnement international...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
 
-    <!-- Hero Section -->
-    <section class="news-hero">
-        <img src="/assets/images/korhogo-culture.jpg" alt="" class="news-hero-bg">
-        <div class="hero-waves-container">
-            <img src="/assets/images/hero-waves.svg" alt="" class="hero-waves-bg">
+      <article class="news-card" data-category="economie">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80" alt="Marché artisanal">
+          <span class="news-card-category economie">Économie</span>
         </div>
-        <div class="container news-hero-content" data-aos="fade-up">
-            <h2>NOUVELLES<br><span class="text-primary">DE LA COMMUNAUTÉ</span></h2>
-            <p>L'actualité des commerçants, les projets locaux et la vie de quartier.</p>
+        <span class="news-card-date">12 janvier 2026</span>
+        <h3 class="news-card-title">Nouveau marché artisanal inauguré</h3>
+        <p class="news-card-excerpt">Le nouveau marché artisanal du quartier Koko ouvre ses portes avec plus de 50 stands d'artisans locaux...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
+
+      <article class="news-card" data-category="actualites">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80" alt="Festival Senufo">
+          <span class="news-card-category actualites">Actualités</span>
         </div>
-    </section>
+        <span class="news-card-date">10 janvier 2026</span>
+        <h3 class="news-card-title">Festival Senufo 2026 annoncé</h3>
+        <p class="news-card-excerpt">La 5e édition du Festival Senufo se tiendra du 15 au 18 mars 2026 avec un programme culturel exceptionnel...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
 
-    <!-- News Grid -->
-    <section class="section">
-        <div class="container">
-            <div class="news-grid">
-
-                <!-- Featured News -->
-                <div class="news-card featured-news" data-aos="fade-up">
-                    <div class="news-image-wrapper">
-                        <img src="/assets/images/korhogo-artisan.jpg" alt="Festival" class="news-image">
-                    </div>
-                    <div class="news-content">
-                        <span class="news-tag" style="color: var(--color-primary);">À la une</span>
-                        <h3 class="news-title">Le Festival du Tissu de Korhogo revient pour sa 5ème édition</h3>
-                        <p class="news-excerpt">
-                            Célébrez l'art du tissage traditionnel avec nous. Au programme : défilés, ateliers et
-                            rencontres avec les maîtres tisserands de la région.
-                        </p>
-                        <span class="news-link">Lire la suite</span>
-                    </div>
-                </div>
-
-                <!-- News Item 1 -->
-                <div class="news-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="news-image-wrapper">
-                        <img src="/assets/images/placeholder.jpg" alt="Marché" class="news-image">
-                        <div class="news-date">24 Jan</div>
-                    </div>
-                    <div class="news-content">
-                        <span class="news-tag">Commerce</span>
-                        <h3 class="news-title">Nouveau marché artisanal : Inauguration réussie</h3>
-                        <p class="news-excerpt">
-                            Plus de 50 artisans installés dans le nouveau complexe du quartier Koko.
-                        </p>
-                        <span class="news-link">Lire la suite</span>
-                    </div>
-                </div>
-
-                <!-- News Item 2 -->
-                <div class="news-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="news-image-wrapper">
-                        <img src="/assets/images/placeholder.jpg" alt="Formation" class="news-image">
-                        <div class="news-date">18 Jan</div>
-                    </div>
-                    <div class="news-content">
-                        <span class="news-tag">Communauté</span>
-                        <h3 class="news-title">Ateliers gratuits pour les entrepreneurs</h3>
-                        <p class="news-excerpt">
-                            Akwaba Korhogo lance une série de formations pour aider les commerçants à se digitaliser.
-                        </p>
-                        <span class="news-link">Lire la suite</span>
-                    </div>
-                </div>
-
-                <!-- News Item 3 -->
-                <div class="news-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="news-image-wrapper">
-                        <img src="/assets/images/placeholder.jpg" alt="Culture" class="news-image">
-                        <div class="news-date">10 Jan</div>
-                    </div>
-                    <div class="news-content">
-                        <span class="news-tag">Culture</span>
-                        <h3 class="news-title">Découverte : Les sculpteurs de bois mystiques</h3>
-                        <p class="news-excerpt">
-                            Portrait de Soro, sculpteur de père en fils, qui perpétue la tradition du masque Poro.
-                        </p>
-                        <span class="news-link">Lire la suite</span>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="text-center mt-12" data-aos="fade-in">
-                <button class="btn btn-outline btn-lg">Voir toutes les actualités</button>
-            </div>
+      <article class="news-card" data-category="economie">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Digitalisation">
+          <span class="news-card-category economie">Économie</span>
         </div>
-    </section>
+        <span class="news-card-date">8 janvier 2026</span>
+        <h3 class="news-card-title">Digitalisation des commerces locaux</h3>
+        <p class="news-card-excerpt">Un programme de formation au numérique lancé pour accompagner les commerçants de Korhogo dans leur transformation digitale...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Akwaba Korhogo</h4>
-                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Catégories</h4>
-                    <a href="/businesses.html?category=artisanat">Artisanat</a>
-                    <a href="/businesses.html?category=restaurants">Restaurants</a>
-                    <a href="/businesses.html?category=textile">Textiles</a>
-                    <a href="/businesses.html?category=sculpture">Sculpture</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>📍 Quartier Koko, Korhogo</p>
-                    <p>☎️ +225 25 86 00 00 00</p>
-                    <p>✉️ contact@akwaba-korhogo.ci</p>
-                    <div class="flex gap-4 mt-4">
-                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
-                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
-                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
-            </div>
+      <article class="news-card" data-category="culture">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=600&q=80" alt="Sculpteur">
+          <span class="news-card-category culture">Culture</span>
         </div>
-    </footer>
+        <span class="news-card-date">5 janvier 2026</span>
+        <h3 class="news-card-title">Interview d'un maître sculpteur Senufo</h3>
+        <p class="news-card-excerpt">Rencontre avec Youssouf Koné, sculpteur reconnu qui perpétue l'art ancestral de la sculpture sur bois...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+      <article class="news-card" data-category="communaute">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="Jeunes entrepreneurs">
+          <span class="news-card-category communaute">Communauté</span>
+        </div>
+        <span class="news-card-date">3 janvier 2026</span>
+        <h3 class="news-card-title">Programme de soutien aux jeunes entrepreneurs</h3>
+        <p class="news-card-excerpt">Lancement d'un incubateur dédié aux jeunes entrepreneurs de Korhogo avec accompagnement et financement...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
 
-    <!-- City Configuration -->
-    <script src="/js/config.js"></script>
+      <article class="news-card" data-category="culture">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Danse traditionnelle">
+          <span class="news-card-category culture">Culture</span>
+        </div>
+        <span class="news-card-date">28 décembre 2025</span>
+        <h3 class="news-card-title">La danse Senufo reconnue patrimoine culturel</h3>
+        <p class="news-card-excerpt">L'UNESCO inscrit la danse Boloi du peuple Senufo sur la liste représentative du patrimoine culturel immatériel...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
 
-    <!-- Core JavaScript -->
-    <script src="/core/js/utils.js"></script>
-    <script src="/core/js/responsive-manager.js"></script>
+      <article class="news-card" data-category="economie">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=80" alt="Coopérative">
+          <span class="news-card-category economie">Économie</span>
+        </div>
+        <span class="news-card-date">22 décembre 2025</span>
+        <h3 class="news-card-title">Nouvelle coopérative de tisserands</h3>
+        <p class="news-card-excerpt">50 tisserands s'unissent pour créer une coopérative et valoriser le tissu traditionnel de Korhogo...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
 
-    <!-- AOS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <article class="news-card" data-category="communaute">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Bibliothèque">
+          <span class="news-card-category communaute">Communauté</span>
+        </div>
+        <span class="news-card-date">18 décembre 2025</span>
+        <h3 class="news-card-title">Ouverture d'une bibliothèque communautaire</h3>
+        <p class="news-card-excerpt">Une nouvelle bibliothèque ouvre ses portes avec plus de 5000 ouvrages pour promouvoir la lecture auprès des jeunes...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
 
-    <!-- Page Script -->
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50
+      <article class="news-card" data-category="actualites">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600&q=80" alt="Infrastructure">
+          <span class="news-card-category actualites">Actualités</span>
+        </div>
+        <span class="news-card-date">15 décembre 2025</span>
+        <h3 class="news-card-title">Rénovation du centre-ville</h3>
+        <p class="news-card-excerpt">Lancement d'un projet de rénovation urbaine pour moderniser le centre-ville tout en préservant son patrimoine...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
+
+      <article class="news-card" data-category="culture">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600&q=80" alt="Musique">
+          <span class="news-card-category culture">Culture</span>
+        </div>
+        <span class="news-card-date">10 décembre 2025</span>
+        <h3 class="news-card-title">Concert de musique traditionnelle Senufo</h3>
+        <p class="news-card-excerpt">Un concert exceptionnel réunit les plus grands musiciens traditionnels pour célébrer le patrimoine musical Senufo...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
+
+      <article class="news-card" data-category="economie">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=600&q=80" alt="Export">
+          <span class="news-card-category economie">Économie</span>
+        </div>
+        <span class="news-card-date">5 décembre 2025</span>
+        <h3 class="news-card-title">Record d'exportations pour l'artisanat local</h3>
+        <p class="news-card-excerpt">Les artisans de Korhogo ont exporté un volume record de produits artisanaux en 2025 vers l'Europe et l'Amérique...</p>
+        <a href="#" class="news-card-link">Lire la suite</a>
+      </article>
+    </div>
+
+    <div class="pagination">
+      <button class="pagination-btn active">1</button>
+      <button class="pagination-btn">2</button>
+      <button class="pagination-btn">3</button>
+      <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <h2 class="newsletter-title">Restez informé sur Korhogo</h2>
+      <p class="newsletter-text">Inscrivez-vous à notre infolettre pour recevoir les dernières actualités de Korhogo.</p>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Votre courriel" required>
+        <button type="submit" class="newsletter-btn">S'inscrire</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="footer-logo-sdc">AKWABA</span><span class="footer-logo-name">Korhogo</span></div>
+        <p class="footer-description">Contactez-nous pour toutes demandes ou questions relatives à Akwaba Korhogo</p>
+        <div class="footer-contact">
+          <p>Quartier Koko, Korhogo, Côte d'Ivoire</p>
+          <p><a href="tel:+2252586000000">+225 25 86 00 00 00</a></p>
+          <p><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/index.html" class="footer-link">Accueil</a></li>
+          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
+          <li><a href="/events.html" class="footer-link">Événements</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Akwaba Korhogo</h4>
+        <ul class="footer-links">
+          <li><a href="/about.html" class="footer-link">À propos</a></li>
+          <li><a href="/nouvelles.html" class="footer-link">Nouvelles</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Visiter Korhogo</h4>
+        <ul class="footer-links">
+          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
+          <li><a href="/events.html" class="footer-link">Événements</a></li>
+          <li><a href="/planifiez-votre-visite.html" class="footer-link">Planifiez votre visite</a></li>
+        </ul>
+        <div class="footer-social">
+          <a href="https://facebook.com/akwaba.korhogo" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/akwaba_korhogo" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/2252586000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright © <span id="currentYear"></span> | Akwaba Korhogo.</p>
+      <div class="footer-legal">
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Conditions d'utilisations</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+
+    // Category filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const newsCards = document.querySelectorAll('.news-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.dataset.category;
+
+        // Filter cards
+        newsCards.forEach(card => {
+          if (category === 'tous') {
+            card.style.display = 'block';
+          } else {
+            if (card.dataset.category === category) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          }
         });
+      });
+    });
 
-        // Initialize responsive manager
-        const responsive = new ResponsiveManager();
+    // Update year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', () => {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
+    // Newsletter form
+    document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Merci pour votre inscription !');
+      e.target.reset();
+    });
 
-        // Update current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Initialize responsive elements
-        responsive.updateResponsiveElements();
-    </script>
-
+    // Service Worker (PWA)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
-
 </html>

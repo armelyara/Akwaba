@@ -1,757 +1,772 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez les événements culturels et commerciaux de Korhogo">
-    <meta name="keywords" content="Korhogo, événements, culture, Senufo, Côte d'Ivoire">
-    <meta name="author" content="Akwaba Korhogo">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Événements | Akwaba Korhogo</title>
 
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#8B4513">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#E6302E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
 
-    <title>Événements - Akwaba Korhogo</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Découvrez tous les événements culturels et commerciaux de Korhogo">
+  <meta name="keywords" content="Korhogo, événements, culture, festivals, Senufo">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 
-    <!-- Manifest -->
-    <link rel="manifest" href="/manifest.json">
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Animation Library (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="/core/css/base.css">
-    <link rel="stylesheet" href="/core/css/layout.css">
-    <link rel="stylesheet" href="/core/css/components.css">
+    :root {
+      --korhogo-red: #E6302E;
+      --korhogo-green: #289D8F;
+      --korhogo-yellow: #F4A261;
+      --korhogo-blue: #0056B3;
+      --korhogo-coral: #E76F51;
+      --black: #1A1A1A;
+      --white: #FFFFFF;
+      --gray: #757575;
+      --light-gray: #F5F5F5;
+    }
 
-    <!-- Korhogo Theme -->
-    <link rel="stylesheet" href="/css/korhogo-theme.css">
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--black); overflow-x: hidden; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; }
 
-    <style>
-        /* Page-specific styles */
-        .events-hero {
-            position: relative;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: var(--color-bg-secondary);
-            padding-top: var(--space-16);
-        }
+    /* HEADER */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 30px 40px; display: flex; justify-content: space-between; align-items: flex-start;
+      transition: all 0.4s ease;
+    }
+    .header.scrolled { background: var(--white); padding: 20px 40px; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+    .header.scrolled .logo, .header.scrolled .nav a, .header.scrolled .nav-lang { color: var(--black); }
+    .header.scrolled .hamburger span { background: var(--black); }
 
-        .events-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            opacity: 0.2;
-        }
+    .logo { font-family: 'Playfair Display', serif; color: var(--white); line-height: 0.9; transition: color 0.4s ease; }
+    .logo-sdc { display: block; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; }
+    .logo-name { display: block; font-size: 2.2rem; font-weight: 700; }
 
-        .hero-waves-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
+    .nav { display: flex; align-items: center; gap: 30px; }
+    .nav-links { display: flex; gap: 25px; }
+    .nav a { font-size: 0.95rem; font-weight: 500; color: var(--white); transition: opacity 0.3s ease; }
+    .nav a:hover { opacity: 0.7; }
+    .nav-lang { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+    .hamburger { display: flex; flex-direction: column; gap: 6px; cursor: pointer; padding: 5px; }
+    .hamburger span { width: 28px; height: 2px; background: var(--white); transition: background 0.4s ease; }
 
-        .events-hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            padding: 0 var(--space-4);
-        }
+    /* SOCIAL SIDEBOX */
+    .social-sidebox {
+      position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 999;
+      display: flex; flex-direction: column; background: var(--white);
+      box-shadow: -2px 0 15px rgba(0,0,0,0.1); border-radius: 8px 0 0 8px; overflow: hidden;
+    }
+    .social-sidebox a {
+      display: flex; align-items: center; justify-content: center;
+      width: 50px; height: 50px; color: var(--black); font-size: 1.1rem;
+      transition: all 0.3s ease; border-bottom: 1px solid var(--light-gray);
+    }
+    .social-sidebox a:last-child { border-bottom: none; }
+    .social-sidebox a:hover { background: var(--korhogo-blue); color: var(--white); }
+    .social-sidebox a.facebook:hover { background: #1877F2; }
+    .social-sidebox a.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-sidebox a.whatsapp:hover { background: #25D366; }
 
-        .events-hero h2 {
-            font-family: var(--font-heading);
-            font-weight: 900;
-            font-size: clamp(3rem, 8vw, 6rem);
-            margin-bottom: var(--space-3);
-            text-transform: uppercase;
-            line-height: 0.9;
-            color: var(--color-black);
-        }
+    /* PAGE HEADER */
+    .page-header {
+      position: relative; padding: 160px 40px 80px; background: var(--korhogo-blue);
+      overflow: hidden; text-align: center;
+    }
+    .page-header-waves { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .page-header-waves svg { position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; }
 
-        .events-hero p {
-            font-size: var(--text-lg);
-            color: var(--color-gray-700);
-            background: rgba(255, 255, 255, 0.9);
-            padding: var(--space-3) var(--space-6);
-            border-radius: var(--radius-pill);
-            display: inline-block;
-            backdrop-filter: blur(4px);
-        }
+    .page-header-content { position: relative; z-index: 10; }
+    .page-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700; font-style: italic; color: var(--white); margin-bottom: 15px;
+    }
+    .page-subtitle { font-size: 1.1rem; color: var(--white); opacity: 0.9; max-width: 700px; margin: 0 auto; }
 
-        .filter-tabs {
-            display: flex;
-            gap: var(--space-2);
-            margin-bottom: var(--space-6);
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    /* FILTER SECTION */
+    .filter-section {
+      padding: 40px 40px 20px;
+      background: var(--white);
+      border-bottom: 1px solid #E0E0E0;
+    }
 
-        .filter-tab {
-            padding: var(--space-3) var(--space-6);
-            border: 2px solid var(--color-secondary);
-            border-radius: var(--radius-full);
-            background: var(--color-white);
-            color: var(--color-primary);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-        .filter-tab:hover {
-            border-color: var(--color-primary);
-            background: var(--color-bg-secondary);
-        }
+    .filter-tab {
+      padding: 12px 25px;
+      background: var(--white);
+      border: 2px solid var(--korhogo-blue);
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--korhogo-blue);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-        .filter-tab.active {
-            background: var(--color-primary);
-            color: var(--color-white);
-            border-color: var(--color-primary);
-        }
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: var(--korhogo-blue);
+      color: var(--white);
+    }
 
-        .event-card {
-            background: var(--color-white);
-            border: 3px solid var(--color-secondary-light);
-            border-left: 8px solid var(--color-primary);
-            border-radius: var(--radius-lg);
-            padding: var(--space-6);
-            margin-bottom: var(--space-6);
-            transition: all var(--transition-base);
-            cursor: pointer;
-        }
+    /* FEATURED SLIDER */
+    .featured-section { padding: 60px 40px; background: var(--white); }
+    .featured-slider { position: relative; max-width: 1000px; margin: 0 auto; overflow: hidden; border-radius: 12px; }
+    .featured-slides { display: flex; transition: transform 0.5s ease; }
+    .featured-slide { min-width: 100%; position: relative; height: 450px; }
+    .featured-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .featured-slide-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%);
+    }
+    .featured-slide-content {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 40px; color: var(--white);
+    }
+    .featured-slide-date {
+      display: inline-block; background: var(--korhogo-red); padding: 8px 15px;
+      font-size: 0.85rem; font-weight: 600; margin-bottom: 15px;
+    }
+    .featured-slide-title {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700;
+      margin-bottom: 10px; max-width: 600px;
+    }
+    .featured-slide-excerpt { font-size: 1rem; opacity: 0.9; max-width: 500px; margin-bottom: 20px; }
+    .featured-slide-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--black); padding: 12px 25px;
+      font-weight: 600; transition: all 0.3s ease;
+    }
+    .featured-slide-link:hover { background: var(--korhogo-yellow); }
 
-        .event-card {
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-6);
-            margin-bottom: var(--space-6);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            border: none;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
+    .slider-controls {
+      position: absolute; bottom: 40px; right: 40px; display: flex; gap: 10px; z-index: 10;
+    }
+    .slider-btn {
+      width: 45px; height: 45px; background: var(--white); border: none;
+      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--black); transition: all 0.3s ease;
+    }
+    .slider-btn:hover { background: var(--korhogo-yellow); }
 
-        .event-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 6px;
-            background: var(--color-primary);
-        }
+    .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+    .slider-dot {
+      width: 12px; height: 12px; background: #E0E0E0; border: none;
+      border-radius: 50%; cursor: pointer; transition: all 0.3s ease;
+    }
+    .slider-dot.active { background: var(--korhogo-blue); width: 30px; border-radius: 6px; }
 
-        .event-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
+    /* EVENTS SECTION */
+    .events-section { padding: 60px 40px 80px; background: var(--white); }
+    .section-header {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1200px; margin: 0 auto 40px;
+    }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
 
-        .event-date {
-            display: flex;
-            align-items: center;
-            gap: var(--space-4);
-            margin-bottom: var(--space-4);
-        }
+    .events-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+      max-width: 1200px; margin: 0 auto;
+    }
 
-        .date-box {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            color: var(--color-white);
-            padding: var(--space-3);
-            border-radius: var(--radius-md);
-            text-align: center;
-            min-width: 70px;
-        }
+    .event-card { transition: transform 0.3s ease; }
+    .event-card:hover { transform: translateY(-5px); }
+    .event-card-image {
+      position: relative; height: 220px; overflow: hidden; border-radius: 8px; margin-bottom: 15px;
+    }
+    .event-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .event-card:hover .event-card-image img { transform: scale(1.05); }
 
-        .date-day {
-            font-size: var(--text-3xl);
-            font-weight: 700;
-            line-height: 1;
-        }
+    .event-card-date {
+      position: absolute; top: 15px; left: 15px; background: var(--korhogo-red);
+      color: var(--white); padding: 8px 12px; text-align: center; min-width: 55px;
+    }
+    .event-card-day { display: block; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; line-height: 1; }
+    .event-card-month { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        .date-month {
-            font-size: var(--text-sm);
-            text-transform: uppercase;
-            margin-top: var(--space-1);
-        }
+    .event-card-category {
+      position: absolute; top: 15px; right: 15px; background: var(--korhogo-green);
+      color: var(--white); padding: 5px 10px; font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .event-card-category.cultural { background: var(--korhogo-green); }
+    .event-card-category.commercial { background: var(--korhogo-yellow); color: var(--black); }
+    .event-card-category.community { background: var(--korhogo-coral); }
 
-        .event-info {
-            flex: 1;
-        }
+    .event-card-title {
+      font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 8px;
+    }
+    .event-card-excerpt { font-size: 0.95rem; color: var(--gray); line-height: 1.5; }
 
-        .event-title {
-            font-family: var(--font-heading);
-            font-size: var(--text-2xl);
-            color: var(--color-primary);
-            margin-bottom: var(--space-2);
-        }
+    /* LOADING & EMPTY STATES */
+    .loading-state,
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gray);
+      grid-column: 1 / -1;
+    }
 
-        .event-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-4);
-            font-size: var(--text-sm);
-            color: var(--color-gray-700);
-        }
+    .loading-state i,
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--korhogo-blue);
+    }
 
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-1);
-        }
+    /* NEWSLETTER */
+    .newsletter-section {
+      padding: 80px 40px;
+      background: var(--korhogo-yellow);
+    }
 
-        .event-description {
-            color: var(--color-gray-800);
-            line-height: 1.6;
-            margin-top: var(--space-4);
-        }
+    .newsletter-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-        .event-category-badge {
-            display: inline-block;
-            padding: var(--space-1) var(--space-3);
-            background: var(--color-secondary);
-            color: var(--color-primary-dark);
-            border-radius: var(--radius-full);
-            font-size: var(--text-xs);
-            font-weight: 600;
-            margin-top: var(--space-3);
-        }
+    .newsletter-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
 
-        .event-actions {
-            display: flex;
-            gap: var(--space-3);
-            margin-top: var(--space-4);
-        }
+    .newsletter-text {
+      margin-bottom: 25px;
+    }
 
-        .featured-event {
-            background: linear-gradient(135deg, var(--color-white), var(--color-bg-secondary));
-            border-color: var(--color-accent);
-            border-width: 4px;
-        }
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
 
-        .featured-badge {
-            background: var(--color-accent);
-            color: var(--color-white);
-            padding: var(--space-2) var(--space-4);
-            border-radius: var(--radius-full);
-            font-size: var(--text-sm);
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: var(--space-4);
-        }
+    .newsletter-input {
+      flex: 1;
+      padding: 15px 20px;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+    }
 
-        @media (max-width: 767px) {
-            .events-hero h2 {
-                font-size: var(--text-3xl);
-            }
+    .newsletter-btn {
+      padding: 15px 30px;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-            .event-date {
-                flex-direction: row;
-            }
+    .newsletter-btn:hover {
+      background: var(--korhogo-red);
+    }
 
-            .date-box {
-                min-width: 60px;
-            }
+    /* FOOTER */
+    .footer { background: var(--black); color: var(--white); padding: 80px 40px 40px; }
+    .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { font-family: 'Playfair Display', serif; line-height: 0.9; margin-bottom: 20px; }
+    .footer-logo-sdc { display: block; font-size: 0.9rem; font-weight: 700; }
+    .footer-logo-name { display: block; font-size: 1.4rem; font-weight: 700; }
+    .footer-description { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px; line-height: 1.6; }
+    .footer-contact p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+    .footer-contact a:hover { color: var(--korhogo-yellow); }
+    .footer-column-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link { font-size: 0.9rem; color: rgba(255,255,255,0.7); transition: color 0.3s ease; }
+    .footer-link:hover { color: var(--korhogo-yellow); }
+    .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+    .footer-social a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 50%; transition: background 0.3s ease; }
+    .footer-social a:hover { background: var(--korhogo-yellow); color: var(--black); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; max-width: 1200px; margin: 0 auto; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .footer-legal { display: flex; gap: 30px; }
+    .footer-legal a:hover { color: var(--white); }
 
-            .date-day {
-                font-size: var(--text-2xl);
-            }
-
-            .event-title {
-                font-size: var(--text-xl);
-            }
-
-            .event-actions {
-                flex-direction: column;
-            }
-        }
-    </style>
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .events-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .header { padding: 20px; }
+      .nav-links { display: none; }
+      .page-header { padding: 140px 20px 60px; }
+      .featured-section, .events-section { padding: 40px 20px; }
+      .featured-slide { height: 350px; }
+      .featured-slide-title { font-size: 1.5rem; }
+      .events-grid { grid-template-columns: 1fr; }
+      .social-sidebox { display: none; }
+      .slider-controls { bottom: 20px; right: 20px; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-social { justify-content: center; }
+      .footer-bottom { flex-direction: column; gap: 15px; }
+      .newsletter-form { flex-direction: column; }
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
-                    <h1>Akwaba Korhogo</h1>
-                </div>
-                <nav class="main-nav" id="mainNav">
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html" class="active">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-            </div>
+  <header class="header" id="header">
+    <a href="/index.html" class="logo">
+      <span class="logo-sdc">AKWABA</span>
+      <span class="logo-name">Korhogo</span>
+    </a>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="/businesses.html">Répertoire</a>
+        <a href="/events.html" style="opacity: 0.7;">Événements</a>
+        <a href="/nouvelles.html">Nouvelles</a>
+        <a href="/planifiez-votre-visite.html">Planifiez votre visite</a>
+        <a href="/about.html">À propos</a>
+      </div>
+      <span class="nav-lang">Fr</span>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+  </header>
+
+  <aside class="social-sidebox">
+    <a href="https://facebook.com/akwaba.korhogo" target="_blank" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com/akwaba_korhogo" target="_blank" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/2252586000000" target="_blank" class="whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </aside>
+
+  <section class="page-header">
+    <div class="page-header-waves">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="zigzag" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
+            <path d="M0 10 L10 0 L20 10 L30 0 L40 10" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none"/>
+            <path d="M0 20 L10 10 L20 20 L30 10 L40 20" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none"/>
+          </pattern>
+        </defs>
+        <path d="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z" fill="#289D8F">
+          <animate attributeName="d" dur="12s" repeatCount="indefinite" values="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z;M-100,80 C100,120 300,50 500,130 C700,170 900,80 1100,120 C1300,220 1500,130 1600,150 L1600,400 L-100,400 Z;M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z"/>
+        </path>
+        <path d="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z" fill="#F4A261">
+          <animate attributeName="d" dur="15s" repeatCount="indefinite" values="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z;M-100,100 C150,80 350,150 550,120 C750,50 950,120 1150,100 C1350,40 1500,100 1600,120 L1600,400 L-100,400 Z;M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z"/>
+        </path>
+        <path d="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z" fill="#E76F51">
+          <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z;M900,0 C1000,30 1100,20 1200,80 C1300,100 1400,60 1500,100 C1600,100 1600,100 1600,100 L1600,230 C1500,220 1400,230 1300,220 C1200,170 1100,200 1000,200 L900,0 Z;M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z"/>
+        </path>
+      </svg>
+    </div>
+    <div class="page-header-content">
+      <h1 class="page-title">Événements</h1>
+      <p class="page-subtitle">Découvrez les événements culturels, commerciaux et communautaires de Korhogo : festivals, marchés, célébrations et bien plus encore !</p>
+    </div>
+  </section>
+
+  <section class="filter-section">
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-filter="all">Tous</button>
+      <button class="filter-tab" data-filter="upcoming">À venir</button>
+      <button class="filter-tab" data-filter="cultural">Culturel</button>
+      <button class="filter-tab" data-filter="commercial">Commercial</button>
+      <button class="filter-tab" data-filter="community">Communautaire</button>
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <div class="featured-slider">
+      <div class="featured-slides" id="featuredSlides">
+        <div class="featured-slide">
+          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&q=80" alt="Festival">
+          <div class="featured-slide-overlay"></div>
+          <div class="featured-slide-content">
+            <span class="featured-slide-date">15 - 17 Mars 2026</span>
+            <h2 class="featured-slide-title">Festival du Tissu de Korhogo</h2>
+            <p class="featured-slide-excerpt">Découvrez l'artisanat traditionnel Senufo lors de ce festival célébrant le célèbre tissu de Korhogo.</p>
+            <a href="#" class="featured-slide-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="events-hero">
-        <img src="/assets/images/korhogo-culture.jpg" alt="" class="events-hero-bg">
-        <div class="hero-waves-container">
-            <img src="/assets/images/hero-waves.svg" alt="" class="hero-waves-bg">
+        <div class="featured-slide">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200&q=80" alt="Marché">
+          <div class="featured-slide-overlay"></div>
+          <div class="featured-slide-content">
+            <span class="featured-slide-date">Chaque samedi</span>
+            <h2 class="featured-slide-title">Grand Marché Artisanal</h2>
+            <p class="featured-slide-excerpt">Rencontrez les artisans locaux et découvrez leurs créations uniques.</p>
+            <a href="#" class="featured-slide-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
-        <div class="container events-hero-content">
-            <h2>ÉVÉNEMENTS<br><span class="text-primary">À KORHOGO</span></h2>
-            <p>Découvrez la richesse culturelle et les activités de notre communauté</p>
+        <div class="featured-slide">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80" alt="Culture">
+          <div class="featured-slide-overlay"></div>
+          <div class="featured-slide-content">
+            <span class="featured-slide-date">10 Avril 2026</span>
+            <h2 class="featured-slide-title">Soirée Culturelle Senufo</h2>
+            <p class="featured-slide-excerpt">Une soirée dédiée à la culture Senufo avec danses, musique et gastronomie.</p>
+            <a href="#" class="featured-slide-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="slider-controls">
+        <button class="slider-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+    <div class="slider-dots" id="sliderDots">
+      <button class="slider-dot active" data-index="0"></button>
+      <button class="slider-dot" data-index="1"></button>
+      <button class="slider-dot" data-index="2"></button>
+    </div>
+  </section>
 
-    <!-- Events Section -->
-    <section class="section">
-        <div class="container">
-            <!-- Filter Tabs -->
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">Tous les événements</button>
-                <button class="filter-tab" data-filter="upcoming">À venir</button>
-                <button class="filter-tab" data-filter="cultural">Culturel</button>
-                <button class="filter-tab" data-filter="commercial">Commercial</button>
-                <button class="filter-tab" data-filter="community">Communautaire</button>
-            </div>
+  <section class="events-section">
+    <div class="section-header"><h2 class="section-title">Tous les événements</h2></div>
+    <div class="events-grid" id="eventsGrid">
+      <div class="loading-state">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <p>Chargement des événements...</p>
+      </div>
+    </div>
+  </section>
 
-            <!-- Loading State -->
-            <div id="loadingState" class="text-center">
-                <div class="spinner"></div>
-                <p class="mt-4">Chargement des événements...</p>
-            </div>
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <h2 class="newsletter-title">Ne manquez aucun événement</h2>
+      <p class="newsletter-text">Inscrivez-vous à notre infolettre pour être informé des prochains événements à Korhogo.</p>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Votre courriel" required>
+        <button type="submit" class="newsletter-btn">S'inscrire</button>
+      </form>
+    </div>
+  </section>
 
-            <!-- Events List -->
-            <div id="eventsList" style="display: none;">
-                <!-- Populated by JavaScript -->
-            </div>
-
-            <!-- Empty State -->
-            <div id="emptyState" class="empty-state" style="display: none;">
-                <p>Aucun événement trouvé.</p>
-                <p class="mt-2 text-sm text-gray-600">Revenez bientôt pour découvrir les prochains événements!</p>
-            </div>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-sdc">AKWABA</span>
+          <span class="footer-logo-name">Korhogo</span>
         </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="section bg-secondary">
-        <div class="container text-center">
-            <h3 class="text-primary mb-4">Vous organisez un événement?</h3>
-            <p class="mb-6 text-gray-700">Partagez-le avec la communauté de Korhogo!</p>
-            <button class="btn btn-primary btn-lg" id="proposeEventBtn">
-                Proposer un événement
-            </button>
+        <p class="footer-description">Contactez-nous pour toutes demandes ou questions relatives à Akwaba Korhogo</p>
+        <div class="footer-contact">
+          <p>Quartier Koko, Korhogo, Côte d'Ivoire</p>
+          <p><a href="tel:+2252586000000">+225 25 86 00 00 00</a></p>
+          <p><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Akwaba Korhogo</h4>
-                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Catégories</h4>
-                    <a href="/businesses.html?category=artisanat">Artisanat</a>
-                    <a href="/businesses.html?category=restaurants">Restaurants</a>
-                    <a href="/businesses.html?category=textile">Textiles</a>
-                    <a href="/businesses.html?category=sculpture">Sculpture</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>📍 Quartier Koko, Korhogo</p>
-                    <p>☎️ +225 25 86 00 00 00</p>
-                    <p>✉️ contact@akwaba-korhogo.ci</p>
-                    <div class="flex gap-4 mt-4">
-                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
-                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
-                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
-            </div>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/" class="footer-link">Accueil</a></li>
+          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
+          <li><a href="/events.html" class="footer-link">Événements</a></li>
+          <li><a href="/about.html" class="footer-link">À propos</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Akwaba Korhogo</h4>
+        <ul class="footer-links">
+          <li><a href="/about.html" class="footer-link">À propos</a></li>
+          <li><a href="/nouvelles.html" class="footer-link">Nouvelles</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Visiter Korhogo</h4>
+        <ul class="footer-links">
+          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
+          <li><a href="/events.html" class="footer-link">Événements</a></li>
+          <li><a href="/planifiez-votre-visite.html" class="footer-link">Planifiez votre visite</a></li>
+        </ul>
+        <div class="footer-social">
+          <a href="https://facebook.com/akwaba.korhogo" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/akwaba_korhogo" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/2252586000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
-    </footer>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright © <span id="currentYear"></span> | Akwaba Korhogo.</p>
+      <div class="footer-legal">
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Conditions d'utilisations</a>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
 
-    <!-- City Configuration -->
-    <script src="/js/config.js"></script>
+  <!-- City Configuration -->
+  <script src="/js/config.js"></script>
 
-    <!-- Core JavaScript -->
-    <script src="/core/js/utils.js"></script>
-    <script src="/core/js/responsive-manager.js"></script>
-    <script src="/core/js/firebase-manager.js"></script>
-    <script src="/core/js/business-directory.js"></script>
+  <!-- Core JavaScript -->
+  <script src="/core/js/utils.js"></script>
+  <script src="/core/js/responsive-manager.js"></script>
+  <script src="/core/js/firebase-manager.js"></script>
 
-    <!-- AOS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50
-        });
-    </script>
+  <script>
+    // Initialize
+    const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
 
-    <!-- Page Script -->
-    <script>
-        // Initialize managers
-        const responsive = new ResponsiveManager();
-        const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
+    // State
+    let allEvents = [];
+    let currentFilter = 'all';
 
-        let allEvents = [];
-        let filteredEvents = [];
-        let currentFilter = 'all';
+    // Initialize Firebase
+    firebaseManager.initialize().then(success => {
+      if (success) {
+        loadEvents();
+      } else {
+        loadSampleEvents();
+      }
+    });
 
-        // Initialize Firebase
-        firebaseManager.initialize().then(success => {
-            if (success) {
-                loadEvents();
-            } else {
-                console.error('Firebase initialization failed');
-                showError();
-            }
-        });
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
 
-        // Load events
-        async function loadEvents() {
-            showLoading();
+    // Slider functionality
+    let currentSlide = 0;
+    const slides = document.getElementById('featuredSlides');
+    const dots = document.querySelectorAll('.slider-dot');
+    const totalSlides = 3;
 
-            try {
-                const eventsRef = firebaseManager.getCityCollection('events');
-                const snapshot = await eventsRef
-                    .where('status', '==', 'approved')
-                    .orderBy('startDate', 'asc')
-                    .get();
+    function goToSlide(index) {
+      currentSlide = index;
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+    }
 
-                allEvents = snapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
+    document.getElementById('nextBtn').addEventListener('click', () => goToSlide((currentSlide + 1) % totalSlides));
+    document.getElementById('prevBtn').addEventListener('click', () => goToSlide((currentSlide - 1 + totalSlides) % totalSlides));
+    dots.forEach(dot => dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index))));
+    setInterval(() => goToSlide((currentSlide + 1) % totalSlides), 6000);
 
-                applyFilter(currentFilter);
-            } catch (error) {
-                console.error('Error loading events:', error);
-                // Show sample events for demo
-                loadSampleEvents();
-            }
+    // Filter functionality
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        currentFilter = tab.dataset.filter;
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        displayEvents();
+      });
+    });
+
+    // Load events from Firestore
+    async function loadEvents() {
+      try {
+        const eventsRef = firebaseManager.getCityCollection('events');
+        const snapshot = await eventsRef.where('status', '==', 'approved').orderBy('startDate', 'desc').get();
+
+        if (snapshot.empty) {
+          loadSampleEvents();
+          return;
         }
 
-        // Load sample events (for demonstration)
-        function loadSampleEvents() {
-            const today = new Date();
-            const nextWeek = new Date(today);
-            nextWeek.setDate(today.getDate() + 7);
-            const nextMonth = new Date(today);
-            nextMonth.setMonth(today.getMonth() + 1);
+        allEvents = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
 
-            allEvents = [
-                {
-                    id: '1',
-                    title: 'Festival du Tissu de Korhogo',
-                    description: 'Célébration annuelle du célèbre tissu de Korhogo avec des défilés de mode, des ateliers de tissage et des expositions d\'artisans locaux.',
-                    startDate: { toDate: () => nextWeek },
-                    endDate: { toDate: () => nextWeek },
-                    location: 'Place du Tissu, Quartier Soba',
-                    category: 'cultural',
-                    organizer: 'Association des Tisserands de Korhogo',
-                    isFeatured: true
-                },
-                {
-                    id: '2',
-                    title: 'Marché Artisanal Mensuel',
-                    description: 'Grand marché artisanal présentant la sculpture sur bois, la poterie, et les créations locales. Rencontrez les artisans et découvrez leur savoir-faire.',
-                    startDate: { toDate: () => today },
-                    endDate: { toDate: () => today },
-                    location: 'Quartier Sinistré',
-                    category: 'commercial',
-                    organizer: 'Chambre des Métiers de Korhogo',
-                    isFeatured: false
-                },
-                {
-                    id: '3',
-                    title: 'Soirée Culturelle Senufo',
-                    description: 'Spectacle de danse traditionnelle, musique balafon et contes Senufo. Une soirée pour découvrir la richesse de notre patrimoine culturel.',
-                    startDate: { toDate: () => nextMonth },
-                    endDate: { toDate: () => nextMonth },
-                    location: 'Centre Culturel, Quartier Koko',
-                    category: 'cultural',
-                    organizer: 'Centre Culturel de Korhogo',
-                    isFeatured: false
-                },
-                {
-                    id: '4',
-                    title: 'Foire aux Commerces Locaux',
-                    description: 'Découvrez les nouveaux commerces de Korhogo, profitez d\'offres spéciales et soutenez l\'économie locale.',
-                    startDate: { toDate: () => new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000) },
-                    endDate: { toDate: () => new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000) },
-                    location: 'Quartier Petit Paris',
-                    category: 'commercial',
-                    organizer: 'Association des Commerçants',
-                    isFeatured: false
-                },
-                {
-                    id: '5',
-                    title: 'Journée de Nettoyage Communautaire',
-                    description: 'Rejoignez-nous pour une journée de nettoyage et d\'embellissement de notre quartier. Ensemble, gardons Korhogo propre!',
-                    startDate: { toDate: () => new Date(today.getTime() + 5 * 24 * 60 * 60 * 1000) },
-                    endDate: { toDate: () => new Date(today.getTime() + 5 * 24 * 60 * 60 * 1000) },
-                    location: 'Quartiers multiples',
-                    category: 'community',
-                    organizer: 'Mairie de Korhogo',
-                    isFeatured: false
-                }
-            ];
+        displayEvents();
+      } catch (error) {
+        console.error('Error loading events:', error);
+        loadSampleEvents();
+      }
+    }
 
-            applyFilter(currentFilter);
+    // Display events
+    function displayEvents() {
+      const grid = document.getElementById('eventsGrid');
+      grid.innerHTML = '';
+
+      let filteredEvents = allEvents;
+
+      // Apply filters
+      if (currentFilter !== 'all') {
+        if (currentFilter === 'upcoming') {
+          const now = new Date();
+          filteredEvents = filteredEvents.filter(event => {
+            const eventDate = event.startDate?.toDate ? event.startDate.toDate() : new Date(event.startDate);
+            return eventDate >= now;
+          });
+        } else {
+          filteredEvents = filteredEvents.filter(event => event.category === currentFilter);
         }
+      }
 
-        // Apply filter
-        function applyFilter(filter) {
-            currentFilter = filter;
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
+      if (filteredEvents.length === 0) {
+        grid.innerHTML = '<div class="empty-state"><i class="fas fa-calendar-times"></i><p>Aucun événement trouvé</p></div>';
+        return;
+      }
 
-            filteredEvents = allEvents.filter(event => {
-                // Get event date
-                const eventDate = event.startDate.toDate ? event.startDate.toDate() : new Date(event.startDate);
+      filteredEvents.forEach(event => {
+        const card = createEventCard(event);
+        grid.appendChild(card);
+      });
+    }
 
-                switch (filter) {
-                    case 'all':
-                        return true;
-                    case 'upcoming':
-                        return eventDate >= today;
-                    case 'cultural':
-                    case 'commercial':
-                    case 'community':
-                        return event.category === filter;
-                    default:
-                        return true;
-                }
-            });
+    // Create event card
+    function createEventCard(event) {
+      const card = document.createElement('article');
+      card.className = 'event-card';
 
-            renderEvents();
+      const date = event.startDate?.toDate ? event.startDate.toDate() : new Date(event.startDate || Date.now());
+      const day = date.getDate();
+      const month = date.toLocaleDateString('fr-FR', { month: 'short' }).toUpperCase();
+
+      const categoryClass = event.category || 'cultural';
+      const categoryLabel = getCategoryLabel(event.category);
+
+      card.innerHTML = `
+        <div class="event-card-image">
+          <img src="${event.image || 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80'}" alt="${event.title}">
+          <div class="event-card-date">
+            <span class="event-card-day">${day}</span>
+            <span class="event-card-month">${month}</span>
+          </div>
+          <span class="event-card-category ${categoryClass}">${categoryLabel}</span>
+        </div>
+        <h3 class="event-card-title">${event.title}</h3>
+        <p class="event-card-excerpt">${(event.description || '').substring(0, 100)}...</p>
+      `;
+
+      return card;
+    }
+
+    // Load sample events
+    function loadSampleEvents() {
+      const sampleEvents = [
+        {
+          id: '1',
+          title: 'Festival du Tissu de Korhogo',
+          description: 'Découvrez l\'artisanat traditionnel Senufo lors de ce festival célébrant le célèbre tissu de Korhogo.',
+          startDate: new Date('2026-03-15'),
+          category: 'cultural',
+          image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80'
+        },
+        {
+          id: '2',
+          title: 'Grand Marché Artisanal',
+          description: 'Rencontrez les artisans locaux et découvrez leurs créations uniques chaque samedi.',
+          startDate: new Date('2026-03-20'),
+          category: 'commercial',
+          image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80'
+        },
+        {
+          id: '3',
+          title: 'Soirée Culturelle Senufo',
+          description: 'Une soirée dédiée à la culture Senufo avec danses, musique et gastronomie traditionnelle.',
+          startDate: new Date('2026-04-10'),
+          category: 'cultural',
+          image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80'
+        },
+        {
+          id: '4',
+          title: 'Foire Commerciale du Nord',
+          description: 'La plus grande foire commerciale de la région présentant les produits locaux.',
+          startDate: new Date('2026-04-25'),
+          category: 'commercial',
+          image: 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=600&q=80'
+        },
+        {
+          id: '5',
+          title: 'Journée de la Jeunesse',
+          description: 'Événement communautaire dédié aux jeunes de Korhogo avec activités sportives et culturelles.',
+          startDate: new Date('2026-05-01'),
+          category: 'community',
+          image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&q=80'
+        },
+        {
+          id: '6',
+          title: 'Exposition d\'Art Contemporain',
+          description: 'Découvrez les œuvres d\'artistes locaux et internationaux dans cette exposition unique.',
+          startDate: new Date('2026-05-15'),
+          category: 'cultural',
+          image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80'
+        },
+        {
+          id: '7',
+          title: 'Marché de Nuit',
+          description: 'Ambiance festive avec stands de nourriture, artisanat et musique live.',
+          startDate: new Date('2026-06-05'),
+          category: 'commercial',
+          image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80'
+        },
+        {
+          id: '8',
+          title: 'Festival de Musique Traditionnelle',
+          description: 'Trois jours de concerts célébrant la musique traditionnelle Senufo.',
+          startDate: new Date('2026-06-20'),
+          category: 'cultural',
+          image: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80'
+        },
+        {
+          id: '9',
+          title: 'Journée de Nettoyage Communautaire',
+          description: 'Participez à l\'embellissement de notre ville lors de cette journée citoyenne.',
+          startDate: new Date('2026-07-10'),
+          category: 'community',
+          image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80'
         }
+      ];
 
-        // Render events
-        function renderEvents() {
-            const container = document.getElementById('eventsList');
-            container.innerHTML = '';
+      allEvents = sampleEvents;
+      displayEvents();
+    }
 
-            document.getElementById('loadingState').style.display = 'none';
+    // Helper function
+    function getCategoryLabel(category) {
+      const labels = {
+        cultural: 'Culturel',
+        commercial: 'Commercial',
+        community: 'Communautaire'
+      };
+      return labels[category] || 'Culturel';
+    }
 
-            if (filteredEvents.length === 0) {
-                document.getElementById('emptyState').style.display = 'block';
-                document.getElementById('eventsList').style.display = 'none';
-                return;
-            }
+    // Newsletter form
+    document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = e.target.querySelector('.newsletter-input').value;
+      alert('Merci ! Vous êtes maintenant inscrit à notre infolettre.');
+      e.target.reset();
+    });
 
-            document.getElementById('emptyState').style.display = 'none';
-            document.getElementById('eventsList').style.display = 'block';
+    // Update year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            // Sort by date
-            filteredEvents.sort((a, b) => {
-                const dateA = a.startDate.toDate ? a.startDate.toDate() : new Date(a.startDate);
-                const dateB = b.startDate.toDate ? b.startDate.toDate() : new Date(b.startDate);
-                return dateA - dateB;
-            });
-
-            // Render each event
-            filteredEvents.forEach(event => {
-                const card = createEventCard(event);
-                container.appendChild(card);
-            });
-        }
-
-        // Create event card
-        function createEventCard(event) {
-            const card = document.createElement('div');
-            card.className = `event-card ${event.isFeatured ? 'featured-event' : ''}`;
-
-            const eventDate = event.startDate.toDate ? event.startDate.toDate() : new Date(event.startDate);
-            const day = eventDate.getDate();
-            const month = eventDate.toLocaleDateString('fr-FR', { month: 'short' });
-            const time = eventDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-
-            card.innerHTML = `
-                ${event.isFeatured ? '<div class="featured-badge">⭐ Événement à la une</div>' : ''}
-
-                <div class="event-date">
-                    <div class="date-box">
-                        <div class="date-day">${day}</div>
-                        <div class="date-month">${month}</div>
-                    </div>
-                    <div class="event-info">
-                        <h3 class="event-title">${event.title}</h3>
-                        <div class="event-meta">
-                            <div class="meta-item">
-                                <span>🕒</span>
-                                <span>${time}</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>📍</span>
-                                <span>${event.location}</span>
-                            </div>
-                            <div class="meta-item">
-                                <span>👥</span>
-                                <span>${event.organizer}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="event-description">${event.description}</div>
-
-                <span class="event-category-badge">${getCategoryName(event.category)}</span>
-
-                <div class="event-actions">
-                    <button class="btn btn-sm btn-primary" onclick="addToCalendar('${event.id}')">
-                        📅 Ajouter au calendrier
-                    </button>
-                    <button class="btn btn-sm btn-outline" onclick="shareEvent('${event.id}')">
-                        📤 Partager
-                    </button>
-                </div>
-            `;
-
-            return card;
-        }
-
-        // Get category name
-        function getCategoryName(categoryId) {
-            const categories = {
-                'cultural': '🎨 Culturel',
-                'commercial': '🛍️ Commercial',
-                'community': '🤝 Communautaire'
-            };
-            return categories[categoryId] || categoryId;
-        }
-
-        // Add to calendar
-        function addToCalendar(eventId) {
-            const event = allEvents.find(e => e.id === eventId);
-            if (!event) return;
-
-            const eventDate = event.startDate.toDate ? event.startDate.toDate() : new Date(event.startDate);
-            const title = encodeURIComponent(event.title);
-            const details = encodeURIComponent(event.description);
-            const location = encodeURIComponent(event.location);
-            const startDate = eventDate.toISOString().replace(/-|:|\.\d\d\d/g, '');
-
-            // Google Calendar URL
-            const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${startDate}`;
-
-            window.open(calendarUrl, '_blank');
-        }
-
-        // Share event
-        function shareEvent(eventId) {
-            const event = allEvents.find(e => e.id === eventId);
-            if (!event) return;
-
-            const shareData = {
-                title: event.title,
-                text: event.description,
-                url: window.location.href + '?event=' + eventId
-            };
-
-            if (navigator.share) {
-                navigator.share(shareData);
-            } else {
-                // Fallback: WhatsApp share
-                const text = encodeURIComponent(`${event.title}\n\n${event.description}\n\nPlus d'infos: ${shareData.url}`);
-                window.open(`https://wa.me/?text=${text}`, '_blank');
-            }
-        }
-
-        // Setup filter tabs
-        document.querySelectorAll('.filter-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active state
-                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                // Apply filter
-                const filter = tab.dataset.filter;
-                applyFilter(filter);
-            });
-        });
-
-        // Propose event button
-        document.getElementById('proposeEventBtn')?.addEventListener('click', () => {
-            alert('Fonctionnalité à venir! Vous pourrez bientôt proposer vos événements.');
-        });
-
-        // UI helpers
-        function showLoading() {
-            document.getElementById('loadingState').style.display = 'block';
-            document.getElementById('eventsList').style.display = 'none';
-            document.getElementById('emptyState').style.display = 'none';
-        }
-
-        function showError() {
-            document.getElementById('loadingState').style.display = 'none';
-            document.getElementById('emptyState').style.display = 'block';
-            document.getElementById('emptyState').innerHTML = '<p>Erreur de chargement des événements.</p>';
-        }
-
-        // Mobile menu toggle
-        document.getElementById('menuToggle')?.addEventListener('click', () => {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
-
-        // Update current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Initialize responsive elements
-        responsive.updateResponsiveElements();
-    </script>
-
+    // Service Worker (PWA)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
-
 </html>

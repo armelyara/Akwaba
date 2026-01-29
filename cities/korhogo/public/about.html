@@ -1,719 +1,309 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="À propos d'Akwaba Korhogo - Notre mission, vision et valeurs">
-    <meta name="keywords" content="Korhogo, Akwaba, Senufo, commerce local, Côte d'Ivoire">
-    <meta name="author" content="Akwaba Korhogo">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos | Akwaba Korhogo</title>
 
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#8B4513">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#E6302E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
 
-    <title>À propos - Akwaba Korhogo</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Découvrez Akwaba Korhogo - Notre mission de valoriser l'artisanat Senufo et soutenir l'économie locale">
+  <meta name="keywords" content="Korhogo, Senufo, artisanat, commerce local, tissu Korhogo, Côte d'Ivoire">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 
-    <!-- Manifest -->
-    <link rel="manifest" href="/manifest.json">
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
-        rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --korhogo-red: #E6302E; --korhogo-green: #289D8F; --korhogo-yellow: #F4A261; --korhogo-blue: #0056B3; --korhogo-coral: #E76F51; --black: #1A1A1A; --white: #FFFFFF; --gray: #757575; --light-gray: #F5F5F5; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--black); overflow-x: hidden; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; }
 
-    <!-- Animation Library (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 30px 40px; display: flex; justify-content: space-between; align-items: flex-start; transition: all 0.4s ease; }
+    .header.scrolled { background: var(--white); padding: 20px 40px; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+    .header.scrolled .logo, .header.scrolled .nav a, .header.scrolled .nav-lang { color: var(--black); }
+    .header.scrolled .hamburger span { background: var(--black); }
+    .logo { font-family: 'Playfair Display', serif; color: var(--white); line-height: 0.9; transition: color 0.4s ease; }
+    .logo-sdc { display: block; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; }
+    .logo-name { display: block; font-size: 2.2rem; font-weight: 700; }
+    .nav { display: flex; align-items: center; gap: 30px; }
+    .nav-links { display: flex; gap: 25px; }
+    .nav a { font-size: 0.95rem; font-weight: 500; color: var(--white); transition: opacity 0.3s ease; }
+    .nav a:hover { opacity: 0.7; }
+    .nav-lang { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+    .hamburger { display: flex; flex-direction: column; gap: 6px; cursor: pointer; padding: 5px; }
+    .hamburger span { width: 28px; height: 2px; background: var(--white); transition: background 0.4s ease; }
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="/core/css/base.css">
-    <link rel="stylesheet" href="/core/css/layout.css">
-    <link rel="stylesheet" href="/core/css/components.css">
+    .social-sidebox { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 999; display: flex; flex-direction: column; background: var(--white); box-shadow: -2px 0 15px rgba(0,0,0,0.1); border-radius: 8px 0 0 8px; overflow: hidden; }
+    .social-sidebox a { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; color: var(--black); font-size: 1.1rem; transition: all 0.3s ease; border-bottom: 1px solid var(--light-gray); }
+    .social-sidebox a:last-child { border-bottom: none; }
+    .social-sidebox a:hover { background: var(--korhogo-blue); color: var(--white); }
 
-    <!-- Korhogo Theme -->
-    <link rel="stylesheet" href="/css/korhogo-theme.css">
+    .page-header { position: relative; padding: 160px 40px 80px; background: var(--korhogo-red); overflow: hidden; text-align: center; }
+    .page-header-waves { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .page-header-waves svg { position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; }
+    .page-header-content { position: relative; z-index: 10; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; font-style: italic; color: var(--white); margin-bottom: 15px; }
 
-    <style>
-        /* Page-specific styles */
-        .about-hero {
-            position: relative;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: var(--color-bg-secondary);
-            padding-top: var(--space-16);
-        }
+    .about-section { padding: 80px 40px; background: var(--white); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+    .about-content h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 25px; line-height: 1.3; }
+    .about-content p { color: var(--gray); margin-bottom: 20px; line-height: 1.8; }
+    .about-image img { width: 100%; border-radius: 12px; }
 
-        .about-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            opacity: 0.2;
-            /* Subtle background image */
-        }
+    .actions-section { padding: 80px 40px; background: var(--korhogo-yellow); position: relative; overflow: hidden; }
+    .actions-section::before { content: ''; position: absolute; inset: 0; opacity: 0.1; background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23000000' stroke-width='1' fill='none'/%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20' stroke='%23000000' stroke-width='1' fill='none'/%3E%3C/svg%3E"); background-size: 40px 20px; }
+    .actions-inner { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+    .actions-content h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 25px; }
+    .actions-content p { margin-bottom: 20px; line-height: 1.8; }
+    .actions-content a { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; background: var(--black); color: var(--white); font-weight: 600; margin-top: 10px; transition: background 0.3s ease; }
+    .actions-content a:hover { background: var(--korhogo-red); }
+    .actions-image img { width: 100%; border-radius: 12px; }
 
-        .hero-waves-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
+    .team-section { padding: 80px 40px; background: var(--white); }
+    .team-header { text-align: center; margin-bottom: 50px; }
+    .team-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
+    .team-member { text-align: center; }
+    .team-member-image { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px; background: var(--light-gray); }
+    .team-member-image img { width: 100%; height: 100%; object-fit: cover; }
+    .team-member-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 3px; }
+    .team-member-role { font-size: 0.85rem; color: var(--korhogo-red); font-weight: 500; margin-bottom: 5px; }
+    .team-member-email { font-size: 0.85rem; color: var(--gray); }
+    .team-member-email a:hover { color: var(--korhogo-red); }
 
-        .about-hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            padding: 0 var(--space-4);
-        }
+    .partners-section { padding: 80px 40px; background: var(--light-gray); }
+    .partners-header { text-align: center; margin-bottom: 50px; }
+    .partners-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
+    .partner-item { text-align: center; }
+    .partner-image { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 10px; background: var(--white); }
+    .partner-image img { width: 100%; height: 100%; object-fit: cover; }
+    .partner-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+    .partner-role { font-size: 0.8rem; color: var(--gray); }
 
-        .about-hero h2 {
-            font-family: var(--font-heading);
-            font-weight: 900;
-            font-size: clamp(3rem, 8vw, 6rem);
-            margin-bottom: var(--space-4);
-            text-transform: uppercase;
-            line-height: 0.9;
-            color: var(--color-black);
-        }
+    .infos-section { padding: 80px 40px; background: var(--korhogo-green); color: var(--white); position: relative; overflow: hidden; }
+    .infos-section::before { content: ''; position: absolute; inset: 0; opacity: 0.1; background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3C/svg%3E"); background-size: 40px 20px; }
+    .infos-inner { position: relative; max-width: 1000px; margin: 0 auto; }
+    .infos-header { text-align: center; margin-bottom: 40px; }
+    .infos-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+    .infos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
+    .info-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; }
+    .info-card p { font-size: 0.95rem; opacity: 0.9; line-height: 1.6; }
+    .info-card a { color: var(--white); text-decoration: underline; }
+    .info-card a:hover { opacity: 0.8; }
 
-        .about-hero p {
-            font-size: var(--text-xl);
-            color: var(--color-gray-700);
-            max-width: 700px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: var(--space-4);
-            border-radius: var(--radius-lg);
-            backdrop-filter: blur(4px);
-        }
+    .newsletter-section { padding: 60px 40px; background: var(--white); border-top: 1px solid #E0E0E0; }
+    .newsletter-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .newsletter-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 15px; }
+    .newsletter-text { margin-bottom: 25px; color: var(--gray); }
+    .newsletter-form { display: flex; gap: 10px; }
+    .newsletter-input { flex: 1; padding: 15px 20px; font-size: 1rem; border: 1px solid #E0E0E0; outline: none; }
+    .newsletter-btn { padding: 15px 30px; background: var(--korhogo-red); color: var(--white); font-weight: 600; border: none; cursor: pointer; transition: background 0.3s ease; }
+    .newsletter-btn:hover { background: var(--black); }
 
-        .mission-section {
-            background: var(--color-white);
-            padding: var(--space-12) 0;
-        }
+    .footer { background: var(--black); color: var(--white); padding: 80px 40px 40px; }
+    .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { font-family: 'Playfair Display', serif; line-height: 0.9; margin-bottom: 20px; }
+    .footer-logo-sdc { display: block; font-size: 0.9rem; font-weight: 700; }
+    .footer-logo-name { display: block; font-size: 1.4rem; font-weight: 700; }
+    .footer-description { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+    .footer-contact p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+    .footer-contact a:hover { color: var(--korhogo-yellow); }
+    .footer-column-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-link { font-size: 0.9rem; color: rgba(255,255,255,0.7); transition: color 0.3s ease; }
+    .footer-link:hover { color: var(--korhogo-yellow); }
+    .footer-social { display: flex; gap: 15px; margin-top: 20px; }
+    .footer-social a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 50%; transition: background 0.3s ease; }
+    .footer-social a:hover { background: var(--korhogo-yellow); color: var(--black); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; max-width: 1200px; margin: 0 auto; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+    .footer-legal { display: flex; gap: 30px; }
+    .footer-legal a:hover { color: var(--white); }
 
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-8);
-            margin-top: var(--space-8);
-        }
-
-        .mission-card {
-            background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-white));
-            border-left: 6px solid var(--color-primary);
-            padding: var(--space-6);
-            border-radius: var(--radius-lg);
-            transition: all var(--transition-base);
-        }
-
-        .mission-card {
-            background: var(--color-white);
-            padding: var(--space-6);
-            border-radius: var(--radius-lg);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mission-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--color-primary);
-        }
-
-        .mission-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .mission-icon {
-            font-size: 3rem;
-            margin-bottom: var(--space-4);
-        }
-
-        .mission-title {
-            font-family: var(--font-heading);
-            font-size: var(--text-xl);
-            color: var(--color-primary);
-            margin-bottom: var(--space-3);
-        }
-
-        .mission-text {
-            color: var(--color-gray-700);
-            line-height: 1.6;
-        }
-
-        .culture-section {
-            background: var(--color-bg-primary);
-            padding: var(--space-12) 0;
-        }
-
-        .culture-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-6);
-            margin-top: var(--space-8);
-        }
-
-        .culture-item {
-            background: var(--color-white);
-            padding: var(--space-6);
-            border-radius: var(--radius-lg);
-            border: 3px solid var(--color-secondary-light);
-            text-align: center;
-            transition: all var(--transition-base);
-        }
-
-        .culture-item:hover {
-            border-color: var(--color-primary);
-            transform: scale(1.05);
-        }
-
-        .culture-icon {
-            font-size: 3.5rem;
-            margin-bottom: var(--space-3);
-        }
-
-        .culture-name {
-            font-family: var(--font-traditional);
-            font-size: var(--text-lg);
-            color: var(--color-primary);
-            font-weight: 600;
-        }
-
-        .stats-section {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            color: var(--color-white);
-            padding: var(--space-12) 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-8);
-            margin-top: var(--space-8);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: var(--font-heading);
-            font-size: var(--text-5xl);
-            font-weight: 700;
-            color: var(--color-secondary);
-            margin-bottom: var(--space-2);
-        }
-
-        .stat-label {
-            font-size: var(--text-lg);
-            color: var(--color-white);
-        }
-
-        .team-section {
-            background: var(--color-white);
-            padding: var(--space-12) 0;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-6);
-            margin-top: var(--space-8);
-        }
-
-        .team-card {
-            background: var(--color-bg-secondary);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            text-align: center;
-            padding: var(--space-6);
-            transition: all var(--transition-base);
-        }
-
-        .team-card {
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            text-align: center;
-            padding: var(--space-6);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .team-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            margin: 0 auto var(--space-4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--color-white);
-        }
-
-        .team-name {
-            font-family: var(--font-heading);
-            font-size: var(--text-xl);
-            color: var(--color-primary);
-            margin-bottom: var(--space-2);
-        }
-
-        .team-role {
-            color: var(--color-accent);
-            font-weight: 600;
-            margin-bottom: var(--space-3);
-        }
-
-        .team-bio {
-            color: var(--color-gray-700);
-            font-size: var(--text-sm);
-            line-height: 1.6;
-        }
-
-        .cta-section {
-            background: var(--color-bg-primary);
-            padding: var(--space-16) 0;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-family: var(--font-heading);
-            font-size: var(--text-3xl);
-            color: var(--color-primary);
-            margin-bottom: var(--space-4);
-        }
-
-        .cta-text {
-            font-size: var(--text-lg);
-            color: var(--color-gray-700);
-            max-width: 600px;
-            margin: 0 auto var(--space-8);
-        }
-
-        @media (max-width: 767px) {
-            .about-hero h2 {
-                font-size: var(--text-3xl);
-            }
-
-            .about-hero p {
-                font-size: var(--text-lg);
-            }
-
-            .stat-number {
-                font-size: var(--text-4xl);
-            }
-
-            .cta-title {
-                font-size: var(--text-2xl);
-            }
-        }
-    </style>
+    @media (max-width: 1024px) { .about-inner, .actions-inner { grid-template-columns: 1fr; } .team-grid { grid-template-columns: repeat(2, 1fr); } .partners-grid { grid-template-columns: repeat(3, 1fr); } .footer-inner { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .header { padding: 20px; } .nav-links { display: none; } .page-header { padding: 140px 20px 60px; } .about-section, .actions-section, .team-section, .partners-section, .infos-section { padding: 60px 20px; } .team-grid, .partners-grid { grid-template-columns: 1fr 1fr; } .infos-grid { grid-template-columns: 1fr; gap: 40px; } .social-sidebox { display: none; } .footer-inner { grid-template-columns: 1fr; text-align: center; } .footer-social { justify-content: center; } .footer-bottom { flex-direction: column; gap: 15px; } .newsletter-form { flex-direction: column; } }
+  </style>
 </head>
-
 <body>
+  <header class="header" id="header">
+    <a href="/index.html" class="logo"><span class="logo-sdc">AKWABA</span><span class="logo-name">Korhogo</span></a>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="/businesses.html">Répertoire</a>
+        <a href="/events.html">Événements</a>
+        <a href="/nouvelles.html">Nouvelles</a>
+        <a href="/planifiez-votre-visite.html">Planifiez votre visite</a>
+        <a href="/about.html" style="opacity: 0.7;">À propos</a>
+      </div>
+      <span class="nav-lang">Fr</span>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+  </header>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
-                    <h1>Akwaba Korhogo</h1>
-                </div>
-                <nav class="main-nav" id="mainNav">
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html" class="active">À propos</a>
-                </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-            </div>
-        </div>
-    </header>
+  <aside class="social-sidebox">
+    <a href="https://facebook.com/akwaba.korhogo" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com/akwaba_korhogo" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/2252586000000" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </aside>
 
-    <!-- Hero Section -->
-    <section class="about-hero">
-        <img src="/assets/images/korhogo-artisan.jpg" alt="" class="about-hero-bg">
-        <div class="hero-waves-container">
-            <img src="/assets/images/hero-waves.svg" alt="" class="hero-waves-bg">
-        </div>
-        <div class="container about-hero-content">
-            <h2>À PROPOS<br><span class="text-primary">D'AKWABA KORHOGO</span></h2>
-            <p>Connecter les résidents avec les commerçants locaux et valoriser le patrimoine culturel Senufo</p>
-        </div>
-    </section>
-
-    <!-- Mission Section -->
-    <section class="mission-section">
-        <div class="container">
-            <h3 class="text-center text-primary text-3xl mb-4">Notre Mission</h3>
-            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-8">
-                Akwaba Korhogo est une plateforme locale qui met en valeur les commerces, l'artisanat traditionnel
-                et la culture Senufo de Korhogo. Nous facilitons la découverte et le soutien des entreprises locales
-                tout en préservant notre riche patrimoine culturel.
-            </p>
-
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <div class="mission-icon">🏪</div>
-                    <h4 class="mission-title">Soutenir le commerce local</h4>
-                    <p class="mission-text">
-                        Nous aidons les commerçants locaux à se faire connaître et à développer leur activité
-                        en leur offrant une vitrine numérique accessible à tous.
-                    </p>
-                </div>
-
-                <div class="mission-card">
-                    <div class="mission-icon">🎨</div>
-                    <h4 class="mission-title">Valoriser l'artisanat Senufo</h4>
-                    <p class="mission-text">
-                        Le tissu de Korhogo, la sculpture sur bois et la poterie sont des trésors culturels
-                        que nous mettons en lumière pour les générations actuelles et futures.
-                    </p>
-                </div>
-
-                <div class="mission-card">
-                    <div class="mission-icon">🤝</div>
-                    <h4 class="mission-title">Renforcer la communauté</h4>
-                    <p class="mission-text">
-                        En connectant résidents et commerçants, nous créons un écosystème local fort
-                        où chacun peut contribuer à la prospérité de Korhogo.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Divider -->
-    <div class="container">
-        <div class="divider-traditional"></div>
+  <section class="page-header">
+    <div class="page-header-waves">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
+        <path d="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z" fill="#289D8F"/>
+        <path d="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z" fill="#F4A261"/>
+        <path d="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z" fill="#E76F51"/>
+      </svg>
     </div>
+    <div class="page-header-content">
+      <h1 class="page-title">À propos d'Akwaba Korhogo</h1>
+    </div>
+  </section>
 
-    <!-- Culture Section -->
-    <section class="culture-section">
-        <div class="container">
-            <h3 class="text-center text-primary text-3xl mb-4">Le Patrimoine Senufo</h3>
-            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-8">
-                Korhogo est la capitale de la région du Poro et le cœur de la culture Senufo en Côte d'Ivoire.
-                La ville est renommée pour son riche patrimoine artisanal traditionnel.
-            </p>
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-content">
+        <h2>Akwaba Korhogo est votre référence pour découvrir le patrimoine de Korhogo.</h2>
+        <p>Akwaba Korhogo a pour mission de promouvoir le rayonnement et stimuler le dynamisme commercial de Korhogo afin de contribuer à l'essor économique de la région en valorisant la culture Senufo et l'artisanat traditionnel.</p>
+        <p>Plateforme créée en 2026, Akwaba Korhogo regroupe les commerçants, artisans et professionnels locaux dont la contribution permet de positionner Korhogo comme une destination de choix pour découvrir l'authenticité Senufo.</p>
+        <p>Nous offrons plusieurs services afin de répondre aux besoins des commerçants et artisans tout en facilitant l'accès à l'information pour les visiteurs et résidents.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="Artisanat Korhogo">
+      </div>
+    </div>
+  </section>
 
-            <div class="culture-grid">
-                <div class="culture-item">
-                    <div class="culture-icon">🧵</div>
-                    <div class="culture-name">Tissage</div>
-                    <p class="mt-2 text-sm text-gray-600">Le célèbre tissu de Korhogo</p>
-                </div>
+  <section class="actions-section">
+    <div class="actions-inner">
+      <div class="actions-image">
+        <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=80" alt="Culture Senufo">
+      </div>
+      <div class="actions-content">
+        <h2>Notre engagement</h2>
+        <p>Akwaba Korhogo met en œuvre de nombreuses actions pour dynamiser l'économie locale : promotion de l'artisanat Senufo, visibilité des commerces locaux, organisation d'événements culturels, et soutien aux artisans.</p>
+        <p>Nos initiatives visent à renforcer l'attractivité de Korhogo et à créer une expérience unique pour les visiteurs désireux de découvrir la richesse de la culture Senufo et l'excellence de notre artisanat traditionnel.</p>
+        <a href="/businesses.html">Découvrez nos artisans <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
 
-                <div class="culture-item">
-                    <div class="culture-icon">🗿</div>
-                    <div class="culture-name">Sculpture</div>
-                    <p class="mt-2 text-sm text-gray-600">Masques et statues en bois</p>
-                </div>
+  <section class="team-section">
+    <div class="team-header"><h2>L'équipe d'Akwaba Korhogo</h2></div>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="team-member-image"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Armely Ara"></div>
+        <h3 class="team-member-name">Armely Ara</h3>
+        <p class="team-member-role">CHEF DE PROJET</p>
+        <p class="team-member-email"><a href="mailto:armely@akwaba-korhogo.ci">armely@akwaba-korhogo.ci</a></p>
+      </div>
+      <div class="team-member">
+        <div class="team-member-image"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt="The Day Info"></div>
+        <h3 class="team-member-name">The Day Info</h3>
+        <p class="team-member-role">DÉVELOPPEMENT</p>
+        <p class="team-member-email"><a href="mailto:dev@akwaba-korhogo.ci">dev@akwaba-korhogo.ci</a></p>
+      </div>
+      <div class="team-member">
+        <div class="team-member-image"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80" alt="GDG Cloud Abidjan"></div>
+        <h3 class="team-member-name">GDG Cloud Abidjan</h3>
+        <p class="team-member-role">SUPPORT TECHNIQUE</p>
+        <p class="team-member-email"><a href="mailto:support@akwaba-korhogo.ci">support@akwaba-korhogo.ci</a></p>
+      </div>
+    </div>
+  </section>
 
-                <div class="culture-item">
-                    <div class="culture-icon">🏺</div>
-                    <div class="culture-name">Poterie</div>
-                    <p class="mt-2 text-sm text-gray-600">Artisanat en terre cuite</p>
-                </div>
+  <section class="partners-section">
+    <div class="partners-header"><h2>Patrimoine artisanal Senufo</h2></div>
+    <div class="partners-grid">
+      <div class="partner-item">
+        <div class="partner-image"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=150&q=80" alt="Tissage"></div>
+        <h3 class="partner-name">Tissage</h3>
+        <p class="partner-role">Tissu de Korhogo</p>
+      </div>
+      <div class="partner-item">
+        <div class="partner-image"><img src="https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?w=150&q=80" alt="Sculpture"></div>
+        <h3 class="partner-name">Sculpture</h3>
+        <p class="partner-role">Masques et statues</p>
+      </div>
+      <div class="partner-item">
+        <div class="partner-image"><img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=150&q=80" alt="Poterie"></div>
+        <h3 class="partner-name">Poterie</h3>
+        <p class="partner-role">Terre cuite traditionnelle</p>
+      </div>
+      <div class="partner-item">
+        <div class="partner-image"><img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=150&q=80" alt="Peinture"></div>
+        <h3 class="partner-name">Peinture</h3>
+        <p class="partner-role">Art mural Senufo</p>
+      </div>
+    </div>
+  </section>
 
-                <div class="culture-item">
-                    <div class="culture-icon">🎨</div>
-                    <div class="culture-name">Peinture</div>
-                    <p class="mt-2 text-sm text-gray-600">Art mural et tissus peints</p>
-                </div>
-            </div>
+  <section class="infos-section">
+    <div class="infos-inner">
+      <div class="infos-header"><h2>Informations utiles</h2></div>
+      <div class="infos-grid">
+        <div class="info-card">
+          <h3>Contact</h3>
+          <p>Quartier Koko, Korhogo<br>+225 25 86 00 00 00<br><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <h3 class="text-center text-3xl mb-4">Akwaba en chiffres</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">150+</div>
-                    <div class="stat-label">Commerces référencés</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Quartiers couverts</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Catégories</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">1000+</div>
-                    <div class="stat-label">Utilisateurs actifs</div>
-                </div>
-            </div>
+        <div class="info-card">
+          <h3>Horaires</h3>
+          <p>Du lundi au vendredi<br>8h00 - 18h00<br>Samedi : 9h00 - 15h00</p>
         </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <h3 class="text-center text-primary text-3xl mb-4">Notre Équipe</h3>
-            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-8">
-                Akwaba Korhogo est porté par une équipe passionnée dédiée au développement local
-                et à la préservation de notre culture.
-            </p>
-
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-avatar">👤</div>
-                    <h4 class="team-name">Armely Ara</h4>
-                    <div class="team-role">Chef de Projet</div>
-                    <p class="team-bio">
-                        Passionné par le développement local et les technologies, Armely coordonne
-                        l'ensemble du projet Akwaba.
-                    </p>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">💻</div>
-                    <h4 class="team-name">The Day Info</h4>
-                    <div class="team-role">Développement</div>
-                    <p class="team-bio">
-                        Équipe technique en charge du développement et de la maintenance de la plateforme.
-                    </p>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">☁️</div>
-                    <h4 class="team-name">GDG Cloud Abidjan</h4>
-                    <div class="team-role">Support Technique</div>
-                    <p class="team-bio">
-                        Communauté Google Cloud qui apporte son expertise technique et son soutien au projet.
-                    </p>
-                </div>
-            </div>
+        <div class="info-card">
+          <h3>Ressources</h3>
+          <p>Guide touristique<br>Carte des artisans<br>Événements culturels</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- How it Works -->
-    <section class="section bg-secondary">
-        <div class="container">
-            <h3 class="text-center text-primary text-3xl mb-8">Comment ça marche ?</h3>
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <h2 class="newsletter-title">Restez informé sur Korhogo</h2>
+      <p class="newsletter-text">Inscrivez-vous à notre infolettre pour ne rien manquer de l'actualité de Korhogo et de ses artisans.</p>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Votre adresse email" required>
+        <button type="submit" class="newsletter-btn">S'inscrire</button>
+      </form>
+    </div>
+  </section>
 
-            <div class="two-column-layout">
-                <div class="content">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="flex items-start gap-4">
-                                <div class="text-4xl">1️⃣</div>
-                                <div>
-                                    <h4 class="text-primary mb-2">Découvrez</h4>
-                                    <p class="text-gray-700">
-                                        Parcourez notre répertoire de commerces et artisans locaux.
-                                        Utilisez les filtres par catégorie et quartier pour trouver
-                                        exactement ce que vous cherchez.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="footer-logo-sdc">AKWABA</span><span class="footer-logo-name">Korhogo</span></div>
+        <p class="footer-description">Contactez-nous pour toutes demandes relatives à Akwaba Korhogo</p>
+        <div class="footer-contact"><p>Quartier Koko, Korhogo, Côte d'Ivoire</p><p><a href="tel:+2252586000000">+225 25 86 00 00 00</a></p><p><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p></div>
+      </div>
+      <div class="footer-column"><h4 class="footer-column-title">Navigation</h4><ul class="footer-links"><li><a href="/" class="footer-link">Accueil</a></li><li><a href="/businesses.html" class="footer-link">Répertoire</a></li><li><a href="/events.html" class="footer-link">Événements</a></li></ul></div>
+      <div class="footer-column"><h4 class="footer-column-title">Akwaba</h4><ul class="footer-links"><li><a href="/about.html" class="footer-link">À propos</a></li><li><a href="/nouvelles.html" class="footer-link">Nouvelles</a></li></ul></div>
+      <div class="footer-column"><h4 class="footer-column-title">Découvrir</h4><ul class="footer-links"><li><a href="/businesses.html" class="footer-link">Commerces</a></li><li><a href="/events.html" class="footer-link">Événements</a></li><li><a href="/planifiez-votre-visite.html" class="footer-link">Planifiez votre visite</a></li></ul><div class="footer-social"><a href="https://facebook.com/akwaba.korhogo" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://instagram.com/akwaba_korhogo" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2252586000000" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+    </div>
+    <div class="footer-bottom"><p>Copyright © <span id="currentYear"></span> | Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p><div class="footer-legal"><a href="#">Politique de confidentialité</a><a href="#">Conditions</a></div></div>
+  </footer>
 
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="flex items-start gap-4">
-                                <div class="text-4xl">2️⃣</div>
-                                <div>
-                                    <h4 class="text-primary mb-2">Contactez</h4>
-                                    <p class="text-gray-700">
-                                        Appelez directement, obtenez l'itinéraire ou consultez
-                                        les horaires d'ouverture. Toutes les informations sont
-                                        à portée de main.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="flex items-start gap-4">
-                                <div class="text-4xl">3️⃣</div>
-                                <div>
-                                    <h4 class="text-primary mb-2">Soutenez</h4>
-                                    <p class="text-gray-700">
-                                        En utilisant Akwaba, vous soutenez l'économie locale et
-                                        aidez à préserver le patrimoine artisanal de Korhogo.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sidebar desktop-only">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="text-primary mb-4">Pour les commerçants</h4>
-                            <p class="mb-4 text-gray-700">
-                                Vous êtes commerçant ou artisan à Korhogo ?
-                                Rejoignez Akwaba pour augmenter votre visibilité !
-                            </p>
-                            <ul class="mb-4">
-                                <li class="mb-2">✅ Référencement gratuit</li>
-                                <li class="mb-2">✅ Fiche détaillée avec photos</li>
-                                <li class="mb-2">✅ Avis clients</li>
-                                <li class="mb-2">✅ Visibilité locale</li>
-                            </ul>
-                            <button class="btn btn-primary w-full" id="joinBtn">
-                                Rejoindre Akwaba
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h3 class="cta-title">Rejoignez la communauté Akwaba</h3>
-            <p class="cta-text">
-                Ensemble, construisons un écosystème local fort qui valorise nos commerces
-                et préserve notre patrimoine culturel Senufo.
-            </p>
-            <div class="flex gap-4 justify-center">
-                <a href="/businesses.html" class="btn btn-primary btn-lg">
-                    Découvrir les commerces
-                </a>
-                <a href="/events.html" class="btn btn-outline btn-lg">
-                    Voir les événements
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Akwaba Korhogo</h4>
-                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Catégories</h4>
-                    <a href="/businesses.html?category=artisanat">Artisanat</a>
-                    <a href="/businesses.html?category=restaurants">Restaurants</a>
-                    <a href="/businesses.html?category=textile">Textiles</a>
-                    <a href="/businesses.html?category=sculpture">Sculpture</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>📍 Quartier Koko, Korhogo</p>
-                    <p>☎️ +225 25 86 00 00 00</p>
-                    <p>✉️ contact@akwaba-korhogo.ci</p>
-                    <div class="flex gap-4 mt-4">
-                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
-                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
-                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
-
-    <!-- City Configuration -->
-    <script src="/js/config.js"></script>
-
-    <!-- AOS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50
-        });
-    </script>
-
-    <!-- Core JavaScript -->
-    <script src="/core/js/utils.js"></script>
-    <script src="/core/js/responsive-manager.js"></script>
-
-    <!-- Page Script -->
-    <script>
-        // Initialize responsive manager
-        const responsive = new ResponsiveManager();
-
-        // Join button
-        document.getElementById('joinBtn')?.addEventListener('click', () => {
-            alert('Fonctionnalité à venir! Vous pourrez bientôt vous inscrire directement depuis la plateforme.');
-        });
-
-        // Mobile menu toggle
-        document.getElementById('menuToggle')?.addEventListener('click', () => {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
-
-        // Update current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Initialize responsive elements
-        responsive.updateResponsiveElements();
-    </script>
-
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
 </body>
-
 </html>

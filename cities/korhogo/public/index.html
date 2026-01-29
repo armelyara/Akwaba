@@ -1,694 +1,1440 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez et soutenez les commerces et artisans locaux de Korhogo">
-    <meta name="keywords" content="Korhogo, commerces, artisanat, Senufo, Côte d'Ivoire">
-    <meta name="author" content="Akwaba Korhogo">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akwaba Korhogo | De l'essentiel à l'inattendu</title>
 
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#8B4513">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#E6302E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://korhogo.akwaba.ci/">
-    <meta property="og:title" content="Akwaba Korhogo - Votre guide local">
-    <meta property="og:description" content="Découvrez les commerces et artisans de Korhogo">
-    <meta property="og:image" content="/assets/images/og-image.jpg">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Découvrez et soutenez les commerces et artisans locaux de Korhogo">
+  <meta name="keywords" content="Korhogo, commerces, artisanat, Senufo, Côte d'Ivoire">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://korhogo.akwaba.ci/">
-    <meta property="twitter:title" content="Akwaba Korhogo">
-    <meta property="twitter:description" content="Découvrez les commerces et artisans de Korhogo">
-    <meta property="twitter:image" content="/assets/images/og-image.jpg">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://korhogo.akwaba.ci/">
+  <meta property="og:title" content="Akwaba Korhogo - Votre guide local">
+  <meta property="og:description" content="Découvrez les commerces et artisans de Korhogo">
+  <meta property="og:image" content="/assets/images/og-image.jpg">
 
-    <title>Akwaba Korhogo - Votre guide local des commerces et artisans</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
 
-    <!-- Manifest -->
-    <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap"
-        rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- Animation Library (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    :root {
+      --korhogo-red: #E6302E;
+      --korhogo-green: #289D8F;
+      --korhogo-yellow: #F4A261;
+      --korhogo-blue: #0056B3;
+      --korhogo-coral: #E76F51;
+      --black: #1A1A1A;
+      --white: #FFFFFF;
+      --gray: #757575;
+    }
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="/core/css/base.css">
-    <link rel="stylesheet" href="/core/css/layout.css">
-    <link rel="stylesheet" href="/core/css/components.css">
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <!-- Korhogo Theme -->
-    <link rel="stylesheet" href="/css/korhogo-theme.css">
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--black);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul { list-style: none; }
+
+    /* SOCIAL SIDEBOX */
+    .social-sidebox {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      box-shadow: -2px 0 15px rgba(0,0,0,0.1);
+      border-radius: 8px 0 0 8px;
+      overflow: hidden;
+    }
+
+    .social-sidebox a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      color: var(--black);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #E0E0E0;
+    }
+
+    .social-sidebox a:last-child {
+      border-bottom: none;
+    }
+
+    .social-sidebox a:hover {
+      background: #1565C0;
+      color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+      .social-sidebox {
+        display: none;
+      }
+    }
+
+    /* HEADER */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      transition: all 0.4s ease;
+    }
+
+    .header.scrolled {
+      background: var(--white);
+      padding: 20px 40px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+
+    .header.scrolled .logo,
+    .header.scrolled .nav a,
+    .header.scrolled .nav-lang {
+      color: var(--black);
+    }
+
+    .header.scrolled .hamburger span {
+      background: var(--black);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      line-height: 0.9;
+      transition: color 0.4s ease;
+    }
+
+    .logo-sdc {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .logo-name {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+      transition: opacity 0.3s ease;
+    }
+
+    .nav a:hover {
+      opacity: 0.7;
+    }
+
+    .nav-lang {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 2px;
+      background: var(--white);
+      transition: background 0.4s ease;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: var(--korhogo-red);
+      overflow: hidden;
+    }
+
+    .hero-waves {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-waves svg {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      top: -10%;
+      left: -10%;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+      background-size: 40px 20px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 40px 100px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 60px;
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 60px;
+    }
+
+    .quick-link {
+      color: var(--white);
+      transition: opacity 0.3s ease;
+    }
+
+    .quick-link:hover {
+      opacity: 0.8;
+    }
+
+    .quick-link-top {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 8px;
+    }
+
+    .quick-link-line {
+      width: 40px;
+      height: 1px;
+      background: var(--white);
+    }
+
+    .quick-link-label {
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    .quick-link-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    /* SEARCH SECTION */
+    .search-section {
+      position: relative;
+      padding: 80px 40px;
+      background: var(--white);
+    }
+
+    .search-pattern {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 25%;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23000000' stroke-width='1' fill='none'/%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20' stroke='%23000000' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+      background-size: 40px 20px;
+      pointer-events: none;
+    }
+
+    .search-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1000px;
+      margin-left: auto;
+      padding-left: 100px;
+    }
+
+    .search-box {
+      padding-top: 20px;
+    }
+
+    .search-input-wrapper {
+      display: flex;
+      align-items: center;
+      border-bottom: 1.5px solid var(--black);
+      padding-bottom: 10px;
+    }
+
+    .search-input {
+      flex: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--gray);
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+
+    .search-input::placeholder {
+      color: var(--gray);
+    }
+
+    .search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--black);
+      padding: 5px;
+    }
+
+    .categories-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 25px;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 40px;
+    }
+
+    .category-link {
+      font-size: 1rem;
+      color: var(--black);
+      transition: color 0.3s ease;
+    }
+
+    .category-link:hover {
+      color: var(--korhogo-red);
+    }
+
+    /* BUSINESSES SECTION */
+    .businesses-section {
+      padding: 40px 0 80px;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 25px;
+      animation: scroll 40s linear infinite;
+      width: max-content;
+    }
+
+    .carousel:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .business-card {
+      flex-shrink: 0;
+      width: 320px;
+    }
+
+    .business-card-image {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .business-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .business-card:hover .business-card-image img {
+      transform: scale(1.05);
+    }
+
+    .business-card-logo {
+      position: absolute;
+      bottom: -25px;
+      left: 15px;
+      width: 55px;
+      height: 55px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .business-card-logo img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+    }
+
+    .business-card-content {
+      padding-top: 20px;
+      padding-left: 5px;
+    }
+
+    .business-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .business-card-category {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin-bottom: 10px;
+    }
+
+    .business-card-address {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .business-card-link {
+      font-size: 0.9rem;
+      color: var(--black);
+      text-decoration: underline;
+    }
+
+    .business-card-link:hover {
+      color: var(--korhogo-red);
+    }
+
+    /* ABOUT SECTION */
+    .about-section {
+      padding: 100px 40px;
+      background: #F5F5F5;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 25px;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--black);
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .about-link:hover {
+      color: var(--korhogo-red);
+      border-color: var(--korhogo-red);
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* VISIT SECTION */
+    .visit-section {
+      padding: 100px 40px;
+      background: var(--korhogo-green);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .visit-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+      background-size: 40px 20px;
+    }
+
+    .visit-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .visit-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .visit-text {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .visit-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .visit-feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .visit-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: var(--white);
+      color: var(--korhogo-green);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .visit-btn:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .visit-map {
+      height: 350px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* EVENTS SECTION */
+    .events-section {
+      padding: 100px 40px;
+      background: var(--white);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 50px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .section-link {
+      font-weight: 600;
+      color: var(--black);
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 3px;
+    }
+
+    .section-link:hover {
+      color: var(--korhogo-red);
+      border-color: var(--korhogo-red);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .event-card {
+      transition: transform 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-card-image {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .event-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .event-card:hover .event-card-image img {
+      transform: scale(1.05);
+    }
+
+    .event-card-date {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--korhogo-red);
+      color: var(--white);
+      padding: 8px 12px;
+      text-align: center;
+      min-width: 55px;
+    }
+
+    .event-card-day {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .event-card-month {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .event-card-status {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--black);
+      color: var(--white);
+      padding: 5px 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .event-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .event-card-excerpt {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* NEWSLETTER */
+    .newsletter-section {
+      padding: 80px 40px;
+      background: var(--korhogo-yellow);
+    }
+
+    .newsletter-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .newsletter-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-text {
+      margin-bottom: 25px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 15px 20px;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+    }
+
+    .newsletter-btn {
+      padding: 15px 30px;
+      background: var(--black);
+      color: var(--white);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--korhogo-red);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 80px 40px 40px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      line-height: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo-sdc {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .footer-logo-name {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .footer-description {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-contact p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+
+    .footer-contact a:hover {
+      color: var(--korhogo-yellow);
+    }
+
+    .footer-column-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--korhogo-yellow);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background: var(--korhogo-yellow);
+      color: var(--black);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 30px;
+    }
+
+    .footer-legal a:hover {
+      color: var(--white);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .search-inner {
+        padding-left: 0;
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-content {
+        padding: 0 20px 80px;
+      }
+
+      .quick-links {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .search-section,
+      .about-section,
+      .visit-section,
+      .events-section {
+        padding: 60px 20px;
+      }
+
+      .about-inner,
+      .visit-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="/assets/images/logo.png" alt="Akwaba Korhogo">
-                    <h1>Akwaba Korhogo</h1>
-                </div>
-                <nav class="main-nav" id="mainNav">
-                    <a href="/" class="active">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-            </div>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <a href="/index.html" class="logo">
+      <span class="logo-sdc">AKWABA</span>
+      <span class="logo-name">Korhogo</span>
+    </a>
+
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="/businesses.html">Répertoire</a>
+        <a href="/events.html">Événements</a>
+        <a href="/nouvelles.html">Nouvelles</a>
+        <a href="/planifiez-votre-visite.html">Planifiez votre visite</a>
+        <a href="/about.html">À propos</a>
+      </div>
+      <span class="nav-lang">Fr</span>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- SOCIAL SIDEBOX -->
+  <aside class="social-sidebox">
+    <a href="https://facebook.com/akwaba.korhogo" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com/akwaba_korhogo" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/2252586000000" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </aside>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-waves">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="zigzag" x="0" y="0" width="40" height="20" patternUnits="userSpaceOnUse">
+            <path d="M0 10 L10 0 L20 10 L30 0 L40 10" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
+            <path d="M0 20 L10 10 L20 20 L30 10 L40 20" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
+          </pattern>
+        </defs>
+
+        <path d="M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z" fill="#289D8F">
+          <animate attributeName="d" dur="15s" repeatCount="indefinite"
+            values="M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z;
+                    M-100,150 C100,250 300,100 500,250 C700,300 900,150 1100,200 C1300,350 1500,200 1600,250 L1600,900 L-100,900 Z;
+                    M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z"/>
+        </path>
+
+        <path d="M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z" fill="#F4A261">
+          <animate attributeName="d" dur="18s" repeatCount="indefinite"
+            values="M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z;
+                    M-100,280 C150,180 350,300 550,220 C750,180 950,320 1150,280 C1350,180 1500,280 1600,250 L1600,900 L-100,900 Z;
+                    M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z"/>
+        </path>
+
+        <path d="M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z" fill="#0056B3">
+          <animate attributeName="d" dur="20s" repeatCount="indefinite"
+            values="M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z;
+                    M800,-30 C900,30 1000,20 1100,100 C1200,140 1300,70 1400,120 C1500,130 1600,100 1600,100 L1600,480 C1500,470 1400,500 1300,470 C1200,400 1100,460 1000,420 C900,340 850,400 800,370 L800,-30 Z;
+                    M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z"/>
+        </path>
+
+        <path d="M1100,-50 C1150,20 1200,0 1250,50 C1300,100 1350,30 1400,70 C1450,110 1600,50 1600,50 L1600,300 C1500,280 1400,320 1300,280 C1200,240 1150,300 1100,250 L1100,-50 Z" fill="#E76F51">
+          <animate attributeName="d" dur="12s" repeatCount="indefinite"
+            values="M1100,-50 C1150,20 1200,0 1250,50 C1300,100 1350,30 1400,70 C1450,110 1600,50 1600,50 L1600,300 C1500,280 1400,320 1300,280 C1200,240 1150,300 1100,250 L1100,-50 Z;
+                    M1100,-30 C1150,40 1200,20 1250,70 C1300,80 1350,50 1400,90 C1450,90 1600,70 1600,70 L1600,280 C1500,300 1400,300 1300,300 C1200,260 1150,280 1100,270 L1100,-30 Z;
+                    M1100,-50 C1150,20 1200,0 1250,50 C1300,100 1350,30 1400,70 C1450,110 1600,50 1600,50 L1600,300 C1500,280 1400,320 1300,280 C1200,240 1150,300 1100,250 L1100,-50 Z"/>
+        </path>
+      </svg>
+    </div>
+    <div class="hero-pattern"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">De l'essentiel<br>à l'inattendu</h1>
+
+      <div class="quick-links">
+        <a href="/businesses.html" class="quick-link">
+          <div class="quick-link-top">
+            <span class="quick-link-line"></span>
+            <span class="quick-link-label">Découvrir</span>
+          </div>
+          <span class="quick-link-title">Répertoire</span>
+        </a>
+
+        <a href="/events.html" class="quick-link">
+          <div class="quick-link-top">
+            <span class="quick-link-line"></span>
+            <span class="quick-link-label">Se divertir</span>
+          </div>
+          <span class="quick-link-title">Événements</span>
+        </a>
+
+        <a href="/nouvelles.html" class="quick-link">
+          <div class="quick-link-top">
+            <span class="quick-link-line"></span>
+            <span class="quick-link-label">S'informer</span>
+          </div>
+          <span class="quick-link-title">Nouvelles</span>
+        </a>
+
+        <a href="/planifiez-votre-visite.html" class="quick-link">
+          <div class="quick-link-top">
+            <span class="quick-link-line"></span>
+            <span class="quick-link-label">Planifier</span>
+          </div>
+          <span class="quick-link-title">Visite</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH SECTION -->
+  <section class="search-section">
+    <div class="search-pattern"></div>
+    <div class="search-inner">
+      <div class="search-box">
+        <div class="search-input-wrapper">
+          <input type="text" class="search-input" id="searchInput" placeholder="Rechercher">
+          <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
         </div>
-    </header>
+      </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-waves-container">
-            <!-- Background configured in CSS or we can use an img here for better control -->
-            <img src="/assets/images/hero-waves.svg" alt="" class="hero-waves-bg">
+      <div class="categories">
+        <h2 class="categories-title">Trouvez un<br>commerce</h2>
+        <div class="categories-grid" id="categoriesGrid">
+          <!-- Populated by JavaScript -->
         </div>
-        <div class="container hero-content-wrapper">
-            <div class="hero-text-content">
-                <div class="container hero-content" data-aos="zoom-in" data-aos-duration="1000">
-                    <h2 class="animate-text">AKWABA<br><span class="text-primary-light">KORHOGO</span></h2>
-                    <p class="hero-tagline" data-aos="fade-up" data-aos-delay="400">Artisanat traditionnel, commerces
-                        locaux et saveurs authentiques</p>
+      </div>
+    </div>
+  </section>
 
-                    <div class="search-container floating-search" data-aos="fade-up" data-aos-delay="600">
-                        <input type="text" id="searchInput" placeholder="Que recherchez-vous ? (ex: Tissus, Masques...)"
-                            aria-label="Recherche">
-                        <button id="searchBtn" aria-label="Rechercher">
-                            🔍
-                        </button>
-                    </div>
-                </div>
-            </div>
+  <!-- BUSINESSES SECTION -->
+  <section class="businesses-section">
+    <div class="carousel-wrapper">
+      <div class="carousel" id="businessCarousel">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-content">
+        <h2 class="about-title">Akwaba Korhogo est votre référence pour découvrir le quartier.</h2>
+        <p class="about-text">La plateforme Akwaba Korhogo a pour mission de promouvoir le rayonnement et stimuler le dynamisme commercial du territoire de Korhogo afin de contribuer à l'essor économique du quartier.</p>
+        <p class="about-text">Découvrez l'artisanat Senufo, les commerces locaux et la richesse culturelle de Korhogo.</p>
+        <a href="/about.html" class="about-link">À propos <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=80" alt="Korhogo">
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT SECTION -->
+  <section class="visit-section">
+    <div class="visit-inner">
+      <div class="visit-content">
+        <h2 class="visit-label">Infos utiles</h2>
+        <p class="visit-text">Planifiez votre visite à Korhogo à travers nos propositions de lieux.</p>
+        <div class="visit-features">
+          <span class="visit-feature"><i class="fas fa-store"></i> Commerces</span>
+          <span class="visit-feature"><i class="fas fa-palette"></i> Artisanat</span>
+          <span class="visit-feature"><i class="fas fa-utensils"></i> Restaurants</span>
+          <span class="visit-feature"><i class="fas fa-theater-masks"></i> Culture</span>
+          <span class="visit-feature"><i class="fas fa-calendar"></i> Événements</span>
         </div>
-    </section>
-
-    <!-- Quick Navigation Buttons (SDC Style) -->
-    <section class="quick-nav-section">
-        <div class="container">
-            <div class="quick-nav-grid" data-aos="fade-up">
-                <a href="/businesses.html" class="quick-nav-btn quick-nav-repertoire">
-                    <span class="quick-nav-icon">🏪</span>
-                    <span class="quick-nav-text">Répertoire</span>
-                </a>
-                <a href="/events.html" class="quick-nav-btn quick-nav-evenements">
-                    <span class="quick-nav-icon">🎉</span>
-                    <span class="quick-nav-text">Événements</span>
-                </a>
-                <a href="/nouvelles.html" class="quick-nav-btn quick-nav-nouvelles">
-                    <span class="quick-nav-icon">📰</span>
-                    <span class="quick-nav-text">Nouvelles</span>
-                </a>
-                <a href="/planifiez-votre-visite.html" class="quick-nav-btn quick-nav-visite">
-                    <span class="quick-nav-icon">🗺️</span>
-                    <span class="quick-nav-text">Visite</span>
-                </a>
-            </div>
+        <a href="/planifiez-votre-visite.html" class="visit-btn">Planifiez votre visite</a>
+      </div>
+      <div class="visit-map">
+        <div style="text-align: center; color: rgba(255,255,255,0.6);">
+          <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+          <p>Carte interactive</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Trouvez un commerce (Find a Business) -->
-    <section class="section find-business-section">
-        <div class="container">
-            <h3 class="section-title" data-aos="fade-up">Trouvez un commerce</h3>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                Que vous soyez un·e résident·e ou un visiteur de Korhogo, trouvez tout ce qu'il vous faut dans le
-                quartier : de l'essentiel à l'inattendu !
-            </p>
+  <!-- EVENTS SECTION -->
+  <section class="events-section">
+    <div class="section-header">
+      <h2 class="section-title">Événements</h2>
+      <a href="/events.html" class="section-link">Tous les événements</a>
+    </div>
 
-            <div class="find-business-grid" data-aos="fade-up" data-aos-delay="200">
-                <!-- Categories Grid -->
-                <div class="categories-grid-compact" id="categoriesGrid">
-                    <!-- Populated by JavaScript -->
-                </div>
-            </div>
+    <div class="events-grid" id="eventsGrid">
+      <!-- Populated by JavaScript -->
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <h2 class="newsletter-title">Vous souhaitez rester informé sur Korhogo ?</h2>
+      <p class="newsletter-text">Inscrivez-vous à notre infolettre pour ne rien manquer.</p>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Votre courriel">
+        <button type="submit" class="newsletter-btn">S'inscrire</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="footer-logo-sdc">AKWABA</span>
+          <span class="footer-logo-name">Korhogo</span>
         </div>
-    </section>
-
-    <!-- Featured Businesses (Large Images like SDC) -->
-    <section class="section featured-section">
-        <div class="container">
-            <h3 class="section-title" data-aos="fade-up">Commerces en vedette</h3>
-            <div id="featuredBusinesses" class="featured-grid">
-                <!-- Populated by JS -->
-            </div>
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="/businesses.html" class="btn btn-primary btn-lg">Voir tous les commerces</a>
-            </div>
+        <p class="footer-description">Contactez-nous pour toutes demandes ou questions relatives à Akwaba Korhogo</p>
+        <div class="footer-contact">
+          <p>Quartier Koko, Korhogo, Côte d'Ivoire</p>
+          <p><a href="tel:+2252586000000">+225 25 86 00 00 00</a></p>
+          <p><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p>
         </div>
-    </section>
+      </div>
 
-    <!-- Infos Utiles (Useful Info) -->
-    <section class="section bg-light infos-section">
-        <div class="container">
-            <h3 class="section-title" data-aos="fade-up">Infos utiles</h3>
-            <div class="infos-grid">
-                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="info-card-icon">🏛️</div>
-                    <h4 class="info-card-title">À propos de la SDC Korhogo</h4>
-                    <p class="info-card-text">
-                        Découvrez l'histoire et la mission de notre société de développement commercial.
-                    </p>
-                    <a href="/about.html" class="info-card-link">En savoir plus →</a>
-                </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/" class="footer-link">Accueil</a></li>
+          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
+          <li><a href="/events.html" class="footer-link">Événements</a></li>
+          <li><a href="/about.html" class="footer-link">À propos</a></li>
+        </ul>
+      </div>
 
-                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="info-card-icon">📍</div>
-                    <h4 class="info-card-title">Les 4 pôles du quartier</h4>
-                    <p class="info-card-text">
-                        Explorez les quatre zones principales de Korhogo et leurs spécialités.
-                    </p>
-                    <a href="/planifiez-votre-visite.html" class="info-card-link">Découvrir →</a>
-                </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Akwaba Korhogo</h4>
+        <ul class="footer-links">
+          <li><a href="/about.html" class="footer-link">À propos</a></li>
+          <li><a href="/nouvelles.html" class="footer-link">Nouvelles</a></li>
+        </ul>
+      </div>
 
-                <div class="info-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="info-card-icon">🎨</div>
-                    <h4 class="info-card-title">Artisanat Senufo</h4>
-                    <p class="info-card-text">
-                        Plongez dans le riche patrimoine artisanal de la culture Senufo.
-                    </p>
-                    <a href="/businesses.html?category=artisanat" class="info-card-link">Explorer →</a>
-                </div>
-            </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Visiter Korhogo</h4>
+        <ul class="footer-links">
+          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
+          <li><a href="/events.html" class="footer-link">Événements</a></li>
+          <li><a href="/planifiez-votre-visite.html" class="footer-link">Planifiez votre visite</a></li>
+        </ul>
+
+        <div class="footer-social">
+          <a href="https://facebook.com/akwaba.korhogo" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com/akwaba_korhogo" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/2252586000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Actualités (News) -->
-    <section class="section actualites-section">
-        <div class="container">
-            <h3 class="section-title" data-aos="fade-up">Actualités</h3>
-            <div id="newsGrid" class="news-grid-home">
-                <!-- Populated by JS -->
+    <div class="footer-bottom">
+      <p>Copyright © <span id="currentYear"></span> | Akwaba Korhogo.</p>
+      <div class="footer-legal">
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Conditions d'utilisations</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+  <!-- City Configuration -->
+  <script src="/js/config.js"></script>
+
+  <!-- Core JavaScript -->
+  <script src="/core/js/utils.js"></script>
+  <script src="/core/js/responsive-manager.js"></script>
+  <script src="/core/js/firebase-manager.js"></script>
+  <script src="/core/js/business-directory.js"></script>
+
+  <script>
+    // Initialize
+    const responsive = new ResponsiveManager();
+    const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
+    const businessDirectory = new BusinessDirectory(firebaseManager, responsive);
+
+    // Initialize Firebase
+    firebaseManager.initialize().then(success => {
+      if (success) {
+        loadCategories();
+        loadBusinesses();
+        loadEvents();
+      }
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Load categories
+    function loadCategories() {
+      const grid = document.getElementById('categoriesGrid');
+      CITY_CONFIG.categories.slice(0, 12).forEach(category => {
+        const link = document.createElement('a');
+        link.href = `/businesses.html?category=${category.id}`;
+        link.className = 'category-link';
+        link.textContent = category.name;
+        grid.appendChild(link);
+      });
+    }
+
+    // Load businesses
+    async function loadBusinesses() {
+      const result = await businessDirectory.getBusinesses({ status: 'approved', limit: 12 });
+      if (result.success && result.data.length > 0) {
+        const carousel = document.getElementById('businessCarousel');
+        // Duplicate for infinite scroll
+        const businesses = [...result.data, ...result.data];
+
+        businesses.forEach(business => {
+          const card = document.createElement('article');
+          card.className = 'business-card';
+          card.innerHTML = `
+            <div class="business-card-image">
+              <img src="${business.photos?.[0] || 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=400'}" alt="${business.name}">
+              <div class="business-card-logo">
+                <img src="${business.thumbnail || 'https://via.placeholder.com/50'}" alt="Logo">
+              </div>
             </div>
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="/nouvelles.html" class="btn btn-outline btn-lg">Toutes les nouvelles</a>
+            <div class="business-card-content">
+              <h3 class="business-card-title">${business.name}</h3>
+              <p class="business-card-category">${getCategoryName(business.category)}</p>
+              <p class="business-card-address">${business.neighborhood || 'Korhogo'}</p>
+              <a href="/business.html?id=${business.id}" class="business-card-link">Site Web</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Events Section (With Circular Date Badges like SDC) -->
-    <section class="section bg-light events-home-section">
-        <div class="container">
-            <h3 class="section-title" data-aos="fade-up">Événements à venir</h3>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                Envie de vous amuser ? Découvrez nos événements à venir et faites de Korhogo votre destination pour vos
-                sorties en solo, entre amis ou en famille !
-            </p>
-            <div id="eventsGrid" class="events-grid-home">
-                <!-- Populated by JS -->
-            </div>
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="/events.html" class="btn btn-outline btn-lg">Tous les événements</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Branding Section (Like MTL Logo in SDC) -->
-    <section class="section branding-section">
-        <div class="container">
-            <div class="branding-content" data-aos="zoom-in">
-                <div class="branding-logo">
-                    <div class="korhogo-badge">
-                        <span class="badge-text">KORHOGO</span>
-                        <span class="badge-subtitle">Capitale du Poro</span>
-                    </div>
-                </div>
-                <div class="branding-text">
-                    <h3>Bienvenue à Korhogo</h3>
-                    <p>
-                        Capitale de la région du Poro, Korhogo est le cœur battant de la culture Senufo.
-                        Découvrez nos artisans, nos saveurs et notre hospitalité légendaire.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section (Why Akwaba Korhogo) -->
-    <section class="section why-section">
-        <div class="container">
-            <div class="two-column-layout">
-                <div class="content" data-aos="fade-right">
-                    <h3 class="text-primary">Pourquoi Akwaba Korhogo ?</h3>
-                    <p>
-                        <strong>Akwaba Korhogo</strong> est votre guide local pour découvrir et soutenir
-                        les commerces et artisans de Korhogo. Notre plateforme met en lumière le
-                        riche patrimoine artisanal Senufo et les commerces locaux qui font
-                        la richesse de notre ville.
-                    </p>
-                    <ul class="feature-list">
-                        <li>🎨 <strong>Artisanat traditionnel</strong> - Tissage, sculpture, poterie</li>
-                        <li>🍽️ <strong>Restaurants et maquis</strong> - Saveurs locales authentiques</li>
-                        <li>🛍️ <strong>Commerces locaux</strong> - Soutenir l'économie de Korhogo</li>
-                        <li>📱 <strong>Mobile-first</strong> - Trouvez rapidement ce dont vous avez besoin</li>
-                    </ul>
-                    <a href="/about.html" class="btn btn-primary">En savoir plus</a>
-                </div>
-                <div class="sidebar desktop-only" data-aos="fade-left">
-                    <div class="stats-card">
-                        <h4 class="stats-title">Statistiques</h4>
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <div class="stat-number">150+</div>
-                                <div class="stat-label">Commerces référencés</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">8</div>
-                                <div class="stat-label">Quartiers couverts</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">12</div>
-                                <div class="stat-label">Catégories</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section class="section partners-section">
-        <div class="container">
-            <h3 class="section-title text-center" data-aos="fade-up">Nos partenaires</h3>
-            <div class="partners-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="partner-logo">
-                    <img src="/assets/images/partners/the-day-info.png" alt="The Day Info" />
-                </div>
-                <div class="partner-logo">
-                    <img src="/assets/images/partners/gdg-cloud-abidjan.png" alt="GDG Cloud Abidjan" />
-                </div>
-                <div class="partner-logo">
-                    <img src="/assets/images/partners/ville-korhogo.png" alt="Ville de Korhogo" />
-                </div>
-                <div class="partner-logo">
-                    <img src="/assets/images/partners/chambre-commerce.png" alt="Chambre de Commerce" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Akwaba Korhogo</h4>
-                    <p>Votre guide local pour découvrir et soutenir les commerces et artisans de Korhogo.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <a href="/">Accueil</a>
-                    <a href="/businesses.html">Commerces</a>
-                    <a href="/events.html">Événements</a>
-                    <a href="/nouvelles.html">Nouvelles</a>
-                    <a href="/planifiez-votre-visite.html">Planifier</a>
-                    <a href="/about.html">À propos</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Catégories</h4>
-                    <a href="/businesses.html?category=artisanat">Artisanat</a>
-                    <a href="/businesses.html?category=restaurants">Restaurants</a>
-                    <a href="/businesses.html?category=textile">Textiles</a>
-                    <a href="/businesses.html?category=sculpture">Sculpture</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>📍 Quartier Koko, Korhogo</p>
-                    <p>☎️ +225 25 86 00 00 00</p>
-                    <p>✉️ contact@akwaba-korhogo.ci</p>
-                    <div class="flex gap-4 mt-4">
-                        <a href="https://facebook.com/akwaba.korhogo" target="_blank" aria-label="Facebook">📘</a>
-                        <a href="https://instagram.com/akwaba_korhogo" target="_blank" aria-label="Instagram">📷</a>
-                        <a href="https://wa.me/2252586000000" target="_blank" aria-label="WhatsApp">💬</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026-<span id="currentYear"></span> Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
-
-    <!-- City Configuration -->
-    <script src="/js/config.js"></script>
-
-    <!-- Core JavaScript -->
-    <script src="/core/js/utils.js"></script>
-    <script src="/core/js/responsive-manager.js"></script>
-    <script src="/core/js/firebase-manager.js"></script>
-    <script src="/core/js/business-directory.js"></script>
-
-    <!-- AOS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50
+          `;
+          carousel.appendChild(card);
         });
-    </script>
+      }
+    }
 
-    <!-- Page Script -->
-    <script>
-        // Initialize managers
-        const responsive = new ResponsiveManager();
-        const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
-        const businessDirectory = new BusinessDirectory(firebaseManager, responsive);
+    // Load events
+    async function loadEvents() {
+      try {
+        const eventsRef = firebaseManager.getCityCollection('events');
+        const snapshot = await eventsRef.where('status', '==', 'approved').limit(3).get();
 
-        // Initialize Firebase
-        firebaseManager.initialize().then(success => {
-            if (success) {
-                loadPageContent();
-            } else {
-                console.error('Firebase initialization failed');
-            }
+        if (snapshot.empty) {
+          loadSampleEvents();
+          return;
+        }
+
+        const grid = document.getElementById('eventsGrid');
+        snapshot.docs.forEach(doc => {
+          const event = doc.data();
+          const card = createEventCard(event);
+          grid.appendChild(card);
         });
+      } catch (error) {
+        loadSampleEvents();
+      }
+    }
 
-        // Load categories
-        function loadCategories() {
-            const grid = document.getElementById('categoriesGrid');
-            CITY_CONFIG.categories.forEach(category => {
-                const card = document.createElement('div');
-                card.className = 'category-card';
-                card.innerHTML = `
-                    <div class="category-icon">${category.icon}</div>
-                    <div class="category-name">${category.name}</div>
-                `;
-                card.onclick = () => {
-                    window.location.href = `/businesses.html?category=${category.id}`;
-                };
-                grid.appendChild(card);
-            });
+    // Load sample events
+    function loadSampleEvents() {
+      const grid = document.getElementById('eventsGrid');
+      const sampleEvents = [
+        { title: 'Festival du Tissu de Korhogo', date: '15 Mars', status: 'À venir', image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600' },
+        { title: 'Marché Artisanal', date: '20 Mars', status: 'À venir', image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600' },
+        { title: 'Soirée Culturelle Senufo', date: '25 Mars', status: 'À venir', image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600' }
+      ];
+
+      sampleEvents.forEach(event => {
+        const card = document.createElement('article');
+        card.className = 'event-card';
+        card.innerHTML = `
+          <div class="event-card-image">
+            <img src="${event.image}" alt="${event.title}">
+            <div class="event-card-date">
+              <span class="event-card-day">${event.date.split(' ')[0]}</span>
+              <span class="event-card-month">${event.date.split(' ')[1]}</span>
+            </div>
+            <span class="event-card-status">${event.status}</span>
+          </div>
+          <h3 class="event-card-title">${event.title}</h3>
+          <p class="event-card-excerpt">Découvrez la richesse culturelle de Korhogo...</p>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Create event card
+    function createEventCard(event) {
+      const card = document.createElement('article');
+      card.className = 'event-card';
+      const date = event.startDate?.toDate ? event.startDate.toDate() : new Date();
+      const day = date.getDate();
+      const month = date.toLocaleDateString('fr-FR', { month: 'short' });
+
+      card.innerHTML = `
+        <div class="event-card-image">
+          <img src="${event.image || 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600'}" alt="${event.title}">
+          <div class="event-card-date">
+            <span class="event-card-day">${day}</span>
+            <span class="event-card-month">${month}</span>
+          </div>
+          <span class="event-card-status">${event.status || 'À venir'}</span>
+        </div>
+        <h3 class="event-card-title">${event.title}</h3>
+        <p class="event-card-excerpt">${event.description?.substring(0, 80) || ''}...</p>
+      `;
+      return card;
+    }
+
+    // Helper
+    function getCategoryName(categoryId) {
+      const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
+      return category ? category.name : categoryId;
+    }
+
+    // Search
+    document.getElementById('searchBtn')?.addEventListener('click', () => {
+      const query = document.getElementById('searchInput').value;
+      if (query) {
+        window.location.href = `/businesses.html?search=${encodeURIComponent(query)}`;
+      }
+    });
+
+    document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const query = e.target.value;
+        if (query) {
+          window.location.href = `/businesses.html?search=${encodeURIComponent(query)}`;
         }
+      }
+    });
 
-        // Load featured businesses
-        async function loadFeaturedBusinesses() {
-            const grid = document.getElementById('featuredBusinesses');
-            grid.innerHTML = '<div class="spinner"></div>';
+    // Update year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            const result = await businessDirectory.getFeaturedBusinesses(6);
-
-            if (result.success && result.data.length > 0) {
-                grid.innerHTML = '';
-                result.data.forEach(business => {
-                    const card = createBusinessCard(business);
-                    grid.appendChild(card);
-                });
-            } else {
-                grid.innerHTML = '<div class="empty-state"><p>Aucun commerce disponible pour le moment.</p></div>';
-            }
-        }
-
-        // Create business card
-        function createBusinessCard(business) {
-            const card = document.createElement('div');
-            card.className = responsive.isMobile ? 'business-card business-card-mobile' : 'business-card';
-
-            if (responsive.isMobile) {
-                card.innerHTML = `
-                    <div class="business-card-header">
-                        <img src="${business.thumbnail || '/assets/images/placeholder.jpg'}"
-                             alt="${business.name}"
-                             class="business-card-thumb">
-                        <div class="business-card-info">
-                            <h4 class="business-card-name">${business.name}</h4>
-                            <p class="business-card-category">${getCategoryName(business.category)}</p>
-                            <div class="business-card-meta">
-                                <span class="business-card-rating">⭐ ${business.rating?.toFixed(1) || 'N/A'}</span>
-                                ${business.isOpen !== null ?
-                        `<span class="business-card-status ${business.isOpen ? 'open' : 'closed'}">
-                                        ${business.isOpen ? '🟢 Ouvert' : '🔴 Fermé'}
-                                    </span>` : ''}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quick-actions">
-                        <button onclick="callBusiness('${business.phone}')" class="action-btn action-btn-call">
-                            ☎️ Appeler
-                        </button>
-                        <button onclick="navigateTo('${business.id}')" class="action-btn action-btn-navigate">
-                            📍 Y aller
-                        </button>
-                        <button onclick="viewBusiness('${business.id}')" class="action-btn action-btn-share">
-                            👁️ Voir
-                        </button>
-                    </div>
-                `;
-            } else {
-                card.innerHTML = `
-                    <div class="card-image-wrapper">
-                        <img src="${business.photos?.[0] || '/assets/images/placeholder.jpg'}"
-                             alt="${business.name}"
-                             class="card-image">
-                        <button onclick="viewBusiness('${business.id}')" class="card-voir-btn">
-                            VOIR
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="business-card-name">${business.name}</h4>
-                        <p class="business-card-category">${getCategoryName(business.category)}</p>
-                        <p class="business-card-location">📍 ${getNeighborhoodName(business.neighborhood)}</p>
-                    </div>
-                `;
-            }
-
-            return card;
-        }
-
-        // Helper functions
-        function getCategoryName(categoryId) {
-            const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
-            return category ? category.name : categoryId;
-        }
-
-        function getNeighborhoodName(neighborhoodId) {
-            const neighborhood = CITY_CONFIG.neighborhoods.find(n => n.id === neighborhoodId);
-            return neighborhood ? neighborhood.name : neighborhoodId;
-        }
-
-        function callBusiness(phone) {
-            if (phone) {
-                window.location.href = `tel:${phone}`;
-            }
-        }
-
-        function navigateTo(businessId) {
-            // Get business location and open in maps
-            businessDirectory.getBusinessById(businessId).then(result => {
-                if (result.success && result.data.location) {
-                    const { lat, lng } = result.data.location;
-                    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`, '_blank');
-                }
-            });
-        }
-
-        function viewBusiness(businessId) {
-            window.location.href = `/business.html?id=${businessId}`;
-        }
-
-        // Search functionality
-        document.getElementById('searchBtn')?.addEventListener('click', () => {
-            const searchTerm = document.getElementById('searchInput').value;
-            if (searchTerm) {
-                window.location.href = `/businesses.html?search=${encodeURIComponent(searchTerm)}`;
-            }
-        });
-
-        document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                document.getElementById('searchBtn').click();
-            }
-        });
-
-        // Mobile menu toggle
-        document.getElementById('menuToggle')?.addEventListener('click', () => {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
-
-        // Load page content
-        function loadPageContent() {
-            loadCategories();
-            loadFeaturedBusinesses();
-            loadNews();
-            loadEvents();
-        }
-
-        // Load news articles
-        function loadNews() {
-            const grid = document.getElementById('newsGrid');
-
-            // Mock news data (replace with Firebase data later)
-            const newsArticles = [
-                {
-                    id: 1,
-                    title: "Le Festival du Tissu de Korhogo revient pour sa 5ème édition",
-                    excerpt: "Célébration de l'art traditionnel du tissage Senufo avec des ateliers et démonstrations.",
-                    category: "Culture",
-                    image: "/assets/images/korhogo-culture.jpg",
-                    date: "2024-02-15"
-                },
-                {
-                    id: 2,
-                    title: "Nouveau marché artisanal inauguré au quartier Koko",
-                    excerpt: "Un espace moderne pour les artisans locaux de présenter leurs créations.",
-                    category: "Actualité",
-                    image: "/assets/images/korhogo-market.jpg",
-                    date: "2024-02-10"
-                },
-                {
-                    id: 3,
-                    title: "Rencontre avec les sculpteurs de masques Senufo",
-                    excerpt: "Découvrez les secrets de fabrication des masques sacrés du Poro.",
-                    category: "Artisanat",
-                    image: "/assets/images/senoufo-festival.jpg",
-                    date: "2024-02-05"
-                }
-            ];
-
-            grid.innerHTML = '';
-            newsArticles.forEach(article => {
-                const card = document.createElement('a');
-                card.href = `/nouvelles.html?id=${article.id}`;
-                card.className = 'news-card-home';
-                card.setAttribute('data-aos', 'fade-up');
-
-                card.innerHTML = `
-                    <img src="${article.image}" alt="${article.title}" class="news-card-image" onerror="this.src='/assets/images/placeholder.jpg'">
-                    <div class="news-card-content">
-                        <span class="news-card-category">${article.category}</span>
-                        <h4 class="news-card-title">${article.title}</h4>
-                        <p class="news-card-excerpt">${article.excerpt}</p>
-                        <span class="news-card-date">${formatDate(article.date)}</span>
-                    </div>
-                `;
-
-                grid.appendChild(card);
-            });
-        }
-
-        // Load events with circular date badges
-        function loadEvents() {
-            const grid = document.getElementById('eventsGrid');
-
-            // Mock events data (replace with Firebase data later)
-            const events = [
-                {
-                    id: 1,
-                    title: "Festival du Poro",
-                    location: "Bois Sacré de Koko",
-                    date: "2024-03-15",
-                    time: "14:00",
-                    image: "/assets/images/korhogo-culture.jpg"
-                },
-                {
-                    id: 2,
-                    title: "Marché hebdomadaire de Korhogo",
-                    location: "Place du Marché Central",
-                    date: "2024-02-28",
-                    time: "08:00",
-                    image: "/assets/images/korhogo-market.jpg"
-                },
-                {
-                    id: 3,
-                    title: "Exposition d'art Senufo",
-                    location: "Centre Culturel",
-                    date: "2024-03-20",
-                    time: "10:00",
-                    image: "/assets/images/senoufo-festival.jpg"
-                }
-            ];
-
-            grid.innerHTML = '';
-            events.forEach(event => {
-                const eventDate = new Date(event.date);
-                const day = eventDate.getDate();
-                const month = eventDate.toLocaleDateString('fr-FR', { month: 'short' }).toUpperCase();
-
-                const card = document.createElement('a');
-                card.href = `/events.html?id=${event.id}`;
-                card.className = 'event-card-home';
-                card.setAttribute('data-aos', 'fade-up');
-
-                card.innerHTML = `
-                    <div class="event-card-image-wrapper">
-                        <img src="${event.image}" alt="${event.title}" class="event-card-image" onerror="this.src='/assets/images/placeholder.jpg'">
-                        <div class="event-date-badge">
-                            <div class="event-date-day">${day}</div>
-                            <div class="event-date-month">${month}</div>
-                        </div>
-                    </div>
-                    <div class="event-card-body">
-                        <h4 class="event-card-title">${event.title}</h4>
-                        <p class="event-card-location">📍 ${event.location}</p>
-                        <p class="event-card-time">🕐 ${event.time}</p>
-                    </div>
-                `;
-
-                grid.appendChild(card);
-            });
-        }
-
-        // Format date helper
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('fr-FR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        }
-
-        // Update current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Initialize responsive elements
-        responsive.updateResponsiveElements();
-    </script>
-
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker registered:', registration);
-                    })
-                    .catch(error => {
-                        console.log('Service Worker registration failed:', error);
-                    });
-            });
-        }
-    </script>
-
+    // Service Worker (PWA)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
-
 </html>
