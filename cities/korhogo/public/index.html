@@ -39,6 +39,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* =============================================
+         RESET & BASE
+         ============================================= */
     *,
     *::before,
     *::after {
@@ -48,11 +51,11 @@
     }
 
     :root {
-      --korhogo-red: #E6302E;
-      --korhogo-green: #289D8F;
-      --korhogo-yellow: #F4A261;
-      --korhogo-blue: #0056B3;
-      --korhogo-coral: #E76F51;
+      --sdc-red: #E53935;
+      --sdc-green: #26A69A;
+      --sdc-yellow: #F9A825;
+      --sdc-blue: #1565C0;
+      --sdc-coral: #E57373;
       --black: #1A1A1A;
       --white: #FFFFFF;
       --gray: #757575;
@@ -78,53 +81,65 @@
       list-style: none;
     }
 
-    /* SOCIAL SIDEBOX */
-    .social-sidebar {
+    /* =============================================
+         SOCIAL SIDEBOX
+         ============================================= */
+    .social-sidebox {
       position: fixed;
-      right: 30px;
+      right: 0;
       top: 50%;
       transform: translateY(-50%);
       z-index: 999;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      background: var(--white);
+      box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 8px 0 0 8px;
+      overflow: hidden;
     }
 
-    /* Ligne verticale blanche */
-    .social-sidebar::before {
-      content: '';
-      width: 1px;
-      height: 80px;
-      background-color: #FFFFFF;
-      margin-bottom: 25px;
-    }
-
-    .social-sidebar__icons {
+    .social-sidebox a {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 20px;
-    }
-
-    .social-sidebar__link {
-      color: #FFFFFF;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      color: var(--black);
       font-size: 1.1rem;
       transition: all 0.3s ease;
+      border-bottom: 1px solid #E0E0E0;
     }
 
-    .social-sidebar__link:hover {
-      transform: scale(1.2);
-      opacity: 0.8;
+    .social-sidebox a:last-child {
+      border-bottom: none;
     }
 
-    /* Cacher sur mobile */
+    .social-sidebox a:hover {
+      background: #1565C0;
+      color: var(--white);
+    }
+
+    .social-sidebox a.facebook:hover {
+      background: #1877F2;
+    }
+
+    .social-sidebox a.instagram:hover {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+
+    .social-sidebox a.linkedin:hover {
+      background: #0A66C2;
+    }
+
     @media (max-width: 768px) {
-      .social-sidebar {
+      .social-sidebox {
         display: none;
       }
     }
 
-    /* HEADER */
+    /* =============================================
+         HEADER
+         ============================================= */
     .header {
       position: fixed;
       top: 0;
@@ -154,6 +169,7 @@
       background: var(--black);
     }
 
+    /* Logo empilé */
     .logo {
       font-family: 'Playfair Display', serif;
       color: var(--white);
@@ -174,6 +190,7 @@
       font-weight: 700;
     }
 
+    /* Navigation */
     .nav {
       display: flex;
       align-items: center;
@@ -217,14 +234,17 @@
       transition: background 0.4s ease;
     }
 
-    /* HERO */
+    /* =============================================
+         HERO - Vagues fluides
+         ============================================= */
     .hero {
       position: relative;
       min-height: 100vh;
-      background: var(--korhogo-red);
+      background: var(--sdc-red);
       overflow: hidden;
     }
 
+    /* Container SVG pour les vagues */
     .hero-waves {
       position: absolute;
       inset: 0;
@@ -240,6 +260,7 @@
       left: -10%;
     }
 
+    /* Motif zigzag overlay */
     .hero-pattern {
       position: absolute;
       inset: 0;
@@ -249,6 +270,7 @@
       pointer-events: none;
     }
 
+    /* Contenu Hero */
     .hero-content {
       position: relative;
       z-index: 10;
@@ -269,6 +291,7 @@
       margin-bottom: 60px;
     }
 
+    /* Quick Links */
     .quick-links {
       display: flex;
       gap: 60px;
@@ -307,13 +330,16 @@
       font-weight: 700;
     }
 
-    /* SEARCH SECTION */
+    /* =============================================
+         SECTION RECHERCHE
+         ============================================= */
     .search-section {
       position: relative;
       padding: 80px 40px;
       background: var(--white);
     }
 
+    /* Motif zigzag à gauche uniquement */
     .search-pattern {
       position: absolute;
       left: 0;
@@ -336,6 +362,7 @@
       padding-left: 100px;
     }
 
+    /* Barre de recherche */
     .search-box {
       padding-top: 20px;
     }
@@ -371,6 +398,9 @@
       padding: 5px;
     }
 
+    /* Catégories */
+    .categories {}
+
     .categories-title {
       font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
@@ -392,10 +422,12 @@
     }
 
     .category-link:hover {
-      color: var(--korhogo-red);
+      color: var(--sdc-red);
     }
 
-    /* BUSINESSES SECTION */
+    /* =============================================
+         SECTION COMMERCES - Carrousel
+         ============================================= */
     .businesses-section {
       padding: 40px 0 80px;
       background: var(--white);
@@ -429,6 +461,7 @@
       }
     }
 
+    /* Business Card */
     .business-card {
       flex-shrink: 0;
       width: 320px;
@@ -506,10 +539,12 @@
     }
 
     .business-card-link:hover {
-      color: var(--korhogo-red);
+      color: var(--sdc-red);
     }
 
-    /* ABOUT SECTION */
+    /* =============================================
+         SECTION À PROPOS
+         ============================================= */
     .about-section {
       padding: 100px 40px;
       background: #F5F5F5;
@@ -551,8 +586,8 @@
     }
 
     .about-link:hover {
-      color: var(--korhogo-red);
-      border-color: var(--korhogo-red);
+      color: var(--sdc-red);
+      border-color: var(--sdc-red);
     }
 
     .about-image img {
@@ -560,10 +595,12 @@
       border-radius: 8px;
     }
 
-    /* VISIT SECTION */
+    /* =============================================
+         SECTION INFOS UTILES (VISITE)
+         ============================================= */
     .visit-section {
       padding: 100px 40px;
-      background: var(--korhogo-green);
+      background: var(--sdc-green);
       color: var(--white);
       position: relative;
       overflow: hidden;
@@ -622,7 +659,7 @@
       display: inline-block;
       padding: 15px 30px;
       background: var(--white);
-      color: var(--korhogo-green);
+      color: var(--sdc-green);
       font-weight: 600;
       transition: all 0.3s ease;
     }
@@ -641,10 +678,12 @@
       justify-content: center;
     }
 
-    /* EVENTS SECTION */
-    .events-section {
+    /* =============================================
+         SECTION ACTUALITÉS
+         ============================================= */
+    .news-section {
       padding: 100px 40px;
-      background: var(--white);
+      background: #F5F5F5;
     }
 
     .section-header {
@@ -671,8 +710,90 @@
     }
 
     .section-link:hover {
-      color: var(--korhogo-red);
-      border-color: var(--korhogo-red);
+      color: var(--sdc-red);
+      border-color: var(--sdc-red);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .news-card {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      background: var(--white);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .news-card:hover {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .news-card-image {
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .news-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .news-card:hover .news-card-image img {
+      transform: scale(1.05);
+    }
+
+    .news-card-content {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .news-card-date {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 15px;
+    }
+
+    .news-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+
+    .news-card-excerpt {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .news-card-link {
+      font-weight: 600;
+      color: var(--black);
+      text-decoration: underline;
+    }
+
+    .news-card-link:hover {
+      color: var(--sdc-red);
+    }
+
+    /* =============================================
+         SECTION ÉVÉNEMENTS
+         ============================================= */
+    .events-section {
+      padding: 100px 40px;
+      background: var(--white);
     }
 
     .events-grid {
@@ -713,7 +834,7 @@
       position: absolute;
       top: 15px;
       left: 15px;
-      background: var(--korhogo-red);
+      background: var(--sdc-red);
       color: var(--white);
       padding: 8px 12px;
       text-align: center;
@@ -761,10 +882,52 @@
       line-height: 1.5;
     }
 
-    /* NEWSLETTER */
+    /* =============================================
+         PARTENAIRES
+         ============================================= */
+    .partners-section {
+      padding: 60px 40px;
+      background: var(--white);
+      border-top: 1px solid #E0E0E0;
+    }
+
+    .partners-title {
+      text-align: center;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gray);
+      margin-bottom: 30px;
+    }
+
+    .partners-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .partner-logo {
+      max-width: 140px;
+      max-height: 50px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .partner-logo:hover {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+
+    /* =============================================
+         NEWSLETTER
+         ============================================= */
     .newsletter-section {
       padding: 80px 40px;
-      background: var(--korhogo-yellow);
+      background: var(--sdc-yellow);
     }
 
     .newsletter-inner {
@@ -808,10 +971,12 @@
     }
 
     .newsletter-btn:hover {
-      background: var(--korhogo-red);
+      background: var(--sdc-red);
     }
 
-    /* FOOTER */
+    /* =============================================
+         FOOTER
+         ============================================= */
     .footer {
       background: var(--black);
       color: var(--white);
@@ -860,7 +1025,7 @@
     }
 
     .footer-contact a:hover {
-      color: var(--korhogo-yellow);
+      color: var(--sdc-yellow);
     }
 
     .footer-column-title {
@@ -883,7 +1048,7 @@
     }
 
     .footer-link:hover {
-      color: var(--korhogo-yellow);
+      color: var(--sdc-yellow);
     }
 
     .footer-social {
@@ -904,7 +1069,7 @@
     }
 
     .footer-social a:hover {
-      background: var(--korhogo-yellow);
+      background: var(--sdc-yellow);
       color: var(--black);
     }
 
@@ -928,7 +1093,9 @@
       color: var(--white);
     }
 
-    /* RESPONSIVE */
+    /* =============================================
+         RESPONSIVE
+         ============================================= */
     @media (max-width: 1024px) {
       .search-inner {
         padding-left: 0;
@@ -966,6 +1133,7 @@
       .search-section,
       .about-section,
       .visit-section,
+      .news-section,
       .events-section {
         padding: 60px 20px;
       }
@@ -974,6 +1142,18 @@
       .visit-inner {
         grid-template-columns: 1fr;
         gap: 40px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-card {
+        grid-template-columns: 1fr;
+      }
+
+      .news-card-image {
+        height: 200px;
       }
 
       .events-grid {
@@ -1005,20 +1185,22 @@
 
   <!-- HEADER -->
   <header class="header" id="header">
-    <a href="/index.html" class="logo">
-      <span class="logo-sdc">AKWABA</span>
-      <span class="logo-name">Korhogo</span>
+    <a href="index.html" class="logo">
+      <span class="logo-sdc">SDC</span>
+      <span class="logo-name">Côte-</span>
+      <span class="logo-name">des-</span>
+      <span class="logo-name">Neiges</span>
     </a>
 
     <nav class="nav">
       <div class="nav-links">
-        <a href="/businesses.html">Répertoire</a>
-        <a href="/events.html">Événements</a>
-        <a href="/nouvelles.html">Nouvelles</a>
-        <a href="/planifiez-votre-visite.html">Planifiez votre visite</a>
-        <a href="/about.html">À propos</a>
+        <a href="pages/repertoire.html">Répertoire</a>
+        <a href="pages/evenements.html">Événements</a>
+        <a href="pages/nouvelles.html">Nouvelles</a>
+        <a href="pages/visite.html">Planifiez votre visite</a>
+        <a href="pages/a-propos.html">À propos</a>
       </div>
-      <span class="nav-lang">Fr</span>
+      <span class="nav-lang">En</span>
       <div class="hamburger">
         <span></span>
         <span></span>
