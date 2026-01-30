@@ -4,34 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akwaba Korhogo | Fo yè nan</title>
-
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- PWA Meta Tags -->
-  <meta name="theme-color" content="#E6302E">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Découvrez et soutenez les commerces et artisans locaux de Korhogo">
-  <meta name="keywords" content="Korhogo, commerces, artisanat, Senufo, Côte d'Ivoire">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://korhogo.akwaba.ci/">
-  <meta property="og:title" content="Akwaba Korhogo - Votre guide local">
-  <meta property="og:description" content="Découvrez les commerces et artisans de Korhogo">
-  <meta property="og:image" content="/assets/images/og-image.jpg">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-
-  <!-- Manifest -->
-  <link rel="manifest" href="/manifest.json">
+  <title>SDC Côte-des-Neiges | De l'essentiel à l'inattendu</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -48,8 +21,10 @@
   <!-- HEADER -->
   <header class="header" id="header">
     <a href="index.html" class="logo">
-      <span class="logo-sdc">AKWABA</span>
-      <span class="logo-name">KORHOGO</span>
+      <span class="logo-sdc">SDC</span>
+      <span class="logo-name">Côte-</span>
+      <span class="logo-name">des-</span>
+      <span class="logo-name">Neiges</span>
     </a>
 
     <nav class="nav">
@@ -84,8 +59,9 @@
     </div>
   </aside>
 
-  <!-- HERO -->
+  <!-- HERO avec vagues -->
   <section class="hero">
+    <!-- Vagues SVG -->
     <div class="hero-waves">
       <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -95,36 +71,64 @@
           </pattern>
         </defs>
 
+        <!-- Vague verte -->
         <path
           d="M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z"
-          fill="#289D8F">
+          fill="#26A69A">
+          <animate attributeName="d" dur="15s" repeatCount="indefinite"
+            values="M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z;
+                    M-100,150 C100,250 300,100 500,250 C700,300 900,150 1100,200 C1300,350 1500,200 1600,250 L1600,900 L-100,900 Z;
+                    M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z" />
+        </path>
+        <path
+          d="M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z"
+          fill="url(#zigzag)">
           <animate attributeName="d" dur="15s" repeatCount="indefinite"
             values="M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z;
                     M-100,150 C100,250 300,100 500,250 C700,300 900,150 1100,200 C1300,350 1500,200 1600,250 L1600,900 L-100,900 Z;
                     M-100,100 C100,300 300,50 500,200 C700,350 900,100 1100,250 C1300,400 1500,150 1600,200 L1600,900 L-100,900 Z" />
         </path>
 
+        <!-- Vague jaune -->
         <path
           d="M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z"
-          fill="#F4A261">
+          fill="#F9A825">
+          <animate attributeName="d" dur="18s" repeatCount="indefinite"
+            values="M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z;
+                    M-100,280 C150,180 350,300 550,220 C750,180 950,320 1150,280 C1350,180 1500,280 1600,250 L1600,900 L-100,900 Z;
+                    M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z" />
+        </path>
+        <path
+          d="M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z"
+          fill="url(#zigzag)">
           <animate attributeName="d" dur="18s" repeatCount="indefinite"
             values="M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z;
                     M-100,280 C150,180 350,300 550,220 C750,180 950,320 1150,280 C1350,180 1500,280 1600,250 L1600,900 L-100,900 Z;
                     M-100,250 C150,150 350,350 550,250 C750,150 950,350 1150,250 C1350,150 1500,300 1600,280 L1600,900 L-100,900 Z" />
         </path>
 
+        <!-- Vague bleue (en haut à droite) -->
         <path
           d="M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z"
-          fill="#0056B3">
+          fill="#1565C0">
+          <animate attributeName="d" dur="20s" repeatCount="indefinite"
+            values="M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z;
+                    M800,-30 C900,30 1000,20 1100,100 C1200,140 1300,70 1400,120 C1500,130 1600,100 1600,100 L1600,480 C1500,470 1400,500 1300,470 C1200,400 1100,460 1000,420 C900,340 850,400 800,370 L800,-30 Z;
+                    M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z" />
+        </path>
+        <path
+          d="M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z"
+          fill="url(#zigzag)">
           <animate attributeName="d" dur="20s" repeatCount="indefinite"
             values="M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z;
                     M800,-30 C900,30 1000,20 1100,100 C1200,140 1300,70 1400,120 C1500,130 1600,100 1600,100 L1600,480 C1500,470 1400,500 1300,470 C1200,400 1100,460 1000,420 C900,340 850,400 800,370 L800,-30 Z;
                     M800,-50 C900,50 1000,0 1100,80 C1200,160 1300,50 1400,100 C1500,150 1600,80 1600,80 L1600,500 C1500,450 1400,520 1300,450 C1200,380 1100,480 1000,400 C900,320 850,420 800,350 L800,-50 Z" />
         </path>
 
+        <!-- Vague corail (en haut à droite) -->
         <path
           d="M1100,-50 C1150,20 1200,0 1250,50 C1300,100 1350,30 1400,70 C1450,110 1600,50 1600,50 L1600,300 C1500,280 1400,320 1300,280 C1200,240 1150,300 1100,250 L1100,-50 Z"
-          fill="#E76F51">
+          fill="#E57373">
           <animate attributeName="d" dur="12s" repeatCount="indefinite"
             values="M1100,-50 C1150,20 1200,0 1250,50 C1300,100 1350,30 1400,70 C1450,110 1600,50 1600,50 L1600,300 C1500,280 1400,320 1300,280 C1200,240 1150,300 1100,250 L1100,-50 Z;
                     M1100,-30 C1150,40 1200,20 1250,70 C1300,80 1350,50 1400,90 C1450,90 1600,70 1600,70 L1600,280 C1500,300 1400,300 1300,300 C1200,260 1150,280 1100,270 L1100,-30 Z;
@@ -132,21 +136,21 @@
         </path>
       </svg>
     </div>
-    <div class="hero-pattern"></div>
 
+    <!-- Contenu -->
     <div class="hero-content">
       <h1 class="hero-title">De l'essentiel<br>à l'inattendu</h1>
 
       <div class="quick-links">
-        <a href="/businesses.html" class="quick-link">
+        <a href="pages/repertoire.html" class="quick-link">
           <div class="quick-link-top">
             <span class="quick-link-line"></span>
             <span class="quick-link-label">Découvrir</span>
           </div>
-          <span class="quick-link-title">Répertoire</span>
+          <span class="quick-link-title">Repertoire</span>
         </a>
 
-        <a href="/events.html" class="quick-link">
+        <a href="pages/evenements.html" class="quick-link">
           <div class="quick-link-top">
             <span class="quick-link-line"></span>
             <span class="quick-link-label">Se divertir</span>
@@ -154,7 +158,7 @@
           <span class="quick-link-title">Événements</span>
         </a>
 
-        <a href="/nouvelles.html" class="quick-link">
+        <a href="pages/nouvelles.html" class="quick-link">
           <div class="quick-link-top">
             <span class="quick-link-line"></span>
             <span class="quick-link-label">S'informer</span>
@@ -162,7 +166,7 @@
           <span class="quick-link-title">Nouvelles</span>
         </a>
 
-        <a href="/planifiez-votre-visite.html" class="quick-link">
+        <a href="pages/visite.html" class="quick-link">
           <div class="quick-link-top">
             <span class="quick-link-line"></span>
             <span class="quick-link-label">Planifier</span>
@@ -173,66 +177,264 @@
     </div>
   </section>
 
-  <!-- SEARCH SECTION -->
+  <!-- SECTION RECHERCHE -->
   <section class="search-section">
     <div class="search-pattern"></div>
     <div class="search-inner">
       <div class="search-box">
         <div class="search-input-wrapper">
-          <input type="text" class="search-input" id="searchInput" placeholder="Rechercher">
-          <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+          <input type="text" class="search-input" placeholder="Rechercher">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
         </div>
       </div>
 
       <div class="categories">
         <h2 class="categories-title">Trouvez un<br>commerce</h2>
-        <div class="categories-grid" id="categoriesGrid">
-          <!-- Populated by JavaScript -->
+        <div class="categories-grid">
+          <a href="#" class="category-link">Alimentation</a>
+          <a href="#" class="category-link">Hébergement</a>
+          <a href="#" class="category-link">Beauté et Bien-être</a>
+          <a href="#" class="category-link">Magasins</a>
+          <a href="#" class="category-link">Communautaire</a>
+          <a href="#" class="category-link">Professionnels de la santé</a>
+          <a href="#" class="category-link">Dépanneurs</a>
+          <a href="#" class="category-link">Restauration</a>
+          <a href="#" class="category-link">Écoles spécialisées</a>
+          <a href="#" class="category-link">Services</a>
+          <a href="#" class="category-link">Garderies</a>
+          <a href="#" class="category-link">Services financiers</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BUSINESSES SECTION -->
+  <!-- SECTION COMMERCES -->
   <section class="businesses-section">
     <div class="carousel-wrapper">
-      <div class="carousel" id="businessCarousel">
-        <!-- Populated by JavaScript -->
+      <div class="carousel">
+        <!-- Card 1 -->
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Banque Nationale">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/d32f2f/ffffff?text=BN" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Banque Nationale du Canada</h3>
+            <p class="business-card-category">Services financiers</p>
+            <p class="business-card-address">5355, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1Y4</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Sutton Dentaire">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/000000/ffffff?text=S" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Sutton Dentaire</h3>
+            <p class="business-card-category">Soins dentaires</p>
+            <p class="business-card-address">3535, chemin Queen-Mary, 317 Montréal<br>(Québec) H3V 1H8</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80" alt="Exofruits">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/e53935/ffffff?text=EX" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Exofruits</h3>
+            <p class="business-card-category">Épicerie</p>
+            <p class="business-card-address">5192, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1X8</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1581092921461-eab10380f1de?w=600&q=80" alt="Repair Squad">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/1565c0/ffffff?text=RS" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Repair Squad</h3>
+            <p class="business-card-category">Électronique & Informatique</p>
+            <p class="business-card-address">5637, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1Y8</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80" alt="Restaurant">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/ff5722/ffffff?text=PP" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Piri Piri Grillades</h3>
+            <p class="business-card-category">Restaurants</p>
+            <p class="business-card-address">5480, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1Y5</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Café">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/795548/ffffff?text=MC" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">McDonald's</h3>
+            <p class="business-card-category">Restaurants</p>
+            <p class="business-card-address">5252, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1X8</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <!-- Duplication pour boucle infinie -->
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Banque Nationale">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/d32f2f/ffffff?text=BN" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Banque Nationale du Canada</h3>
+            <p class="business-card-category">Services financiers</p>
+            <p class="business-card-address">5355, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1Y4</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&q=80" alt="Sutton Dentaire">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/000000/ffffff?text=S" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Sutton Dentaire</h3>
+            <p class="business-card-category">Soins dentaires</p>
+            <p class="business-card-address">3535, chemin Queen-Mary, 317 Montréal<br>(Québec) H3V 1H8</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80" alt="Exofruits">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/e53935/ffffff?text=EX" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Exofruits</h3>
+            <p class="business-card-category">Épicerie</p>
+            <p class="business-card-address">5192, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1X8</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1581092921461-eab10380f1de?w=600&q=80" alt="Repair Squad">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/1565c0/ffffff?text=RS" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Repair Squad</h3>
+            <p class="business-card-category">Électronique & Informatique</p>
+            <p class="business-card-address">5637, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1Y8</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80" alt="Restaurant">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/ff5722/ffffff?text=PP" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">Piri Piri Grillades</h3>
+            <p class="business-card-category">Restaurants</p>
+            <p class="business-card-address">5480, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1Y5</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
+
+        <article class="business-card">
+          <div class="business-card-image">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Café">
+            <div class="business-card-logo">
+              <img src="https://via.placeholder.com/50x50/795548/ffffff?text=MC" alt="Logo">
+            </div>
+          </div>
+          <div class="business-card-content">
+            <h3 class="business-card-title">McDonald's</h3>
+            <p class="business-card-category">Restaurants</p>
+            <p class="business-card-address">5252, chemin de la Côte-des-Neiges,<br>Montréal (Québec) H3T 1X8</p>
+            <a href="#" class="business-card-link">Site Web</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
+  <!-- SECTION À PROPOS -->
   <section class="about-section">
     <div class="about-inner">
       <div class="about-content">
-        <h2 class="about-title">Akwaba Korhogo est votre référence pour découvrir le quartier.</h2>
-        <p class="about-text">La plateforme Akwaba Korhogo a pour mission de promouvoir le rayonnement et stimuler le
-          dynamisme commercial du territoire de Korhogo afin de contribuer à l'essor économique du quartier.</p>
-        <p class="about-text">Découvrez l'artisanat Senufo, les commerces locaux et la richesse culturelle de Korhogo.
-        </p>
-        <a href="/about.html" class="about-link">À propos <i class="fas fa-arrow-right"></i></a>
+        <h2 class="about-title">La SDC Côte-des-Neiges est votre référence pour découvrir le quartier.</h2>
+        <p class="about-text">La Société de Développement Commercial (SDC) Côte-des-Neiges a pour mission de promouvoir
+          le rayonnement et stimuler le dynamisme commercial du territoire de la SDC afin de contribuer à l'essor
+          économique du quartier en collaboration avec les partenaires du milieu.</p>
+        <p class="about-text">Organisme à but non-lucratif créé en 2018, la SDC Côte-des-Neiges regroupe 230 commerçants
+          et professionnels.</p>
+        <a href="#" class="about-link">À propos <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=80" alt="Korhogo">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Notre quartier">
       </div>
     </div>
   </section>
 
-  <!-- VISIT SECTION -->
+  <!-- SECTION VISITE -->
   <section class="visit-section">
     <div class="visit-inner">
       <div class="visit-content">
         <h2 class="visit-label">Infos utiles</h2>
-        <p class="visit-text">Planifiez votre visite à Korhogo à travers nos propositions de lieux.</p>
+        <p class="visit-text">Planifiez votre visite dans Côte-des-Neiges à travers nos propositions de lieux.</p>
         <div class="visit-features">
-          <span class="visit-feature"><i class="fas fa-store"></i> Commerces</span>
-          <span class="visit-feature"><i class="fas fa-palette"></i> Artisanat</span>
-          <span class="visit-feature"><i class="fas fa-utensils"></i> Restaurants</span>
-          <span class="visit-feature"><i class="fas fa-theater-masks"></i> Culture</span>
-          <span class="visit-feature"><i class="fas fa-calendar"></i> Événements</span>
+          <span class="visit-feature"><i class="fas fa-subway"></i> Station métro</span>
+          <span class="visit-feature"><i class="fas fa-bicycle"></i> Voies cyclables</span>
+          <span class="visit-feature"><i class="fas fa-bicycle"></i> Bornes Bixi</span>
+          <span class="visit-feature"><i class="fas fa-car"></i> Station Communauto</span>
+          <span class="visit-feature"><i class="fas fa-parking"></i> Stationnements</span>
+          <span class="visit-feature"><i class="fas fa-calendar"></i> Activités</span>
         </div>
-        <a href="/planifiez-votre-visite.html" class="visit-btn">Planifiez votre visite</a>
+        <a href="#" class="visit-btn">Planifiez votre visite</a>
       </div>
       <div class="visit-map">
         <div style="text-align: center; color: rgba(255,255,255,0.6);">
@@ -243,22 +445,109 @@
     </div>
   </section>
 
-  <!-- EVENTS SECTION -->
+  <!-- SECTION ACTUALITÉS -->
+  <section class="news-section">
+    <div class="section-header">
+      <h2 class="section-title">Actualités</h2>
+      <a href="#" class="section-link">Tout le blogue</a>
+    </div>
+
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="Nouvelle">
+        </div>
+        <div class="news-card-content">
+          <span class="news-card-date">19 décembre 2025</span>
+          <h3 class="news-card-title">Nouveauté à Côte-des-Neiges : découvrez le quartier vu d'en haut</h3>
+          <p class="news-card-excerpt">Cet hiver, la SDC Côte-des-Neiges est fière de dévoiler trois nouveaux panneaux
+            d'exposition…</p>
+          <a href="#" class="news-card-link">Lire la suite</a>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-card-image">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=80" alt="Nouvelle">
+        </div>
+        <div class="news-card-content">
+          <span class="news-card-date">16 décembre 2025</span>
+          <h3 class="news-card-title">Séance d'information des entreprises dans le cadre de Destination Côte-des-Neiges
+          </h3>
+          <p class="news-card-excerpt">Nous sommes très heureux d'avoir rassemblé les entreprises de Côte-des-Neiges
+            pour leur partager des outils…</p>
+          <a href="#" class="news-card-link">Lire la suite</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SECTION ÉVÉNEMENTS -->
   <section class="events-section">
     <div class="section-header">
       <h2 class="section-title">Événements</h2>
-      <a href="/events.html" class="section-link">Tous les événements</a>
+      <a href="#" class="section-link">Tous les événements</a>
     </div>
 
-    <div class="events-grid" id="eventsGrid">
-      <!-- Populated by JavaScript -->
+    <div class="events-grid">
+      <article class="event-card">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=80" alt="Événement">
+          <div class="event-card-date">
+            <span class="event-card-day">29</span>
+            <span class="event-card-month">Oct</span>
+          </div>
+          <span class="event-card-status">Terminé</span>
+        </div>
+        <h3 class="event-card-title">Corvée pour Dame Nature (Édition d'automne)</h3>
+        <p class="event-card-excerpt">La SDC Côte-des-Neiges vous invite à une journée verte et festive au cœur du
+          quartier…</p>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Événement">
+          <div class="event-card-date">
+            <span class="event-card-day">10</span>
+            <span class="event-card-month">Juin</span>
+          </div>
+          <span class="event-card-status">Terminé</span>
+        </div>
+        <h3 class="event-card-title">Kiosque d'information de la SDC Côte-des-Neiges</h3>
+        <p class="event-card-excerpt">Du lundi au vendredi : de 11h à 16h…</p>
+      </article>
+
+      <article class="event-card">
+        <div class="event-card-image">
+          <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&q=80" alt="Événement">
+          <div class="event-card-date">
+            <span class="event-card-day">11</span>
+            <span class="event-card-month">Sep</span>
+          </div>
+          <span class="event-card-status">Terminé</span>
+        </div>
+        <h3 class="event-card-title">Lacombe piétonne ! (4e édition)</h3>
+        <p class="event-card-excerpt">La SDC Côte-des-Neiges est fière d'annoncer la 4e édition…</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PARTENAIRES -->
+  <section class="partners-section">
+    <h3 class="partners-title">Merci à nos partenaires</h3>
+    <div class="partners-grid">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=Montréal" alt="Ville de Montréal"
+        class="partner-logo">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=CDN-NDG" alt="Arrondissement"
+        class="partner-logo">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=CISM+89.3" alt="CISM" class="partner-logo">
     </div>
   </section>
 
   <!-- NEWSLETTER -->
   <section class="newsletter-section">
     <div class="newsletter-inner">
-      <h2 class="newsletter-title">Vous souhaitez rester informé sur Korhogo ?</h2>
+      <h2 class="newsletter-title">Vous souhaitez rester informé sur le quartier ?</h2>
       <p class="newsletter-text">Inscrivez-vous à notre infolettre pour ne rien manquer.</p>
       <form class="newsletter-form">
         <input type="email" class="newsletter-input" placeholder="Votre courriel">
@@ -272,53 +561,54 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <div class="footer-logo">
-          <span class="footer-logo-sdc">AKWABA</span>
-          <span class="footer-logo-name">Korhogo</span>
+          <span class="footer-logo-sdc">SDC</span>
+          <span class="footer-logo-name">Côte-des-Neiges</span>
         </div>
-        <p class="footer-description">Contactez-nous pour toutes demandes ou questions relatives à Akwaba Korhogo</p>
+        <p class="footer-description">Contactez-nous pour toutes demandes ou questions relatives à la SDC
+          Côte-des-Neiges</p>
         <div class="footer-contact">
-          <p>Quartier Koko, Korhogo, Côte d'Ivoire</p>
-          <p><a href="tel:+2252586000000">+225 25 86 00 00 00</a></p>
-          <p><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p>
+          <p>5450 Chemin de la Côte-des-Neiges, bureau #424</p>
+          <p><a href="tel:5147350204">514 735-0204</a></p>
+          <p><a href="mailto:contact@sdc-cotedesneiges.ca">contact@sdc-cotedesneiges.ca</a></p>
+          <p>9h à 12h et 13h30 à 16h du lundi au vendredi</p>
         </div>
       </div>
 
       <div class="footer-column">
-        <h4 class="footer-column-title">Navigation</h4>
+        <h4 class="footer-column-title">Membres</h4>
         <ul class="footer-links">
-          <li><a href="/" class="footer-link">Accueil</a></li>
-          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
-          <li><a href="/events.html" class="footer-link">Événements</a></li>
-          <li><a href="/about.html" class="footer-link">À propos</a></li>
+          <li><a href="#" class="footer-link">Espace Membres</a></li>
         </ul>
       </div>
 
       <div class="footer-column">
-        <h4 class="footer-column-title">Akwaba Korhogo</h4>
+        <h4 class="footer-column-title">SDC Côte-des-Neiges</h4>
         <ul class="footer-links">
-          <li><a href="/about.html" class="footer-link">À propos</a></li>
-          <li><a href="/nouvelles.html" class="footer-link">Nouvelles</a></li>
+          <li><a href="#" class="footer-link">À propos</a></li>
+          <li><a href="#" class="footer-link">Nouvelles</a></li>
+          <li><a href="#" class="footer-link">Entreprendre à Côte-des-Neiges</a></li>
         </ul>
       </div>
 
       <div class="footer-column">
-        <h4 class="footer-column-title">Visiter Korhogo</h4>
+        <h4 class="footer-column-title">Visiter CDN</h4>
         <ul class="footer-links">
-          <li><a href="/businesses.html" class="footer-link">Répertoire</a></li>
-          <li><a href="/events.html" class="footer-link">Événements</a></li>
-          <li><a href="/planifiez-votre-visite.html" class="footer-link">Planifiez votre visite</a></li>
+          <li><a href="#" class="footer-link">Répertoire</a></li>
+          <li><a href="#" class="footer-link">Événements</a></li>
+          <li><a href="#" class="footer-link">Planifiez votre visite</a></li>
+          <li><a href="#" class="footer-link">Mini-guide étudiant</a></li>
         </ul>
 
         <div class="footer-social">
-          <a href="https://facebook.com/akwaba.korhogo" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://instagram.com/akwaba_korhogo" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/2252586000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>Copyright © <span id="currentYear"></span> | Akwaba Korhogo.</p>
+      <p>Copyright © 2026 | SDC Côte-des-Neiges.</p>
       <div class="footer-legal">
         <a href="#">Politique de confidentialité</a>
         <a href="#">Conditions d'utilisations</a>
@@ -326,35 +616,7 @@
     </div>
   </footer>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
-
-  <!-- City Configuration -->
-  <script src="/js/config.js"></script>
-
-  <!-- Core JavaScript -->
-  <script src="/core/js/utils.js"></script>
-  <script src="/core/js/responsive-manager.js"></script>
-  <script src="/core/js/firebase-manager.js"></script>
-  <script src="/core/js/business-directory.js"></script>
-
   <script>
-    // Initialize
-    const responsive = new ResponsiveManager();
-    const firebaseManager = new FirebaseManager(FIREBASE_CONFIG, CITY_CONFIG.cityId);
-    const businessDirectory = new BusinessDirectory(firebaseManager, responsive);
-
-    // Initialize Firebase
-    firebaseManager.initialize().then(success => {
-      if (success) {
-        loadCategories();
-        loadBusinesses();
-        loadEvents();
-      }
-    });
-
     // Header scroll effect
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -365,153 +627,14 @@
       }
     });
 
-    // Load categories
-    function loadCategories() {
-      const grid = document.getElementById('categoriesGrid');
-      CITY_CONFIG.categories.slice(0, 12).forEach(category => {
-        const link = document.createElement('a');
-        link.href = `/businesses.html?category=${category.id}`;
-        link.className = 'category-link';
-        link.textContent = category.name;
-        grid.appendChild(link);
-      });
-    }
-
-    // Load businesses
-    async function loadBusinesses() {
-      const result = await businessDirectory.getBusinesses({ status: 'approved', limit: 12 });
-      if (result.success && result.data.length > 0) {
-        const carousel = document.getElementById('businessCarousel');
-        // Duplicate for infinite scroll
-        const businesses = [...result.data, ...result.data];
-
-        businesses.forEach(business => {
-          const card = document.createElement('article');
-          card.className = 'business-card';
-          card.innerHTML = `
-            <div class="business-card-image">
-              <img src="${business.photos?.[0] || 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=400'}" alt="${business.name}">
-              <div class="business-card-logo">
-                <img src="${business.thumbnail || 'https://via.placeholder.com/50'}" alt="Logo">
-              </div>
-            </div>
-            <div class="business-card-content">
-              <h3 class="business-card-title">${business.name}</h3>
-              <p class="business-card-category">${getCategoryName(business.category)}</p>
-              <p class="business-card-address">${business.neighborhood || 'Korhogo'}</p>
-              <a href="/business.html?id=${business.id}" class="business-card-link">Site Web</a>
-            </div>
-          `;
-          carousel.appendChild(card);
-        });
-      }
-    }
-
-    // Load events
-    async function loadEvents() {
-      try {
-        const eventsRef = firebaseManager.getCityCollection('events');
-        const snapshot = await eventsRef.where('status', '==', 'approved').limit(3).get();
-
-        if (snapshot.empty) {
-          loadSampleEvents();
-          return;
-        }
-
-        const grid = document.getElementById('eventsGrid');
-        snapshot.docs.forEach(doc => {
-          const event = doc.data();
-          const card = createEventCard(event);
-          grid.appendChild(card);
-        });
-      } catch (error) {
-        loadSampleEvents();
-      }
-    }
-
-    // Load sample events
-    function loadSampleEvents() {
-      const grid = document.getElementById('eventsGrid');
-      const sampleEvents = [
-        { title: 'Festival du Tissu de Korhogo', date: '15 Mars', status: 'À venir', image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600' },
-        { title: 'Marché Artisanal', date: '20 Mars', status: 'À venir', image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600' },
-        { title: 'Soirée Culturelle Senufo', date: '25 Mars', status: 'À venir', image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600' }
-      ];
-
-      sampleEvents.forEach(event => {
-        const card = document.createElement('article');
-        card.className = 'event-card';
-        card.innerHTML = `
-          <div class="event-card-image">
-            <img src="${event.image}" alt="${event.title}">
-            <div class="event-card-date">
-              <span class="event-card-day">${event.date.split(' ')[0]}</span>
-              <span class="event-card-month">${event.date.split(' ')[1]}</span>
-            </div>
-            <span class="event-card-status">${event.status}</span>
-          </div>
-          <h3 class="event-card-title">${event.title}</h3>
-          <p class="event-card-excerpt">Découvrez la richesse culturelle de Korhogo...</p>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // Create event card
-    function createEventCard(event) {
-      const card = document.createElement('article');
-      card.className = 'event-card';
-      const date = event.startDate?.toDate ? event.startDate.toDate() : new Date();
-      const day = date.getDate();
-      const month = date.toLocaleDateString('fr-FR', { month: 'short' });
-
-      card.innerHTML = `
-        <div class="event-card-image">
-          <img src="${event.image || 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600'}" alt="${event.title}">
-          <div class="event-card-date">
-            <span class="event-card-day">${day}</span>
-            <span class="event-card-month">${month}</span>
-          </div>
-          <span class="event-card-status">${event.status || 'À venir'}</span>
-        </div>
-        <h3 class="event-card-title">${event.title}</h3>
-        <p class="event-card-excerpt">${event.description?.substring(0, 80) || ''}...</p>
-      `;
-      return card;
-    }
-
-    // Helper
-    function getCategoryName(categoryId) {
-      const category = CITY_CONFIG.categories.find(c => c.id === categoryId);
-      return category ? category.name : categoryId;
-    }
-
-    // Search
-    document.getElementById('searchBtn')?.addEventListener('click', () => {
-      const query = document.getElementById('searchInput').value;
-      if (query) {
-        window.location.href = `/businesses.html?search=${encodeURIComponent(query)}`;
-      }
+    // Carousel pause on hover
+    const carousel = document.querySelector('.carousel');
+    carousel.addEventListener('mouseenter', () => {
+      carousel.style.animationPlayState = 'paused';
     });
-
-    document.getElementById('searchInput')?.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const query = e.target.value;
-        if (query) {
-          window.location.href = `/businesses.html?search=${encodeURIComponent(query)}`;
-        }
-      }
+    carousel.addEventListener('mouseleave', () => {
+      carousel.style.animationPlayState = 'running';
     });
-
-    // Update year
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-    // Service Worker (PWA)
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(() => { });
-      });
-    }
   </script>
 </body>
 

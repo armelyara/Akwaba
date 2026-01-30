@@ -40,6 +40,51 @@ ul {
 /* =============================================
          SOCIAL SIDEBOX
          ============================================= */
+.social-sidebar {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ligne verticale blanche */
+.social-sidebar::before {
+    content: '';
+    width: 1px;
+    height: 80px;
+    background-color: #FFFFFF;
+    margin-bottom: 25px;
+}
+
+.social-sidebar__icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-sidebar__link {
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.social-sidebar__link:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+/* Cacher sur mobile */
+@media (max-width: 768px) {
+    .social-sidebar {
+        display: none;
+    }
+}
+
 .social-sidebox {
     position: fixed;
     right: 0;
@@ -355,8 +400,6 @@ ul {
 }
 
 /* Catégories */
-.categories {}
-
 .categories-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
