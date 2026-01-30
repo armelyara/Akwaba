@@ -1,192 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>À propos | Akwaba Korhogo</title>
-
-  <!-- PWA Meta Tags -->
-  <meta name="theme-color" content="#E6302E">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Akwaba KGO">
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Découvrez Akwaba Korhogo - Notre mission de valoriser l'artisanat Senufo et soutenir l'économie locale">
-  <meta name="keywords" content="Korhogo, Senufo, artisanat, commerce local, tissu Korhogo, Côte d'Ivoire">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-
-  <!-- Manifest -->
-  <link rel="manifest" href="/manifest.json">
-
+  <title>À propos | Akwaba Korogho</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --korhogo-red: #E6302E; --korhogo-green: #289D8F; --korhogo-yellow: #F4A261; --korhogo-blue: #0056B3; --korhogo-coral: #E76F51; --black: #1A1A1A; --white: #FFFFFF; --gray: #757575; --light-gray: #F5F5F5; }
-    html { scroll-behavior: smooth; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--black); overflow-x: hidden; line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { max-width: 100%; height: auto; }
-
-    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 30px 40px; display: flex; justify-content: space-between; align-items: flex-start; transition: all 0.4s ease; }
-    .header.scrolled { background: var(--white); padding: 20px 40px; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
-    .header.scrolled .logo, .header.scrolled .nav a, .header.scrolled .nav-lang { color: var(--black); }
-    .header.scrolled .hamburger span { background: var(--black); }
-    .logo { font-family: 'Playfair Display', serif; color: var(--white); line-height: 0.9; transition: color 0.4s ease; }
-    .logo-sdc { display: block; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; }
-    .logo-name { display: block; font-size: 2.2rem; font-weight: 700; }
-    .nav { display: flex; align-items: center; gap: 30px; }
-    .nav-links { display: flex; gap: 25px; }
-    .nav a { font-size: 0.95rem; font-weight: 500; color: var(--white); transition: opacity 0.3s ease; }
-    .nav a:hover { opacity: 0.7; }
-    .nav-lang { font-size: 0.9rem; font-weight: 600; color: var(--white); }
-    .hamburger { display: flex; flex-direction: column; gap: 6px; cursor: pointer; padding: 5px; }
-    .hamburger span { width: 28px; height: 2px; background: var(--white); transition: background 0.4s ease; }
-
-    .social-sidebox { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 999; display: flex; flex-direction: column; background: var(--white); box-shadow: -2px 0 15px rgba(0,0,0,0.1); border-radius: 8px 0 0 8px; overflow: hidden; }
-    .social-sidebox a { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; color: var(--black); font-size: 1.1rem; transition: all 0.3s ease; border-bottom: 1px solid var(--light-gray); }
-    .social-sidebox a:last-child { border-bottom: none; }
-    .social-sidebox a:hover { background: var(--korhogo-blue); color: var(--white); }
-
-    .page-header { position: relative; padding: 160px 40px 80px; background: var(--korhogo-red); overflow: hidden; text-align: center; }
-    .page-header-waves { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .page-header-waves svg { position: absolute; width: 150%; height: 150%; top: -25%; left: -25%; }
-    .page-header-content { position: relative; z-index: 10; }
-    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700; font-style: italic; color: var(--white); margin-bottom: 15px; }
-
-    .about-section { padding: 80px 40px; background: var(--white); }
-    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
-    .about-content h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 25px; line-height: 1.3; }
-    .about-content p { color: var(--gray); margin-bottom: 20px; line-height: 1.8; }
-    .about-image img { width: 100%; border-radius: 12px; }
-
-    .actions-section { padding: 80px 40px; background: var(--korhogo-yellow); position: relative; overflow: hidden; }
-    .actions-section::before { content: ''; position: absolute; inset: 0; opacity: 0.1; background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23000000' stroke-width='1' fill='none'/%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20' stroke='%23000000' stroke-width='1' fill='none'/%3E%3C/svg%3E"); background-size: 40px 20px; }
-    .actions-inner { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
-    .actions-content h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 25px; }
-    .actions-content p { margin-bottom: 20px; line-height: 1.8; }
-    .actions-content a { display: inline-flex; align-items: center; gap: 8px; padding: 15px 30px; background: var(--black); color: var(--white); font-weight: 600; margin-top: 10px; transition: background 0.3s ease; }
-    .actions-content a:hover { background: var(--korhogo-red); }
-    .actions-image img { width: 100%; border-radius: 12px; }
-
-    .team-section { padding: 80px 40px; background: var(--white); }
-    .team-header { text-align: center; margin-bottom: 50px; }
-    .team-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
-    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1000px; margin: 0 auto; }
-    .team-member { text-align: center; }
-    .team-member-image { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px; background: var(--light-gray); }
-    .team-member-image img { width: 100%; height: 100%; object-fit: cover; }
-    .team-member-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 3px; }
-    .team-member-role { font-size: 0.85rem; color: var(--korhogo-red); font-weight: 500; margin-bottom: 5px; }
-    .team-member-email { font-size: 0.85rem; color: var(--gray); }
-    .team-member-email a:hover { color: var(--korhogo-red); }
-
-    .partners-section { padding: 80px 40px; background: var(--light-gray); }
-    .partners-header { text-align: center; margin-bottom: 50px; }
-    .partners-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
-    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1000px; margin: 0 auto; }
-    .partner-item { text-align: center; }
-    .partner-image { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 10px; background: var(--white); }
-    .partner-image img { width: 100%; height: 100%; object-fit: cover; }
-    .partner-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
-    .partner-role { font-size: 0.8rem; color: var(--gray); }
-
-    .infos-section { padding: 80px 40px; background: var(--korhogo-green); color: var(--white); position: relative; overflow: hidden; }
-    .infos-section::before { content: ''; position: absolute; inset: 0; opacity: 0.1; background-image: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 L30 0 L40 10' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3Cpath d='M0 20 L10 10 L20 20 L30 10 L40 20' stroke='%23ffffff' stroke-width='1' fill='none'/%3E%3C/svg%3E"); background-size: 40px 20px; }
-    .infos-inner { position: relative; max-width: 1000px; margin: 0 auto; }
-    .infos-header { text-align: center; margin-bottom: 40px; }
-    .infos-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
-    .infos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
-    .info-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; }
-    .info-card p { font-size: 0.95rem; opacity: 0.9; line-height: 1.6; }
-    .info-card a { color: var(--white); text-decoration: underline; }
-    .info-card a:hover { opacity: 0.8; }
-
-    .newsletter-section { padding: 60px 40px; background: var(--white); border-top: 1px solid #E0E0E0; }
-    .newsletter-inner { max-width: 600px; margin: 0 auto; text-align: center; }
-    .newsletter-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 15px; }
-    .newsletter-text { margin-bottom: 25px; color: var(--gray); }
-    .newsletter-form { display: flex; gap: 10px; }
-    .newsletter-input { flex: 1; padding: 15px 20px; font-size: 1rem; border: 1px solid #E0E0E0; outline: none; }
-    .newsletter-btn { padding: 15px 30px; background: var(--korhogo-red); color: var(--white); font-weight: 600; border: none; cursor: pointer; transition: background 0.3s ease; }
-    .newsletter-btn:hover { background: var(--black); }
-
-    .footer { background: var(--black); color: var(--white); padding: 80px 40px 40px; }
-    .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .footer-logo { font-family: 'Playfair Display', serif; line-height: 0.9; margin-bottom: 20px; }
-    .footer-logo-sdc { display: block; font-size: 0.9rem; font-weight: 700; }
-    .footer-logo-name { display: block; font-size: 1.4rem; font-weight: 700; }
-    .footer-description { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
-    .footer-contact p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
-    .footer-contact a:hover { color: var(--korhogo-yellow); }
-    .footer-column-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
-    .footer-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer-link { font-size: 0.9rem; color: rgba(255,255,255,0.7); transition: color 0.3s ease; }
-    .footer-link:hover { color: var(--korhogo-yellow); }
-    .footer-social { display: flex; gap: 15px; margin-top: 20px; }
-    .footer-social a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); border-radius: 50%; transition: background 0.3s ease; }
-    .footer-social a:hover { background: var(--korhogo-yellow); color: var(--black); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; max-width: 1200px; margin: 0 auto; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
-    .footer-legal { display: flex; gap: 30px; }
-    .footer-legal a:hover { color: var(--white); }
-
-    @media (max-width: 1024px) { .about-inner, .actions-inner { grid-template-columns: 1fr; } .team-grid { grid-template-columns: repeat(2, 1fr); } .partners-grid { grid-template-columns: repeat(3, 1fr); } .footer-inner { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) { .header { padding: 20px; } .nav-links { display: none; } .page-header { padding: 140px 20px 60px; } .about-section, .actions-section, .team-section, .partners-section, .infos-section { padding: 60px 20px; } .team-grid, .partners-grid { grid-template-columns: 1fr 1fr; } .infos-grid { grid-template-columns: 1fr; gap: 40px; } .social-sidebox { display: none; } .footer-inner { grid-template-columns: 1fr; text-align: center; } .footer-social { justify-content: center; } .footer-bottom { flex-direction: column; gap: 15px; } .newsletter-form { flex-direction: column; } }
-  </style>
+  <link rel="stylesheet" href="../css/about.css">
 </head>
+
 <body>
   <header class="header" id="header">
-    <a href="/index.html" class="logo"><span class="logo-sdc">AKWABA</span><span class="logo-name">Korhogo</span></a>
+    <a href="../index.html" class="logo"><span class="logo-sdc">Akwaba</span><span
+        class="logo-name">Korogho-</span><span class="logo-name">des-</span><span class="logo-name">Neiges</span></a>
     <nav class="nav">
       <div class="nav-links">
-        <a href="/businesses.html">Répertoire</a>
-        <a href="/events.html">Événements</a>
-        <a href="/nouvelles.html">Nouvelles</a>
-        <a href="/planifiez-votre-visite.html">Planifiez votre visite</a>
-        <a href="/about.html" style="opacity: 0.7;">À propos</a>
+        <a href="repertoire.html">Répertoire</a>
+        <a href="evenements.html">Événements</a>
+        <a href="nouvelles.html">Nouvelles</a>
+        <a href="visite.html">Planifiez votre visite</a>
+        <a href="a-propos.html" style="opacity: 0.7;">À propos</a>
       </div>
-      <span class="nav-lang">Fr</span>
+      <span class="nav-lang">En</span>
       <div class="hamburger"><span></span><span></span><span></span></div>
     </nav>
   </header>
 
-  <aside class="social-sidebox">
-    <a href="https://facebook.com/akwaba.korhogo" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://instagram.com/akwaba_korhogo" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://wa.me/2252586000000" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <aside class="social-sidebar">
+    <div class="social-sidebar__icons">
+      <a href="https://facebook.com" class="social-sidebar__link" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://instagram.com" class="social-sidebar__link" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://linkedin.com" class="social-sidebar__link" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
   </aside>
 
   <section class="page-header">
     <div class="page-header-waves">
       <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
-        <path d="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z" fill="#289D8F"/>
-        <path d="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z" fill="#F4A261"/>
-        <path d="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z" fill="#E76F51"/>
+        <path
+          d="M-100,50 C100,150 300,0 500,100 C700,200 900,50 1100,150 C1300,250 1500,100 1600,120 L1600,400 L-100,400 Z"
+          fill="#26A69A" />
+        <path
+          d="M-100,120 C150,50 350,180 550,100 C750,20 950,150 1150,80 C1350,10 1500,120 1600,100 L1600,400 L-100,400 Z"
+          fill="#F9A825" />
+        <path
+          d="M900,-20 C1000,50 1100,0 1200,60 C1300,120 1400,40 1500,80 C1600,120 1600,80 1600,80 L1600,250 C1500,200 1400,250 1300,200 C1200,150 1100,220 1000,180 L900,-20 Z"
+          fill="#E57373" />
       </svg>
     </div>
     <div class="page-header-content">
-      <h1 class="page-title">À propos d'Akwaba Korhogo</h1>
+      <h1 class="page-title">À propos de la SDC Côte-des-Neiges</h1>
     </div>
   </section>
 
   <section class="about-section">
     <div class="about-inner">
       <div class="about-content">
-        <h2>Akwaba Korhogo est votre référence pour découvrir le patrimoine de Korhogo.</h2>
-        <p>Akwaba Korhogo a pour mission de promouvoir le rayonnement et stimuler le dynamisme commercial de Korhogo afin de contribuer à l'essor économique de la région en valorisant la culture Senufo et l'artisanat traditionnel.</p>
-        <p>Plateforme créée en 2026, Akwaba Korhogo regroupe les commerçants, artisans et professionnels locaux dont la contribution permet de positionner Korhogo comme une destination de choix pour découvrir l'authenticité Senufo.</p>
-        <p>Nous offrons plusieurs services afin de répondre aux besoins des commerçants et artisans tout en facilitant l'accès à l'information pour les visiteurs et résidents.</p>
+        <h2>La SDC Côte-des-Neiges est votre référence pour découvrir le quartier.</h2>
+        <p>La Société de Développement Commercial (SDC) Côte-des-Neiges a pour mission de promouvoir le rayonnement et
+          stimuler le dynamisme commercial du territoire de la SDC afin de contribuer à l'essor économique du quartier
+          en collaboration avec les partenaires du milieu.</p>
+        <p>Organisme à but non-lucratif créé en 2018, la SDC Côte-des-Neiges regroupe 230 commerçants et professionnels
+          dont la contribution permet de positionner le quartier comme une destination de choix tant pour ses résidents
+          que ses visiteurs.</p>
+        <p>Elle offre plusieurs programmes et services afin de répondre aux besoins et défis des commerçants tout en
+          facilitant l'accès à l'information pertinente.</p>
       </div>
       <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80" alt="Artisanat Korhogo">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
+          alt="Quartier Côte-des-Neiges">
       </div>
     </div>
   </section>
@@ -194,116 +87,169 @@
   <section class="actions-section">
     <div class="actions-inner">
       <div class="actions-image">
-        <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=80" alt="Culture Senufo">
+        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80" alt="Nos actions">
       </div>
       <div class="actions-content">
-        <h2>Notre engagement</h2>
-        <p>Akwaba Korhogo met en œuvre de nombreuses actions pour dynamiser l'économie locale : promotion de l'artisanat Senufo, visibilité des commerces locaux, organisation d'événements culturels, et soutien aux artisans.</p>
-        <p>Nos initiatives visent à renforcer l'attractivité de Korhogo et à créer une expérience unique pour les visiteurs désireux de découvrir la richesse de la culture Senufo et l'excellence de notre artisanat traditionnel.</p>
-        <a href="/businesses.html">Découvrez nos artisans <i class="fas fa-arrow-right"></i></a>
+        <h2>Nos actions</h2>
+        <p>La SDC met en œuvre de nombreuses actions pour dynamiser le quartier : animation commerciale, embellissement
+          urbain, promotion et marketing, soutien aux commerçants, organisation d'événements festifs et culturels.</p>
+        <p>Nos initiatives visent à renforcer l'attractivité commerciale du territoire et à créer une expérience unique
+          pour les visiteurs et résidents du quartier Côte-des-Neiges.</p>
+        <a href="repertoire.html">Découvrez nos commerçants <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
 
   <section class="team-section">
-    <div class="team-header"><h2>L'équipe d'Akwaba Korhogo</h2></div>
+    <div class="team-header">
+      <h2>L'équipe de la SDC Côte-des-Neiges</h2>
+    </div>
     <div class="team-grid">
       <div class="team-member">
-        <div class="team-member-image"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Armely Ara"></div>
-        <h3 class="team-member-name">Armely Ara</h3>
-        <p class="team-member-role">CHEF DE PROJET</p>
-        <p class="team-member-email"><a href="mailto:armely@akwaba-korhogo.ci">armely@akwaba-korhogo.ci</a></p>
+        <div class="team-member-image"><img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt="Félicia"></div>
+        <h3 class="team-member-name">Félicia Batzoo</h3>
+        <p class="team-member-role">DIRECTRICE GÉNÉRALE</p>
+        <p class="team-member-email"><a href="mailto:direction@sdc.ca">direction@sdc.ca</a></p>
       </div>
       <div class="team-member">
-        <div class="team-member-image"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt="The Day Info"></div>
-        <h3 class="team-member-name">The Day Info</h3>
-        <p class="team-member-role">DÉVELOPPEMENT</p>
-        <p class="team-member-email"><a href="mailto:dev@akwaba-korhogo.ci">dev@akwaba-korhogo.ci</a></p>
+        <div class="team-member-image"><img
+            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt="Louise"></div>
+        <h3 class="team-member-name">Louise Massol</h3>
+        <p class="team-member-role">ADJOINTE À LA DIRECTION</p>
+        <p class="team-member-email"><a href="mailto:adjointe@sdc.ca">adjointe@sdc.ca</a></p>
       </div>
       <div class="team-member">
-        <div class="team-member-image"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80" alt="GDG Cloud Abidjan"></div>
-        <h3 class="team-member-name">GDG Cloud Abidjan</h3>
-        <p class="team-member-role">SUPPORT TECHNIQUE</p>
-        <p class="team-member-email"><a href="mailto:support@akwaba-korhogo.ci">support@akwaba-korhogo.ci</a></p>
+        <div class="team-member-image"><img
+            src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt="Kévin"></div>
+        <h3 class="team-member-name">Kévin Dupont</h3>
+        <p class="team-member-role">CHARGÉ DE PROJETS</p>
+        <p class="team-member-email"><a href="mailto:projets@sdc.ca">projets@sdc.ca</a></p>
+      </div>
+      <div class="team-member">
+        <div class="team-member-image"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80"
+            alt="Sheina"></div>
+        <h3 class="team-member-name">Sheina Richmond</h3>
+        <p class="team-member-role">MARKETING ET ÉVÉNEMENTS</p>
+        <p class="team-member-email"><a href="mailto:marketing@sdc.ca">marketing@sdc.ca</a></p>
       </div>
     </div>
   </section>
 
-  <section class="partners-section">
-    <div class="partners-header"><h2>Patrimoine artisanal Senufo</h2></div>
-    <div class="partners-grid">
-      <div class="partner-item">
-        <div class="partner-image"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=150&q=80" alt="Tissage"></div>
-        <h3 class="partner-name">Tissage</h3>
-        <p class="partner-role">Tissu de Korhogo</p>
+  <section class="conseil-section">
+    <div class="conseil-header">
+      <h2>Conseil d'administration</h2>
+    </div>
+    <div class="conseil-grid">
+      <div class="conseil-member">
+        <div class="conseil-member-image"><img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80" alt="Président"></div>
+        <h3 class="conseil-member-name">Jacinthe Regal</h3>
+        <p class="conseil-member-role">Présidente</p>
       </div>
-      <div class="partner-item">
-        <div class="partner-image"><img src="https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?w=150&q=80" alt="Sculpture"></div>
-        <h3 class="partner-name">Sculpture</h3>
-        <p class="partner-role">Masques et statues</p>
+      <div class="conseil-member">
+        <div class="conseil-member-image"><img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80" alt="VP"></div>
+        <h3 class="conseil-member-name">Valérie Aubin</h3>
+        <p class="conseil-member-role">Vice-présidente</p>
       </div>
-      <div class="partner-item">
-        <div class="partner-image"><img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=150&q=80" alt="Poterie"></div>
-        <h3 class="partner-name">Poterie</h3>
-        <p class="partner-role">Terre cuite traditionnelle</p>
+      <div class="conseil-member">
+        <div class="conseil-member-image"><img
+            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80" alt="Trésorier"></div>
+        <h3 class="conseil-member-name">Nathalie Tremblay</h3>
+        <p class="conseil-member-role">Trésorière</p>
       </div>
-      <div class="partner-item">
-        <div class="partner-image"><img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=150&q=80" alt="Peinture"></div>
-        <h3 class="partner-name">Peinture</h3>
-        <p class="partner-role">Art mural Senufo</p>
+      <div class="conseil-member">
+        <div class="conseil-member-image"><img
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80" alt="Secrétaire"></div>
+        <h3 class="conseil-member-name">Virginia Tipoo</h3>
+        <p class="conseil-member-role">Secrétaire</p>
+      </div>
+      <div class="conseil-member">
+        <div class="conseil-member-image"><img
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80" alt="Admin"></div>
+        <h3 class="conseil-member-name">Marina Pelletier</h3>
+        <p class="conseil-member-role">Administratrice</p>
       </div>
     </div>
   </section>
 
   <section class="infos-section">
     <div class="infos-inner">
-      <div class="infos-header"><h2>Informations utiles</h2></div>
+      <div class="infos-header">
+        <h2>Informations utiles</h2>
+      </div>
       <div class="infos-grid">
         <div class="info-card">
-          <h3>Contact</h3>
-          <p>Quartier Koko, Korhogo<br>+225 25 86 00 00 00<br><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p>
+          <h3>Services d'urgence</h3>
+          <p>Police : 911<br>Pompiers : 911<br>Info-Santé : 811<br>Urgences sociales : 514 935-1354</p>
         </div>
         <div class="info-card">
-          <h3>Horaires</h3>
-          <p>Du lundi au vendredi<br>8h00 - 18h00<br>Samedi : 9h00 - 15h00</p>
+          <h3>Organismes du quartier</h3>
+          <p>Centre communautaire CDN<br>Bibliothèque de CDN<br>CLSC Côte-des-Neiges<br>Arrondissement CDN-NDG</p>
         </div>
         <div class="info-card">
-          <h3>Ressources</h3>
-          <p>Guide touristique<br>Carte des artisans<br>Événements culturels</p>
+          <h3>Ressources 24/7</h3>
+          <p>Ligne d'écoute : 1-866-APPELLE<br>Tel-Aide : 514 935-1101<br>Suicide Action : 1-866-APPELLE</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="newsletter-section">
-    <div class="newsletter-inner">
-      <h2 class="newsletter-title">Restez informé sur Korhogo</h2>
-      <p class="newsletter-text">Inscrivez-vous à notre infolettre pour ne rien manquer de l'actualité de Korhogo et de ses artisans.</p>
-      <form class="newsletter-form">
-        <input type="email" class="newsletter-input" placeholder="Votre adresse email" required>
-        <button type="submit" class="newsletter-btn">S'inscrire</button>
-      </form>
+  <section class="partners-section">
+    <h3 class="partners-title">Merci à nos partenaires</h3>
+    <div class="partners-grid">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=Montréal" alt="Montréal" class="partner-logo">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=CDN-NDG" alt="CDN-NDG" class="partner-logo">
+      <img src="https://via.placeholder.com/200x60/ffffff/888888?text=CISM+89.3" alt="CISM" class="partner-logo">
     </div>
   </section>
 
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo"><span class="footer-logo-sdc">AKWABA</span><span class="footer-logo-name">Korhogo</span></div>
-        <p class="footer-description">Contactez-nous pour toutes demandes relatives à Akwaba Korhogo</p>
-        <div class="footer-contact"><p>Quartier Koko, Korhogo, Côte d'Ivoire</p><p><a href="tel:+2252586000000">+225 25 86 00 00 00</a></p><p><a href="mailto:contact@akwaba-korhogo.ci">contact@akwaba-korhogo.ci</a></p></div>
+        <div class="footer-logo"><span class="footer-logo-sdc">AKWABA</span><span
+            class="footer-logo-name">Korogho</span></div>
+        <p class="footer-description">Contactez-nous pour toutes demandes relatives à Akwaba</p>
+        <div class="footer-contact">
+          <p>5450 Chemin de la Côte-des-Neiges, bureau #424</p>
+          <p><a href="tel:5147350204">514 735-0204</a></p>
+        </div>
       </div>
-      <div class="footer-column"><h4 class="footer-column-title">Navigation</h4><ul class="footer-links"><li><a href="/" class="footer-link">Accueil</a></li><li><a href="/businesses.html" class="footer-link">Répertoire</a></li><li><a href="/events.html" class="footer-link">Événements</a></li></ul></div>
-      <div class="footer-column"><h4 class="footer-column-title">Akwaba</h4><ul class="footer-links"><li><a href="/about.html" class="footer-link">À propos</a></li><li><a href="/nouvelles.html" class="footer-link">Nouvelles</a></li></ul></div>
-      <div class="footer-column"><h4 class="footer-column-title">Découvrir</h4><ul class="footer-links"><li><a href="/businesses.html" class="footer-link">Commerces</a></li><li><a href="/events.html" class="footer-link">Événements</a></li><li><a href="/planifiez-votre-visite.html" class="footer-link">Planifiez votre visite</a></li></ul><div class="footer-social"><a href="https://facebook.com/akwaba.korhogo" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://instagram.com/akwaba_korhogo" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2252586000000" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Membres</h4>
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">Espace Membres</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">AKWABA</h4>
+        <ul class="footer-links">
+          <li><a href="a-propos.html" class="footer-link">À propos</a></li>
+          <li><a href="nouvelles.html" class="footer-link">Nouvelles</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4 class="footer-column-title">Visiter</h4>
+        <ul class="footer-links">
+          <li><a href="repertoire.html" class="footer-link">Répertoire</a></li>
+          <li><a href="evenements.html" class="footer-link">Événements</a></li>
+          <li><a href="visite.html" class="footer-link">Planifiez votre visite</a></li>
+        </ul>
+        <div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i
+              class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div>
+      </div>
     </div>
-    <div class="footer-bottom"><p>Copyright © <span id="currentYear"></span> | Akwaba Korhogo. By The Day Info X GDG Cloud Abidjan</p><div class="footer-legal"><a href="#">Politique de confidentialité</a><a href="#">Conditions</a></div></div>
+    <div class="footer-bottom">
+      <p>Copyright © 2026 | The Day Info X GDG Cloud Abidjan.</p>
+      <div class="footer-legal"><a href="#">Politique de confidentialité</a><a href="#">Conditions</a></div>
+    </div>
   </footer>
 
   <script>
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
