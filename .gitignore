@@ -57,3 +57,22 @@ debug/
 # Firebase Service Account Keys (NEVER COMMIT)
 **/serviceAccountKey.json
 **/*-firebase-adminsdk-*.json
+
+# Markdown files (documentation)
+*.md
+!node_modules/**/*.md
+
+# Configuration files with API keys
+**/config.js
+**/firebase-config.js
+**/*-config.js
+!node_modules/**/*-config.js
+
+# Algolia configuration and keys
+**/algolia-config.js
+**/.algolia/
+**/algolia.json
+
+# Environment files with keys
+.env*
+!.env.example
